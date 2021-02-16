@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/UI_Square.png-4798a9d3db9b8aba96f6d8df0aec6052.stex"
+path="res://.import/praxisNPC.png-a15d920541a03e833eb447e844e6ebf1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/UI_Square.png"
-dest_files=[ "res://.import/UI_Square.png-4798a9d3db9b8aba96f6d8df0aec6052.stex" ]
+source_file="res://Sprites/NPCs/praxisNPC.png"
+dest_files=[ "res://.import/praxisNPC.png-a15d920541a03e833eb447e844e6ebf1.stex" ]
 
 [params]
 

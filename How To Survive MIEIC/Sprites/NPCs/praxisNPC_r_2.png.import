@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/WalkingMan1.png-add11d593fe7c823bbabc1161c47d29c.stex"
+path="res://.import/praxisNPC_r_2.png-b38e29fbde0743aac9bfc1bd5dec812a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Player/WalkingMan1.png"
-dest_files=[ "res://.import/WalkingMan1.png-add11d593fe7c823bbabc1161c47d29c.stex" ]
+source_file="res://Sprites/NPCs/praxisNPC_r_2.png"
+dest_files=[ "res://.import/praxisNPC_r_2.png-b38e29fbde0743aac9bfc1bd5dec812a.stex" ]
 
 [params]
 
