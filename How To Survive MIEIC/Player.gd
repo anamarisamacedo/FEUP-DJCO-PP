@@ -43,11 +43,7 @@ func _physics_process (delta):
 	# move the player
 	move_and_slide(vel * moveSpeed, Vector2.ZERO)
 	manage_animations()
-	var target = rayCast.get_collider()
-	print(target)
-	if target != null and target.is_in_group("NPCs"):
-		# Talk to NPC
-		target.talk()
+	
 
 func manage_animations ():
 	
@@ -74,4 +70,10 @@ func play_animation (anim_name):
 	if anim.animation != anim_name:
 		anim.play(anim_name)
 
-
+func _input(event):
+	if event.is_action_pressed("interact"):
+		var target = rayCast.get_collider()
+		if target != null and target.is_in_group("NPCs"):
+			# Talk to NPC
+			target.talk()
+			return

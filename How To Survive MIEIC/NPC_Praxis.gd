@@ -29,27 +29,35 @@ func talk(answer = ""):
 		QuestStatus.NOT_STARTED:
 			match dialogue_state:
 				0:
-					# Update dialogue tree state
-					dialogue_state = 1
-					# Show dialogue popup
-					dialoguePopup.dialogue = "Hello adventurer! I lost my necklace, can you find it for me?"
-					dialoguePopup.answers = "[A] Yes  [B] No"
-					dialoguePopup.open()
+					if beerFound:
+						# Update dialogue tree state
+						dialogue_state = 4
+						# Show dialogue popup
+						dialoguePopup.dialogue = "Boas! Queres-me arranjar um fino?"
+						dialoguePopup.answers = "[A] Sim, já o tenho!  [B] Não"
+						dialoguePopup.open()
+					else:
+						# Update dialogue tree state
+						dialogue_state = 1
+						# Show dialogue popup
+						dialoguePopup.dialogue = "Boas! Queres-me arranjar um fino?"
+						dialoguePopup.answers = "[A] Pode ser  [B] Não me apetece"
+						dialoguePopup.open()
 				1:
 					match answer:
 						"A":
 							# Update dialogue tree state
 							dialogue_state = 2
 							# Show dialogue popup
-							dialoguePopup.dialogue = "Thank you!"
-							dialoguePopup.answers = "[A] Bye"
+							dialoguePopup.dialogue = "Fixe. Tenta encontrá-lo e depois traz-me."
+							dialoguePopup.answers = "[A] Ok"
 							dialoguePopup.open()
 						"B":
 							# Update dialogue tree state
 							dialogue_state = 3
 							# Show dialogue popup
-							dialoguePopup.dialogue = "If you change your mind, you'll find me here."
-							dialoguePopup.answers = "[A] Bye"
+							dialoguePopup.dialogue = "Tá-se, se mudares de ideias avisa"
+							dialoguePopup.answers = "[A] Ok, xau"
 							dialoguePopup.open()
 				2:
 					# Update dialogue tree state
@@ -66,32 +74,49 @@ func talk(answer = ""):
 					dialoguePopup.close()
 					# Set Fiona's animation to "idle"
 					$AnimatedSprite.play("idle")
+				4:
+					# Update dialogue tree state
+					dialogue_state = 5
+					# Show dialogue popup
+					dialoguePopup.dialogue = "Eish, és o maior! Vou falar de ti aos meus amigos!"
+					dialoguePopup.answers = "[A] Obrigado"
+					dialoguePopup.open()
+				5:
+					# Update dialogue tree state
+					dialogue_state = 0
+					quest_status = QuestStatus.COMPLETED
+					# Close dialogue popup
+					dialoguePopup.close()
+					# Set Fiona's animation to "idle"
+					$AnimatedSprite.play("idle")
+					# Add potion and XP to the player. 
+					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
 		QuestStatus.STARTED:
 			match dialogue_state:
 				0:
 					# Update dialogue tree state
 					dialogue_state = 1
 					# Show dialogue popup
-					dialoguePopup.dialogue = "Did you find my necklace?"
+					dialoguePopup.dialogue = "Encontraste o fino?"
 					if beerFound:
-						dialoguePopup.answers = "[A] Yes  [B] No"
+						dialoguePopup.answers = "[A] Sim! [B] Opá, não"
 					else:
-						dialoguePopup.answers = "[A] No"
+						dialoguePopup.answers = "[A] Nope"
 					dialoguePopup.open()
 				1:
 					if beerFound and answer == "A":
 						# Update dialogue tree state
 						dialogue_state = 2
 						# Show dialogue popup
-						dialoguePopup.dialogue = "You're my hero! Please take this potion as a sign of my gratitude!"
-						dialoguePopup.answers = "[A] Thanks"
+						dialoguePopup.dialogue = "Eish, és o maior! Vou falar de ti aos meus amigos!"
+						dialoguePopup.answers = "[A] Obrigado"
 						dialoguePopup.open()
 					else:
 						# Update dialogue tree state
 						dialogue_state = 3
 						# Show dialogue popup
-						dialoguePopup.dialogue = "Please, find it!"
-						dialoguePopup.answers = "[A] I will!"
+						dialoguePopup.dialogue = "Anda lá, encontra!"
+						dialoguePopup.answers = "[A] Ok."
 						dialoguePopup.open()
 				2:
 					# Update dialogue tree state
@@ -104,7 +129,7 @@ func talk(answer = ""):
 					# Add potion and XP to the player. 
 					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
 					
-					player.add_xp(50)
+					#player.add_xp(50)
 				3:
 					# Update dialogue tree state
 					dialogue_state = 0
@@ -118,8 +143,8 @@ func talk(answer = ""):
 					# Update dialogue tree state
 					dialogue_state = 1
 					# Show dialogue popup
-					dialoguePopup.dialogue = "Thanks again for your help!"
-					dialoguePopup.answers = "[A] Bye"
+					dialoguePopup.dialogue = "Obrigada mais uma vez, bro!"
+					dialoguePopup.answers = "[A] Xau"
 					dialoguePopup.open()
 				1:
 					# Update dialogue tree state
