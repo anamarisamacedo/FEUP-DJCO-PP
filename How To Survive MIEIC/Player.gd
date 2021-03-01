@@ -2,8 +2,6 @@ extends KinematicBody2D
 
 
 # Variables
-var curHp : int = 10
-var maxHp : int = 10
 var moveSpeed : int = 250
  
 var interactDist : int = 70
@@ -13,14 +11,13 @@ var facingDir = Vector2()
  
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
 func _physics_process (delta):
-		
+	
 	vel = Vector2()
 	
 	# inputs
@@ -43,7 +40,6 @@ func _physics_process (delta):
 	# move the player
 	move_and_slide(vel * moveSpeed, Vector2.ZERO)
 	manage_animations()
-	
 
 func manage_animations ():
 	
@@ -72,8 +68,8 @@ func play_animation (anim_name):
 
 func _input(event):
 	if event.is_action_pressed("interact"):
-		var target = rayCast.get_collider()
-		if target != null and target.is_in_group("NPCs"):
+		var target = move_and_collide(Vector2.ZERO)
+		if target != null and target.collider.is_in_group("NPCs"):
 			# Talk to NPC
-			target.talk()
+			target.collider.talk()
 			return
