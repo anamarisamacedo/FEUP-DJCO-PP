@@ -1,13 +1,134 @@
 extends KinematicBody2D
 
 
-# Declare member variables here. Examples:
-var moveSpeed : int = 150
+# Variables
+var moveSpeed : int = 250
+onready var anim = $AnimatedSprite
 
+enum QuestStatus { NOT_STARTED, STARTED, COMPLETED }
+var quest_status = QuestStatus.NOT_STARTED
+var dialogue_state = 0
+var beerFound = false
+var dialoguePopup
+var player
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	dialoguePopup = get_tree().root.get_node("/root/MainScene/Player/CanvasLayer/DialoguePopup")
+	player = get_tree().root.get_node("/root/MainScene/Player")
+
+func talk(answer = ""):
+	# Set Fiona's animation to "talk"
+	$AnimatedSprite.play("talk")
+	
+	# Set dialoguePopup npc to Fiona
+	dialoguePopup.npc = self
+	dialoguePopup.npc_name = "Omoletis Finus"
+	
+	# Show the current dialogue
+	match quest_status:
+		QuestStatus.NOT_STARTED:
+			match dialogue_state:
+				0:
+					# Update dialogue tree state
+					dialogue_state = 1
+					# Show dialogue popup
+					dialoguePopup.dialogue = "Hello adventurer! I lost my necklace, can you find it for me?"
+					dialoguePopup.answers = "[A] Yes  [B] No"
+					dialoguePopup.open()
+				1:
+					match answer:
+						"A":
+							# Update dialogue tree state
+							dialogue_state = 2
+							# Show dialogue popup
+							dialoguePopup.dialogue = "Thank you!"
+							dialoguePopup.answers = "[A] Bye"
+							dialoguePopup.open()
+						"B":
+							# Update dialogue tree state
+							dialogue_state = 3
+							# Show dialogue popup
+							dialoguePopup.dialogue = "If you change your mind, you'll find me here."
+							dialoguePopup.answers = "[A] Bye"
+							dialoguePopup.open()
+				2:
+					# Update dialogue tree state
+					dialogue_state = 0
+					quest_status = QuestStatus.STARTED
+					# Close dialogue popup
+					dialoguePopup.close()
+					# Set Fiona's animation to "idle"
+					$AnimatedSprite.play("idle")
+				3:
+					# Update dialogue tree state
+					dialogue_state = 0
+					# Close dialogue popup
+					dialoguePopup.close()
+					# Set Fiona's animation to "idle"
+					$AnimatedSprite.play("idle")
+		QuestStatus.STARTED:
+			match dialogue_state:
+				0:
+					# Update dialogue tree state
+					dialogue_state = 1
+					# Show dialogue popup
+					dialoguePopup.dialogue = "Did you find my necklace?"
+					if beerFound:
+						dialoguePopup.answers = "[A] Yes  [B] No"
+					else:
+						dialoguePopup.answers = "[A] No"
+					dialoguePopup.open()
+				1:
+					if beerFound and answer == "A":
+						# Update dialogue tree state
+						dialogue_state = 2
+						# Show dialogue popup
+						dialoguePopup.dialogue = "You're my hero! Please take this potion as a sign of my gratitude!"
+						dialoguePopup.answers = "[A] Thanks"
+						dialoguePopup.open()
+					else:
+						# Update dialogue tree state
+						dialogue_state = 3
+						# Show dialogue popup
+						dialoguePopup.dialogue = "Please, find it!"
+						dialoguePopup.answers = "[A] I will!"
+						dialoguePopup.open()
+				2:
+					# Update dialogue tree state
+					dialogue_state = 0
+					quest_status = QuestStatus.COMPLETED
+					# Close dialogue popup
+					dialoguePopup.close()
+					# Set Fiona's animation to "idle"
+					$AnimatedSprite.play("idle")
+					# Add potion and XP to the player. 
+					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
+					
+					player.add_xp(50)
+				3:
+					# Update dialogue tree state
+					dialogue_state = 0
+					# Close dialogue popup
+					dialoguePopup.close()
+					# Set Fiona's animation to "idle"
+					$AnimatedSprite.play("idle")
+		QuestStatus.COMPLETED:
+			match dialogue_state:
+				0:
+					# Update dialogue tree state
+					dialogue_state = 1
+					# Show dialogue popup
+					dialoguePopup.dialogue = "Thanks again for your help!"
+					dialoguePopup.answers = "[A] Bye"
+					dialoguePopup.open()
+				1:
+					# Update dialogue tree state
+					dialogue_state = 0
+					# Close dialogue popup
+					dialoguePopup.close()
+					# Set Fiona's animation to "idle"
+					$AnimatedSprite.play("idle")
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
