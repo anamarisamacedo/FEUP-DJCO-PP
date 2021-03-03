@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
@@ -6,10 +6,7 @@
 [ext_resource path="res://NPC_Praxis.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Beer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://SkeletonSpawner.tscn" type="PackedScene" id=6]
-[ext_resource path="res://NPC_Professor.gd" type="Script" id=7]
-[ext_resource path="res://NPC_Praxis.gd" type="Script" id=8]
 [ext_resource path="res://Font/new_dynamicfont.tres" type="DynamicFont" id=9]
-[ext_resource path="res://Book.gd" type="Script" id=10]
 [ext_resource path="res://GUI/StudyXP.gd" type="Script" id=11]
 [ext_resource path="res://GUI/SocialXP.gd" type="Script" id=12]
 [ext_resource path="res://NPC_Professor.tscn" type="PackedScene" id=13]
@@ -122,24 +119,16 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Game Over"]
 "anims/Game Over" = SubResource( 1 )
 
-[node name="Professor" type="KinematicBody2D" parent="." groups=[
-"NPCs",
-] instance=ExtResource( 13 )]
+[node name="NPC_Professor" parent="." instance=ExtResource( 13 )]
 position = Vector2( 24, 48 )
-script = ExtResource( 7 )
 
-[node name="NPC_Praxis2" type="KinematicBody2D" parent="." groups=[
-"NPCs",
-] instance=ExtResource( 4 )]
+[node name="NPC_Praxis2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 24, -224 )
-script = ExtResource( 8 )
 
-[node name="Professor2" type="KinematicBody2D" parent="." groups=[
-"NPCs",
-] instance=ExtResource( 13 )]
+[node name="NPC_Professor2" parent="." instance=ExtResource( 13 )]
 position = Vector2( 200, -128 )
-script = ExtResource( 7 )
 
-[node name="Book" type="Area2D" parent="." instance=ExtResource( 14 )]
+[node name="Book" parent="." instance=ExtResource( 14 )]
 position = Vector2( 192, 56 )
-script = ExtResource( 10 )
+[connection signal="player_stats_changed" from="Player" to="SocialXP" method="_on_Player_player_stats_changed"]
+[connection signal="player_stats_changed" from="Player" to="StudyXP" method="_on_Player_player_stats_changed"]

@@ -13,7 +13,7 @@ func _ready():
 #	pass
 
 
-func _on_Beer_body_entered(body):
+func _on_Book_body_entered(body):
 	if body.name == "Player":
 		print(get_tree().root)
 		get_tree().queue_delete(self)
