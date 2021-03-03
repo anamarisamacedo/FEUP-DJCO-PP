@@ -173,6 +173,7 @@ __meta__ = {
 }
 
 [node name="Answers" type="Label" parent="CanvasLayer/DialoguePopup/ColorRect"]
+visible = false
 margin_left = 344.722
 margin_top = 91.2279
 margin_right = 634.722

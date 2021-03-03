@@ -31,14 +31,14 @@ animations = [ {
 "name": "IdleLeft",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "IdleDown",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "Move_Up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "IdleDown",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 4 ) ],
@@ -63,6 +63,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
+radius = 12.3077
+height = 19.021
 
 [node name="NPC_Praxis" type="KinematicBody2D" groups=[
 "NPCs",
@@ -72,7 +74,7 @@ script = ExtResource( 13 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1.66855, 0 )
 frames = SubResource( 1 )
-animation = "Talk"
+animation = "IdleDown"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 1.3, 1.1 )

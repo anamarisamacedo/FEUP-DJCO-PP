@@ -1,8 +1,12 @@
 extends KinematicBody2D
 
 # Variables
-var moveSpeed : int = 250
- 
+var curSocial : int = 100
+var social_decreasing = 0.01
+var curStudy : int = 100
+var study_decreasing = 0.01
+var minXp : int = 0
+var moveSpeed : int = 250 
 var interactDist : int = 70
  
 var vel = Vector2()
@@ -21,12 +25,25 @@ var attack_playing = false
 var health = 100
 var health_max = 100
 var health_regeneration = 1
+signal player_stats_changed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	emit_signal("player_stats_changed", self)
 
+func _process(delta):
+	# Decrease social status
+	var new_social = max(curSocial - social_decreasing, minXp)
+	if new_social != curSocial:
+		curSocial = new_social
+		emit_signal("player_stats_changed", self)
 
+	# Decrease study status
+	var new_study = max(curStudy - study_decreasing, minXp)
+	if new_study != curStudy:
+		curStudy = new_study
+		emit_signal("player_stats_changed", self)
+		
 func _physics_process (delta):
 	
 	vel = Vector2()
@@ -103,3 +120,17 @@ func hit(damage):
 		pass
 	else:
 		$AnimationPlayer.play("Hit")
+			
+func add_social(xp):
+	curSocial += xp
+	emit_signal("player_stats_changed", self)
+	if curSocial <= minXp:
+		#GAME OVER
+		$AnimationPlayer.play("Game Over")
+
+func add_study(xp):
+	curStudy += xp
+	emit_signal("player_stats_changed", self)
+	if curStudy <= minXp:
+		#GAME OVER
+		$AnimationPlayer.play("Game Over")
