@@ -102,16 +102,16 @@ func _input(event):
 			target.collider.talk()
 			return
 	
-	if event.is_action_pressed("attack"):
+	#if event.is_action_pressed("attack"):
 	# Check if player can attack
-		var now = OS.get_ticks_msec()
-		if now >= next_attack_time:
+		#var now = OS.get_ticks_msec()
+		#if now >= next_attack_time:
 			# Play attack animation
-			attack_playing = true
-			var animation = get_animation_direction(last_direction) + "_attack"
-			$Sprite.play(animation)
+			#attack_playing = true
+			#var animation = get_animation_direction(last_direction) + "_attack"
+			#$Sprite.play(animation)
 			# Add cooldown time to current time
-			next_attack_time = now + attack_cooldown_time
+			#next_attack_time = now + attack_cooldown_time
 
 func hit(damage):
 	health -= damage
