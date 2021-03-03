@@ -9,7 +9,7 @@ export var spawn_area : Rect2 = Rect2(50, 150, 700, 700)
 export var max_skeletons = 10
 export var start_skeletons = 5
 var skeleton_count = 0
-var skeleton_scene = preload("res://Skeleton.tscn")
+var skeleton_scene = preload("res://Zombie.tscn")
 
 # Random number generator
 var rng = RandomNumberGenerator.new()
@@ -56,7 +56,7 @@ func instance_skeleton():
 		valid_position = test_position(skeleton.position)
 
 	# Play skeleton's birth animation
-	skeleton.arise()
+	#skeleton.arise()
 
 func _on_Timer_timeout():
 	# Every second, check if we need to instantiate a skeleton

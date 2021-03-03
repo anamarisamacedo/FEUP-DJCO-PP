@@ -5,7 +5,7 @@
 [ext_resource path="res://CameraFollow.gd" type="Script" id=3]
 [ext_resource path="res://NPC_Praxis.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Beer.tscn" type="PackedScene" id=5]
-[ext_resource path="res://SkeletonSpawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Zombie.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Font/new_dynamicfont.tres" type="DynamicFont" id=9]
 [ext_resource path="res://GUI/StudyXP.gd" type="Script" id=11]
 [ext_resource path="res://GUI/SocialXP.gd" type="Script" id=12]
@@ -47,8 +47,6 @@ script = ExtResource( 3 )
 
 [node name="Beer" parent="." instance=ExtResource( 5 )]
 position = Vector2( 80, -96 )
-
-[node name="SkeletonSpawner" parent="." instance=ExtResource( 6 )]
 
 [node name="StudyXP" type="ColorRect" parent="."]
 margin_left = -320.0
@@ -130,5 +128,11 @@ position = Vector2( 200, -128 )
 
 [node name="Book" parent="." instance=ExtResource( 14 )]
 position = Vector2( 192, 56 )
-[connection signal="player_stats_changed" from="Player" to="SocialXP" method="_on_Player_player_stats_changed"]
+
+[node name="Zombie" parent="." instance=ExtResource( 6 )]
+position = Vector2( 333.5, 275.276 )
+
+[node name="Zombie2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 97.5, 331.276 )
 [connection signal="player_stats_changed" from="Player" to="StudyXP" method="_on_Player_player_stats_changed"]
+[connection signal="player_stats_changed" from="Player" to="SocialXP" method="_on_Player_player_stats_changed"]

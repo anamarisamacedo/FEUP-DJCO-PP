@@ -158,7 +158,7 @@ func _physics_process(delta):
 		direction = direction.rotated(rng.randf_range(PI/4, PI/2))
 		bounce_countdown = rng.randi_range(2, 5)
 		
-	#animates_professor(direction)
+	animates_professor(direction)
 
 func get_animation_direction(direction: Vector2):
 	var norm_direction = direction.normalized()

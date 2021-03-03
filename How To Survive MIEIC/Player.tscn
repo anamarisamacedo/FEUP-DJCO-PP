@@ -60,6 +60,8 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
+radius = 10.3735
+height = 24.5827
 
 [sub_resource type="Animation" id=3]
 resource_name = "ShowDialogue"
