@@ -8,7 +8,7 @@ onready var anim = $AnimatedSprite
 enum QuestStatus { NOT_STARTED, STARTED, COMPLETED }
 var quest_status = QuestStatus.NOT_STARTED
 var dialogue_state = 0
-var beerFound = false
+var bookFound = false
 var dialoguePopup
 var player
 
@@ -29,7 +29,7 @@ func talk(answer = ""):
 		QuestStatus.NOT_STARTED:
 			match dialogue_state:
 				0:
-					if beerFound:
+					if bookFound:
 						# Update dialogue tree state
 						dialogue_state = 4
 						# Show dialogue popup
@@ -85,7 +85,7 @@ func talk(answer = ""):
 					dialoguePopup.close()
 					# Add XP to the player. 
 					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
-					player.add_social(10)
+					player.add_study(10)
 		QuestStatus.STARTED:
 			match dialogue_state:
 				0:
@@ -93,13 +93,13 @@ func talk(answer = ""):
 					dialogue_state = 1
 					# Show dialogue popup
 					dialoguePopup.dialogue = "Encontraste o fino?"
-					if beerFound:
+					if bookFound:
 						dialoguePopup.answers = "[A] Sim! [B] Opá, não"
 					else:
 						dialoguePopup.answers = "[A] Nope"
 					dialoguePopup.open()
 				1:
-					if beerFound and answer == "A":
+					if bookFound and answer == "A":
 						# Update dialogue tree state
 						dialogue_state = 2
 						# Show dialogue popup
@@ -122,7 +122,7 @@ func talk(answer = ""):
 					# Add XP to the player. 
 					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
 					
-					player.add_social(10)
+					player.add_study(10)
 				3:
 					# Update dialogue tree state
 					dialogue_state = 0
@@ -144,6 +144,4 @@ func talk(answer = ""):
 					dialoguePopup.close()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
