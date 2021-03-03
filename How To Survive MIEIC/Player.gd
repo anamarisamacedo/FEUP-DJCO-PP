@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-
 # Variables
 var moveSpeed : int = 250
  
@@ -11,6 +10,18 @@ var facingDir = Vector2()
  
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
+
+# Attack variables
+var attack_cooldown_time = 1000
+var next_attack_time = 0
+var attack_damage = 30
+var attack_playing = false
+
+# Health
+var health = 100
+var health_max = 100
+var health_regeneration = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -73,3 +84,22 @@ func _input(event):
 			# Talk to NPC
 			target.collider.talk()
 			return
+	
+	if event.is_action_pressed("attack"):
+	# Check if player can attack
+		var now = OS.get_ticks_msec()
+		if now >= next_attack_time:
+			# Play attack animation
+			attack_playing = true
+			var animation = get_animation_direction(last_direction) + "_attack"
+			$Sprite.play(animation)
+			# Add cooldown time to current time
+			next_attack_time = now + attack_cooldown_time
+
+func hit(damage):
+	health -= damage
+	emit_signal("player_stats_changed", self)
+	if health <= 0:
+		pass
+	else:
+		$AnimationPlayer.play("Hit")
