@@ -110,33 +110,51 @@ __meta__ = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 123, 141 )
+position = Vector2( 173.912, 141 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Player"]
 "anims/Game Over" = SubResource( 1 )
 
 [node name="NPC_Praxis" parent="." instance=ExtResource( 4 )]
-position = Vector2( 386, -28 )
+position = Vector2( 332.26, -194.877 )
 
 [node name="NPC_Praxis2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 24, -224 )
+position = Vector2( 564.23, -190.059 )
 
 [node name="NPC_Professor" parent="." instance=ExtResource( 13 )]
-position = Vector2( -12, 44 )
+position = Vector2( -108.167, 77.9412 )
 
 [node name="NPC_Professor2" parent="." instance=ExtResource( 13 )]
-position = Vector2( 279, -253 )
+position = Vector2( -354.568, -408.564 )
 
 [node name="Zombie" parent="." instance=ExtResource( 6 )]
-position = Vector2( 333.5, 275.276 )
+position = Vector2( 599.373, 204.565 )
 
 [node name="Zombie2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 97.5, 331.276 )
-
-[node name="Beer" parent="." instance=ExtResource( 5 )]
-position = Vector2( 80, -96 )
+position = Vector2( -442.73, -138.243 )
 
 [node name="Book" parent="." instance=ExtResource( 14 )]
-position = Vector2( 192, 56 )
+position = Vector2( -158.725, -354.122 )
+
+[node name="Book2" parent="." instance=ExtResource( 14 )]
+position = Vector2( -210.92, 106.212 )
+
+[node name="Book3" parent="." instance=ExtResource( 14 )]
+position = Vector2( -550.331, -122.89 )
+
+[node name="Beer" parent="." instance=ExtResource( 5 )]
+position = Vector2( 195.966, -62.0588 )
+
+[node name="Beer2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 368.909, 414.511 )
+
+[node name="Beer3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 623.468, 24.188 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1000.0
+one_shot = true
+autostart = true
 [connection signal="player_stats_changed" from="Player" to="CanvasLayer/StudyXP" method="_on_Player_player_stats_changed"]
 [connection signal="player_stats_changed" from="Player" to="CanvasLayer/SocialXP" method="_on_Player_player_stats_changed"]
+[connection signal="timeout" from="Timer" to="Player" method="_on_Timer_timeout"]

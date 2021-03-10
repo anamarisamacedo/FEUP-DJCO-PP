@@ -14,6 +14,9 @@ signal player_stats_changed
  
 var vel = Vector2()
 var facingDir = Vector2()
+
+var number_beers = 0
+var number_books = 0
  
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
@@ -119,3 +122,15 @@ func add_study(xp):
 	curStudy += xp
 	curStudy = min(curStudy, maxStudy)
 	emit_signal("player_stats_changed", self)
+
+func _on_Timer_timeout():
+	set_process(false)
+	$AnimationPlayer2.play("Game Over")
+	
+func add_beer():
+	number_beers += 1
+	print(number_beers)
+	
+func remove_beer():
+	number_beers -= 1
+	print(number_beers)

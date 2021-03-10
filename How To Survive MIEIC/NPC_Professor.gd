@@ -7,7 +7,6 @@ onready var anim = $AnimatedSprite
 enum QuestStatus { NOT_STARTED, STARTED, COMPLETED }
 var quest_status = QuestStatus.NOT_STARTED
 var dialogue_state = 0
-var bookFound = false
 var dialoguePopup
 var player
 
@@ -39,7 +38,7 @@ func talk(answer = ""):
 		QuestStatus.NOT_STARTED:
 			match dialogue_state:
 				0:
-					if bookFound:
+					if player.number_books > 0:
 						# Update dialogue tree state
 						dialogue_state = 2
 						# Show dialogue popup
@@ -64,6 +63,10 @@ func talk(answer = ""):
 				2:
 					match answer:
 						"A":
+							# Update Player XP
+							player.add_study(xp_increase)
+							player.number_books = player.number_books - 1
+							print(player.number_books)
 							# Update dialogue tree state
 							dialogue_state = 4
 							# Show dialogue popup
@@ -101,15 +104,13 @@ func talk(answer = ""):
 					dialogue_state = 1
 					# Show dialogue popup
 					dialoguePopup.dialogue = "Encontraste o fino?"
-					if bookFound:
+					if player.number_books > 0:
 						dialoguePopup.answers = "[A] Sim! [B] Opá, não"
 					else:
 						dialoguePopup.answers = "[A] Nope"
 					dialoguePopup.open()
 				1:
-					if bookFound and answer == "A":
-						# Update Player XP
-						player.add_study(xp_increase)
+					if player.number_books > 0 and answer == "A":
 						# Update dialogue tree state
 						dialogue_state = 2
 						# Show dialogue popup
@@ -144,7 +145,7 @@ func talk(answer = ""):
 					# Update dialogue tree state
 					dialogue_state = 1
 					# Show dialogue popup
-					dialoguePopup.dialogue = "Obrigada mais uma vez, bro!"
+					dialoguePopup.dialogue = "Já está entregue! Quando tiver mais tarefas para ti, falo contigo."
 					dialoguePopup.answers = "[A] Xau"
 					dialoguePopup.open()
 				1:

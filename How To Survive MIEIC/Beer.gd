@@ -1,12 +1,12 @@
 extends Area2D
 
-var praxis
+var player
 
 func _ready():
-	praxis = get_tree().root.get_node("/root/MainScene/NPC_Praxis")
+	player = get_tree().root.get_node("/root/MainScene/Player")
 
 func _on_Beer_body_entered(body):
 	if body.name == "Player":
 		print(get_tree().root)
 		get_tree().queue_delete(self)
-		praxis.beerFound = true
+		player.add_beer()
