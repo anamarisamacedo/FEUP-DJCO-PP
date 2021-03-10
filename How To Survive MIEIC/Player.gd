@@ -28,12 +28,19 @@ func _process(delta):
 	if new_social != curSocial:
 		 curSocial = new_social
 		 emit_signal("player_stats_changed", self)
+	if curSocial <= minXp:
+		print("hello");
+		set_process(false)
+		$AnimationPlayer2.play("Game Over")
 
 	# Decrease study status
 	var new_study = max(curStudy - study_decreasing, minXp)
 	if new_study != curStudy:
 		curStudy = new_study
 		emit_signal("player_stats_changed", self)
+	if curStudy <= minXp:
+		set_process(false)
+		$AnimationPlayer2.play("Game Over")
 		
 func _physics_process (delta):
 	
@@ -97,8 +104,9 @@ func hit(damage):
 	curSocial -= damage
 	emit_signal("player_stats_changed", self)
 	if curSocial <= minXp:
+		print("hello");
 		set_process(false)
-		$AnimationPlayer.play("Game Over")
+		$AnimationPlayer2.play("Game Over")
 	else:
 		$AnimationPlayer.play("Hit")
 			
@@ -106,14 +114,8 @@ func add_social(xp):
 	curSocial += xp
 	curSocial = min(curSocial, maxSocial)
 	emit_signal("player_stats_changed", self)
-	if curSocial <= minXp:
-		#GAME OVER
-		$AnimationPlayer.play("Game Over")
-
+	
 func add_study(xp):
 	curStudy += xp
 	curStudy = min(curStudy, maxStudy)
 	emit_signal("player_stats_changed", self)
-	if curStudy <= minXp:
-		#GAME OVER
-		$AnimationPlayer.play("Game Over")
