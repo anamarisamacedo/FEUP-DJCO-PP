@@ -101,23 +101,13 @@ func _input(event):
 			# Talk to NPC
 			target.collider.talk()
 			return
-	
-	#if event.is_action_pressed("attack"):
-	# Check if player can attack
-		#var now = OS.get_ticks_msec()
-		#if now >= next_attack_time:
-			# Play attack animation
-			#attack_playing = true
-			#var animation = get_animation_direction(last_direction) + "_attack"
-			#$Sprite.play(animation)
-			# Add cooldown time to current time
-			#next_attack_time = now + attack_cooldown_time
 
 func hit(damage):
 	health -= damage
 	emit_signal("player_stats_changed", self)
 	if health <= 0:
-		pass
+		set_process(false)
+		$AnimationPlayer.play("Game Over")
 	else:
 		$AnimationPlayer.play("Hit")
 			

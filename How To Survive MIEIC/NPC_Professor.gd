@@ -160,6 +160,7 @@ func _physics_process(delta):
 		
 	animates_professor(direction)
 
+
 func get_animation_direction(direction: Vector2):
 	var norm_direction = direction.normalized()
 	if norm_direction.y >= 0.707:
@@ -188,7 +189,11 @@ func animates_professor(direction: Vector2):
 
 func _on_Timer_timeout():
 	var random_number = rng.randf()
-	if random_number < 0.005:
+	if random_number < 0.01:
 		direction = Vector2.ZERO
 	elif random_number < 0.1:
 		direction = Vector2.DOWN.rotated(rng.randf() * 2 * PI)
+		
+	# Update bounce countdown
+	if bounce_countdown > 0:
+		bounce_countdown = bounce_countdown - 1

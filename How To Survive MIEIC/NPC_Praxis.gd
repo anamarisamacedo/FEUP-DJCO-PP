@@ -191,7 +191,7 @@ func animates_student(direction: Vector2):
 
 func _on_Timer_timeout():
 	var random_number = rng.randf()
-	if random_number < 0.005:
+	if random_number < 0.01:
 		direction = Vector2.ZERO
 	elif random_number < 0.1:
 		direction = Vector2.DOWN.rotated(rng.randf() * 2 * PI)
