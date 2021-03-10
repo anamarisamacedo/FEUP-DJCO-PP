@@ -1,13 +1,16 @@
 extends KinematicBody2D
 
 # Variables
-var curSocial : int = 100
+var curSocial = 100
 var social_decreasing = 0.01
-var curStudy : int = 100
+var maxSocial = 100
+var curStudy = 100
 var study_decreasing = 0.01
-var minXp : int = 0
-var moveSpeed : int = 250 
-var interactDist : int = 70
+var maxStudy = 100
+var minXp = 0
+var moveSpeed = 250 
+var interactDist = 70
+signal player_stats_changed
  
 var vel = Vector2()
 var facingDir = Vector2()
@@ -15,28 +18,16 @@ var facingDir = Vector2()
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
 
-# Attack variables
-var attack_cooldown_time = 1000
-var next_attack_time = 0
-var attack_damage = 30
-var attack_playing = false
-
-# Health
-var health = 100
-var health_max = 100
-var health_regeneration = 1
-signal player_stats_changed
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	emit_signal("player_stats_changed", self)
 
 func _process(delta):
-	# Decrease social status
+	 # Decrease social status
 	var new_social = max(curSocial - social_decreasing, minXp)
 	if new_social != curSocial:
-		curSocial = new_social
-		emit_signal("player_stats_changed", self)
+		 curSocial = new_social
+		 emit_signal("player_stats_changed", self)
 
 	# Decrease study status
 	var new_study = max(curStudy - study_decreasing, minXp)
@@ -103,9 +94,9 @@ func _input(event):
 			return
 
 func hit(damage):
-	health -= damage
+	curSocial -= damage
 	emit_signal("player_stats_changed", self)
-	if health <= 0:
+	if curSocial <= minXp:
 		set_process(false)
 		$AnimationPlayer.play("Game Over")
 	else:
@@ -113,6 +104,7 @@ func hit(damage):
 			
 func add_social(xp):
 	curSocial += xp
+	curSocial = min(curSocial, maxSocial)
 	emit_signal("player_stats_changed", self)
 	if curSocial <= minXp:
 		#GAME OVER
@@ -120,6 +112,7 @@ func add_social(xp):
 
 func add_study(xp):
 	curStudy += xp
+	curStudy = min(curStudy, maxStudy)
 	emit_signal("player_stats_changed", self)
 	if curStudy <= minXp:
 		#GAME OVER

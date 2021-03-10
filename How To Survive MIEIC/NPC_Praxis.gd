@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-
 # Variables
 var moveSpeed : int = 250
 onready var anim = $AnimatedSprite
@@ -20,6 +19,8 @@ export var speed = 25
 var direction : Vector2
 var last_direction = Vector2(0, 1)
 var bounce_countdown = 0
+
+var xp_increase = 30
 
 func _ready():
 	dialoguePopup = get_tree().root.get_node("/root/MainScene/Player/CanvasLayer/DialoguePopup")
@@ -109,6 +110,8 @@ func talk(answer = ""):
 					dialoguePopup.open()
 				1:
 					if beerFound and answer == "A":
+						# Update Player XP
+						player.add_social(xp_increase)
 						# Update dialogue tree state
 						dialogue_state = 2
 						# Show dialogue popup

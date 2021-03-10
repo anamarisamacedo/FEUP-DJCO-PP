@@ -20,6 +20,8 @@ var direction : Vector2
 var last_direction = Vector2(0, 1)
 var bounce_countdown = 0
 
+var xp_increase=30
+
 func _ready():
 	dialoguePopup = get_tree().root.get_node("/root/MainScene/Player/CanvasLayer/DialoguePopup")
 	player = get_tree().root.get_node("/root/MainScene/Player")
@@ -106,6 +108,8 @@ func talk(answer = ""):
 					dialoguePopup.open()
 				1:
 					if bookFound and answer == "A":
+						# Update Player XP
+						player.add_study(xp_increase)
 						# Update dialogue tree state
 						dialogue_state = 2
 						# Show dialogue popup

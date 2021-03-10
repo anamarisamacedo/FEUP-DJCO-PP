@@ -59,7 +59,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=6]
 radius = 10.3735
 height = 24.5827
 
@@ -115,7 +115,7 @@ playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 1.4, 1.1 )
-shape = SubResource( 3 )
+shape = SubResource( 6 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true

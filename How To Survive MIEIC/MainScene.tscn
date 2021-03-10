@@ -43,8 +43,10 @@ script = ExtResource( 3 )
 
 [node name="Game Over" type="ColorRect" parent="CanvasLayer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_right = 300.0
-margin_bottom = 180.0
+margin_left = 345.068
+margin_top = 210.718
+margin_right = 645.068
+margin_bottom = 390.718
 mouse_filter = 2
 color = Color( 0.537255, 0, 0, 1 )
 __meta__ = {

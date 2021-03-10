@@ -15,6 +15,5 @@ func _ready():
 
 func _on_Book_body_entered(body):
 	if body.name == "Player":
-		print(get_tree().root)
 		get_tree().queue_delete(self)
 		teacher.bookFound = true
