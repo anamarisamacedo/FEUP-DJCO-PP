@@ -39,7 +39,6 @@ func update_labels():
 		seconds_label.text = "0" + str(seconds)
 	else:
 		seconds_label.text = str(seconds)
-	print( minutes, " : ", seconds )
 
 func game_over():
 	player.game_over()

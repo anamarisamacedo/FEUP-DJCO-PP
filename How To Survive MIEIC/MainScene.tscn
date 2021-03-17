@@ -54,6 +54,7 @@ script = ExtResource( 3 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="StudyXP" type="ColorRect" parent="CanvasLayer"]
+visible = false
 margin_left = 11.926
 margin_top = 12.752
 margin_right = 111.926
@@ -101,6 +102,7 @@ __meta__ = {
 }
 
 [node name="SocialXP" type="ColorRect" parent="CanvasLayer"]
+visible = false
 margin_left = 11.926
 margin_top = 28.752
 margin_right = 111.926
@@ -174,10 +176,10 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="CanvasLayer"]
-margin_left = 12.0
-margin_top = 51.0
-margin_right = 52.0
-margin_bottom = 91.0
+margin_left = 14.8284
+margin_top = 15.9982
+margin_right = 54.8284
+margin_bottom = 55.9982
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false

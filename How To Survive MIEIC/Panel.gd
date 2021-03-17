@@ -6,7 +6,7 @@ var ItemListContent = [
 	"Recolher 5 Apontamentos",
 	"Recolher 5 Finos",
 	"Conversar com 5 Estudantes",
-	"Entregar Apontamentos a 3 Profs",
+	"Entregar 3 Projetos",
 	"Passar a um Teste", #encontrar a sala e responder a metade das perguntas corretamente
 	]
 var SecretItemList = [
