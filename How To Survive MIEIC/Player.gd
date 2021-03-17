@@ -11,6 +11,7 @@ var minXp = 0
 var moveSpeed = 250 
 var interactDist = 70
 signal player_stats_changed
+var b210key = false;
  
 var vel = Vector2()
 var facingDir = Vector2()
