@@ -65,6 +65,10 @@ func _physics_process (delta):
 	if Input.is_action_pressed("move_right"):
 		vel.x += 1
 		facingDir = Vector2(1, 0)
+		
+	# Turn RayCast2D toward movement direction
+	if facingDir != Vector2.ZERO:
+		$RayCast2D.cast_to = facingDir.normalized() * 50
 	
 	# normalize the velocity to prevent faster diagonal movement
 	vel = vel.normalized()
@@ -100,10 +104,10 @@ func play_animation (anim_name):
 
 func _input(event):
 	if event.is_action_pressed("interact"):
-		var target = move_and_collide(Vector2.ZERO)
-		if target != null and target.collider.is_in_group("NPCs"):
+		var target = $RayCast2D.get_collider()
+		if target != null and target.is_in_group("NPCs"):
 			# Talk to NPC
-			target.collider.talk()
+			target.talk()
 			return
 
 func hit(damage):

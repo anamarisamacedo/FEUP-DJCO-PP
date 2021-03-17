@@ -62,7 +62,7 @@ func _physics_process(delta):
 	
 	# Turn RayCast2D toward movement direction
 	if direction != Vector2.ZERO:
-		$RayCast2D.cast_to = direction.normalized() * 16
+		$RayCast2D.cast_to = direction.normalized() * 50
 	
 	# Check if Skeleton can attack
 	var now = OS.get_ticks_msec()
@@ -109,5 +109,6 @@ func _on_AnimatedSprite_animation_finished():
 func _on_AnimatedSprite_frame_changed():
 	if $AnimatedSprite.animation.ends_with("_attack") and $AnimatedSprite.frame == 1:
 		var target = $RayCast2D.get_collider()
+		print(target)
 		if target != null and target.name == "Player" and player.curSocial > 0:
 			player.hit(attack_damage)

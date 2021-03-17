@@ -258,6 +258,7 @@ func animates_professor(direction: Vector2):
 		$AnimatedSprite.play(animation)
 
 func _on_Timer_timeout():
+	rng.randomize()
 	var random_number = rng.randf()
 	if random_number < 0.01:
 		direction = Vector2.ZERO

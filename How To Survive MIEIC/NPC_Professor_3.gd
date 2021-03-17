@@ -85,7 +85,21 @@ func talk(answer = ""):
 							dialoguePopup.dialogue = "That is correct! Very well student, I see you are telling the truth! Here are the keys."
 							dialoguePopup.answers = "[A] Thank you, professor. Bye!"
 							dialoguePopup.open()
-						"A" or "B" or "D":
+						"A":
+							# Update dialogue tree state
+							dialogue_state = 6
+							# Show dialogue popup
+							dialoguePopup.dialogue = "That is not the answer... You need to pay more attention. Find me when you know the answer."
+							dialoguePopup.answers = "[A] Ok, professor."
+							dialoguePopup.open()
+						"B":
+							# Update dialogue tree state
+							dialogue_state = 6
+							# Show dialogue popup
+							dialoguePopup.dialogue = "That is not the answer... You need to pay more attention. Find me when you know the answer."
+							dialoguePopup.answers = "[A] Ok, professor."
+							dialoguePopup.open()
+						"D":
 							# Update dialogue tree state
 							dialogue_state = 6
 							# Show dialogue popup
@@ -141,7 +155,21 @@ func talk(answer = ""):
 							dialoguePopup.dialogue = "That is correct! Very well student, I see you have studied! Here are the keys."
 							dialoguePopup.answers = "[A] Thank you, professor. Bye!"
 							dialoguePopup.open()
-						"A" or "C" or "D":
+						"A":
+							# Update dialogue tree state
+							dialogue_state = 5
+							# Show dialogue popup
+							dialoguePopup.dialogue = "That is not the answer... Find me when you know it."
+							dialoguePopup.answers = "[A] Ok, professor."
+							dialoguePopup.open()
+						"B":
+							# Update dialogue tree state
+							dialogue_state = 5
+							# Show dialogue popup
+							dialoguePopup.dialogue = "That is not the answer... Find me when you know it."
+							dialoguePopup.answers = "[A] Ok, professor."
+							dialoguePopup.open()
+						"D":
 							# Update dialogue tree state
 							dialogue_state = 5
 							# Show dialogue popup
@@ -223,6 +251,7 @@ func animates_professor(direction: Vector2):
 		$AnimatedSprite.play(animation)
 
 func _on_Timer_timeout():
+	rng.randomize()
 	var random_number = rng.randf()
 	if random_number < 0.01:
 		direction = Vector2.ZERO

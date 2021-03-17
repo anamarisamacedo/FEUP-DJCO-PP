@@ -18,9 +18,9 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 11 ) ],
 "loop": true,
-"name": "MoveLeft",
+"name": "MoveRight",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 3 ) ],
@@ -28,9 +28,9 @@ animations = [ {
 "name": "MoveUp",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 12 ) ],
 "loop": true,
-"name": "MoveRight",
+"name": "MoveLeft",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 5 ) ],
@@ -59,11 +59,11 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 10.3735
 height = 24.5827
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect/Dialogue:percent_visible")
 tracks/0/interp = 1
@@ -89,7 +89,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "Hit"
 length = 0.2
 tracks/0/type = "value"
@@ -115,7 +115,7 @@ playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 1.4, 1.1 )
-shape = SubResource( 6 )
+shape = SubResource( 2 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = true
@@ -174,11 +174,10 @@ __meta__ = {
 }
 
 [node name="Answers" type="Label" parent="CanvasLayer/DialoguePopup/ColorRect"]
-visible = false
-margin_left = 344.722
-margin_top = 91.2279
-margin_right = 634.722
-margin_bottom = 109.228
+margin_left = 14.0
+margin_top = 91.0
+margin_right = 992.0
+margin_bottom = 109.0
 custom_fonts/font = ExtResource( 15 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "[A] Sim [B] Não"
@@ -188,8 +187,8 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/DialoguePopup"]
-anims/ShowDialogue = SubResource( 4 )
+anims/ShowDialogue = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Hit = SubResource( 5 )
+anims/Hit = SubResource( 4 )
 [connection signal="animation_finished" from="CanvasLayer/DialoguePopup/AnimationPlayer" to="CanvasLayer/DialoguePopup" method="_on_AnimationPlayer_animation_finished"]

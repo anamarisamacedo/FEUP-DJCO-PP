@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
@@ -19,6 +19,8 @@
 [ext_resource path="res://Sprites/Items/bluebook.png" type="Texture" id=17]
 [ext_resource path="res://Sprites/Items/clock.png" type="Texture" id=18]
 [ext_resource path="res://Item Count.gd" type="Script" id=19]
+[ext_resource path="res://NPC_Professor_3.tscn" type="PackedScene" id=20]
+[ext_resource path="res://NPC_Professor_2.tscn" type="PackedScene" id=21]
 
 [sub_resource type="DynamicFont" id=2]
 size = 8
@@ -303,8 +305,13 @@ position = Vector2( 564.23, -190.059 )
 [node name="NPC_Professor" parent="." instance=ExtResource( 13 )]
 position = Vector2( -108.167, 77.9412 )
 
-[node name="NPC_Professor2" parent="." instance=ExtResource( 13 )]
-position = Vector2( -354.568, -408.564 )
+[node name="NPC_Professor2" parent="." instance=ExtResource( 21 )]
+position = Vector2( 28, -225.473 )
+scale = Vector2( 1, 1 )
+
+[node name="NPC_Professor3" parent="." instance=ExtResource( 20 )]
+position = Vector2( 165.817, -27.2236 )
+scale = Vector2( 1, 1 )
 
 [node name="Zombie" parent="." instance=ExtResource( 6 )]
 position = Vector2( 599.373, 204.565 )
