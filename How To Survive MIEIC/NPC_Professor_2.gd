@@ -29,6 +29,10 @@ func _ready():
 	professorJoao = get_tree().root.get_node("/root/MainScene/NPC_Professor3")
 
 func talk(answer = ""):
+	# Set Fiona's animation to "talk"
+	#$AnimatedSprite.play("talk")
+	
+	# Set dialoguePopup npc to Fiona
 	dialoguePopup.npc = self
 	dialoguePopup.npc_name = "Professor Carlos"
 	
@@ -37,21 +41,20 @@ func talk(answer = ""):
 		QuestStatus.NOT_STARTED:
 			match dialogue_state:
 				0:
-					
-					# Update dialogue tree state
-					dialogue_state = 1
-					# Show dialogue popup
-					dialoguePopup.dialogue = "Hi student! I know you from DJCO classes! Do you need help? "
-					dialoguePopup.answers = "[A] Yes, teacher! I would like to raise my grade. [B] No, I'm just walking around. "
-					dialoguePopup.open()
+					if bookFound:
+						# Update dialogue tree state
+						dialogue_state = 1
+						# Show dialogue popup
+						dialoguePopup.dialogue = "Hi student!  Do you need help?"
+						dialoguePopup.answers = "[A] Yes, teacher! I would like some appointments to pass the DJCO exam. [B] No, I'm just walking around. "
+						dialoguePopup.open()
 				1:
-					
 					match answer:
 						"A":
 							# Update dialogue tree state
 							dialogue_state = 4
 							# Show dialogue popup
-							dialoguePopup.dialogue = "Oh, I see... I can raise it if you find me 2 projects, but first I need to know that you pay attention to our classes. Wich of this is not a game engine?"
+							dialoguePopup.dialogue = "Oh, I see... I can tell you where they are, but first I need to know that you pay attention to our classes. Wich of this is not a game engine?"
 							dialoguePopup.answers = "[A] Godot [B] LibGDX [C] GameMaker [D] Ubity"
 							dialoguePopup.open()
 					match answer:
@@ -69,7 +72,6 @@ func talk(answer = ""):
 					dialoguePopup.close()
 				
 				4:
-					print(answer)
 					match answer:
 						"D":
 							# Update dialogue tree state
@@ -79,21 +81,7 @@ func talk(answer = ""):
 							dialoguePopup.answers = "[A] Thank you, professor. Bye!"
 							dialoguePopup.open()
 							professorJoao.talkedWithCarlos = true
-						"A":
-							# Update dialogue tree state
-							dialogue_state = 6
-							# Show dialogue popup
-							dialoguePopup.dialogue = "That is not the answer... You need to pay more attention. Find me when you know the answer."
-							dialoguePopup.answers = "[A] Ok, professor."
-							dialoguePopup.open()
-						"C":
-							# Update dialogue tree state
-							dialogue_state = 6
-							# Show dialogue popup
-							dialoguePopup.dialogue = "That is not the answer... You need to pay more attention. Find me when you know the answer."
-							dialoguePopup.answers = "[A] Ok, professor."
-							dialoguePopup.open()
-						"B":
+						"A" or "B" or "C":
 							# Update dialogue tree state
 							dialogue_state = 6
 							# Show dialogue popup
@@ -148,21 +136,7 @@ func talk(answer = ""):
 							dialoguePopup.dialogue = "That is correct! Very well student, I see you have studied! I know that the appointments are in room B120, but I don't have the key. Maybe professor João has it. Find him."
 							dialoguePopup.answers = "[A] Thank you, professor. Bye!"
 							dialoguePopup.open()
-						"A":
-							# Update dialogue tree state
-							dialogue_state = 5
-							# Show dialogue popup
-							dialoguePopup.dialogue = "That is not the answer... Find me when you know it."
-							dialoguePopup.answers = "[A] Ok, professor."
-							dialoguePopup.open()
-						"B":
-							# Update dialogue tree state
-							dialogue_state = 5
-							# Show dialogue popup
-							dialoguePopup.dialogue = "That is not the answer... Find me when you know it."
-							dialoguePopup.answers = "[A] Ok, professor."
-							dialoguePopup.open()
-						"C":
+						"A" or "B" or "C":
 							# Update dialogue tree state
 							dialogue_state = 5
 							# Show dialogue popup
