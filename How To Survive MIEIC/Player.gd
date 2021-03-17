@@ -1,13 +1,9 @@
 extends KinematicBody2D
 
 # Variables
-var curSocial = 100
-var social_decreasing = 0.01
-var maxSocial = 100
-var curStudy = 100
-var study_decreasing = 0.01
-var maxStudy = 100
-var minXp = 0
+var life = 100
+var maxXP = 100
+var minXP = 0
 var moveSpeed = 250 
 var interactDist = 70
 signal player_stats_changed
@@ -27,26 +23,6 @@ onready var anim = $AnimatedSprite
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	emit_signal("player_stats_changed", self)
-
-func _process(delta):
-	 # Decrease social status
-	var new_social = max(curSocial - social_decreasing, minXp)
-	if new_social != curSocial:
-		 curSocial = new_social
-		 emit_signal("player_stats_changed", self)
-	if curSocial <= minXp:
-		print("hello");
-		set_process(false)
-		$AnimationPlayer2.play("Game Over")
-
-	# Decrease study status
-	var new_study = max(curStudy - study_decreasing, minXp)
-	if new_study != curStudy:
-		curStudy = new_study
-		emit_signal("player_stats_changed", self)
-	if curStudy <= minXp:
-		set_process(false)
-		$AnimationPlayer2.play("Game Over")
 		
 func _physics_process (delta):
 	
@@ -111,25 +87,20 @@ func _input(event):
 			return
 
 func hit(damage):
-	curSocial -= damage
+	life -= damage
 	emit_signal("player_stats_changed", self)
-	if curSocial <= minXp:
+	if life <= minXP:
 		print("hello");
 		set_process(false)
 		$AnimationPlayer2.play("Game Over")
 	else:
 		$AnimationPlayer.play("Hit")
 			
-func add_social(xp):
-	curSocial += xp
-	curSocial = min(curSocial, maxSocial)
+func add_life(xp):
+	life += xp
+	life = min(life, maxXP)
 	emit_signal("player_stats_changed", self)
 	
-func add_study(xp):
-	curStudy += xp
-	curStudy = min(curStudy, maxStudy)
-	emit_signal("player_stats_changed", self)
-
 func game_over():
 	set_process(false)
 	$AnimationPlayer2.play("Game Over")

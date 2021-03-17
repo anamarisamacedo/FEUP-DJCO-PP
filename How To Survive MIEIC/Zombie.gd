@@ -69,7 +69,7 @@ func _physics_process(delta):
 	if now >= next_attack_time:
 		# What's the target?
 		var target = $RayCast2D.get_collider()
-		if target != null and target.name == "Player" and player.curSocial > 0:
+		if target != null and target.name == "Player" and player.life > 0:
 			# Play attack animation
 			other_animation_playing = true
 			var animation = get_animation_direction(last_direction) + "_attack"
@@ -110,5 +110,5 @@ func _on_AnimatedSprite_frame_changed():
 	if $AnimatedSprite.animation.ends_with("_attack") and $AnimatedSprite.frame == 1:
 		var target = $RayCast2D.get_collider()
 		print(target)
-		if target != null and target.name == "Player" and player.curSocial > 0:
+		if target != null and target.name == "Player" and player.life > 0:
 			player.hit(attack_damage)

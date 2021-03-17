@@ -26,7 +26,7 @@ var xp_increase=30
 func _ready():
 	dialoguePopup = get_tree().root.get_node("/root/MainScene/Player/CanvasLayer/DialoguePopup")
 	player = get_tree().root.get_node("/root/MainScene/Player")
-	professorJoao = get_tree().root.get_node("/root/MainScene/NPC_Professor3")
+	professorJoao = get_tree().root.get_node("/root/MainScene/Professors/NPC_Professor3")
 
 func talk(answer = ""):
 	# Set Fiona's animation to "talk"
