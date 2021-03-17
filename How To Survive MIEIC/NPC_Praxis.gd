@@ -39,7 +39,7 @@ func talk(answer = ""):
 		QuestStatus.NOT_STARTED:
 			match dialogue_state:
 				0:
-					if beerFound:
+					if player.number_beers > 0:
 						# Update dialogue tree state
 						dialogue_state = 4
 						# Show dialogue popup
@@ -85,6 +85,9 @@ func talk(answer = ""):
 					dialogue_state = 5
 					# Show dialogue popup
 					dialoguePopup.dialogue = "Eish, és o maior! Vou falar de ti aos meus amigos!"
+					# Update Player XP
+					player.add_social(xp_increase)
+					player.remove_beer()
 					dialoguePopup.answers = "[A] Obrigado"
 					dialoguePopup.open()
 				5:
@@ -103,19 +106,20 @@ func talk(answer = ""):
 					dialogue_state = 1
 					# Show dialogue popup
 					dialoguePopup.dialogue = "Encontraste o fino?"
-					if beerFound:
+					if player.number_beers > 0:
 						dialoguePopup.answers = "[A] Sim! [B] Opá, não"
 					else:
 						dialoguePopup.answers = "[A] Nope"
 					dialoguePopup.open()
 				1:
-					if beerFound and answer == "A":
-						# Update Player XP
-						player.add_social(xp_increase)
+					if player.number_beers > 0 and answer == "A":
 						# Update dialogue tree state
 						dialogue_state = 2
 						# Show dialogue popup
 						dialoguePopup.dialogue = "Eish, és o maior! Vou falar de ti aos meus amigos!"
+						# Update Player XP
+						player.add_social(xp_increase)
+						player.remove_beer()
 						dialoguePopup.answers = "[A] Obrigado"
 						dialoguePopup.open()
 					else:

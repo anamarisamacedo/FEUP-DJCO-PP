@@ -12,9 +12,14 @@ var moveSpeed = 250
 var interactDist = 70
 signal player_stats_changed
 var b210key = false;
+signal player_beers_changed
+signal player_books_changed
  
 var vel = Vector2()
 var facingDir = Vector2()
+
+var number_beers = 0
+var number_books = 0
  
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
@@ -120,3 +125,27 @@ func add_study(xp):
 	curStudy += xp
 	curStudy = min(curStudy, maxStudy)
 	emit_signal("player_stats_changed", self)
+
+func game_over():
+	set_process(false)
+	$AnimationPlayer2.play("Game Over")
+	
+func add_beer():
+	number_beers += 1
+	print("Beers: " + str(number_beers))
+	emit_signal("player_beers_changed", self)
+	
+func remove_beer():
+	number_beers -= 1
+	print("Beers: " +  str(number_beers))
+	emit_signal("player_beers_changed", self)
+	
+func add_book():
+	number_books += 1
+	print("Books: " + str(number_books))
+	emit_signal("player_books_changed", self)
+	
+func remove_book():
+	number_books -= 1
+	print("Books: " +  str(number_books))
+	emit_signal("player_books_changed", self)
