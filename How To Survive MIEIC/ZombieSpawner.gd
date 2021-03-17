@@ -5,11 +5,9 @@ var tilemap
 var tree_tilemap
 
 # Spawner variables
-export var spawn_area : Rect2 = Rect2(50, 150, 700, 700)
-export var max_skeletons = 10
-export var start_skeletons = 5
-var skeleton_count = 0
-var skeleton_scene = preload("res://Zombie.tscn")
+export var spawn_area : Rect2 = Rect2(-1400, -1400, 4000, 4200)
+export var start_zombies = 25
+var zombie_scene = preload("res://Zombie.tscn")
 
 # Random number generator
 var rng = RandomNumberGenerator.new()
@@ -23,10 +21,9 @@ func _ready():
 	# Initialize random number generator
 	rng.randomize()
 	
-	# Create skeletons
-	for i in range(start_skeletons):
-		instance_skeleton()
-	skeleton_count = start_skeletons
+	# Create zombies
+	for i in range(start_zombies):
+		instance_zombie()
 	
 func test_position(position : Vector2):
 	# Check if the cell type in this position is grass or sand
@@ -43,23 +40,14 @@ func test_position(position : Vector2):
 	#return grass_or_sand and no_trees
 	return true
 
-func instance_skeleton():
-	# Instance the skeleton scene and add it to the scene tree
-	var skeleton = skeleton_scene.instance()
-	add_child(skeleton)
+func instance_zombie():
+	# Instance the zombie scene and add it to the scene tree
+	var zombie = zombie_scene.instance()
+	add_child(zombie)
 	
-	# Place the skeleton in a valid position
+	# Place the zombie in a valid position
 	var valid_position = false
 	while not valid_position:
-		skeleton.position.x = spawn_area.position.x + rng.randf_range(0, spawn_area.size.x)
-		skeleton.position.y = spawn_area.position.y + rng.randf_range(0, spawn_area.size.y)
-		valid_position = test_position(skeleton.position)
-
-	# Play skeleton's birth animation
-	#skeleton.arise()
-
-func _on_Timer_timeout():
-	# Every second, check if we need to instantiate a skeleton
-	if skeleton_count < max_skeletons:
-		instance_skeleton()
-		skeleton_count = skeleton_count + 1
+		zombie.position.x = spawn_area.position.x + rng.randf_range(0, spawn_area.size.x)
+		zombie.position.y = spawn_area.position.y + rng.randf_range(0, spawn_area.size.y)
+		valid_position = test_position(zombie.position)
