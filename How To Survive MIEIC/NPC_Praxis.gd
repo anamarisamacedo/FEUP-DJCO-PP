@@ -85,6 +85,9 @@ func talk(answer = ""):
 					dialogue_state = 5
 					# Show dialogue popup
 					dialoguePopup.dialogue = "Eish, és o maior! Vou falar de ti aos meus amigos!"
+					# Update Player XP
+					player.add_social(xp_increase)
+					player.remove_beer()
 					dialoguePopup.answers = "[A] Obrigado"
 					dialoguePopup.open()
 				5:
@@ -110,13 +113,13 @@ func talk(answer = ""):
 					dialoguePopup.open()
 				1:
 					if player.number_beers > 0 and answer == "A":
-						# Update Player XP
-						player.add_social(xp_increase)
-						player.remove_beer()
 						# Update dialogue tree state
 						dialogue_state = 2
 						# Show dialogue popup
 						dialoguePopup.dialogue = "Eish, és o maior! Vou falar de ti aos meus amigos!"
+						# Update Player XP
+						player.add_social(xp_increase)
+						player.remove_beer()
 						dialoguePopup.answers = "[A] Obrigado"
 						dialoguePopup.open()
 					else:

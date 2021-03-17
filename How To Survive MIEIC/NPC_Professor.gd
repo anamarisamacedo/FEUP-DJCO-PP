@@ -63,14 +63,13 @@ func talk(answer = ""):
 				2:
 					match answer:
 						"A":
-							# Update Player XP
-							player.add_study(xp_increase)
-							player.number_books = player.number_books - 1
-							print(player.number_books)
 							# Update dialogue tree state
 							dialogue_state = 4
 							# Show dialogue popup
 							dialoguePopup.dialogue = "Boa, Manel! Vou ter este relatório em consideração na tua nota."
+							# Update Player XP
+							player.add_study(xp_increase)
+							player.remove_book()
 							dialoguePopup.answers = "[A] Obrigado"
 							dialoguePopup.open()
 					match answer:

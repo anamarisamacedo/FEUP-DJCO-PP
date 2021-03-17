@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
@@ -15,6 +15,10 @@
 [ext_resource path="res://NPC_Professor.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Book.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Font/NineteenEightySeven-MzMJ.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://Sprites/Items/beer.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Items/bluebook.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Items/clock.png" type="Texture" id=18]
+[ext_resource path="res://Item Count.gd" type="Script" id=19]
 
 [sub_resource type="DynamicFont" id=2]
 size = 8
@@ -118,9 +122,9 @@ __meta__ = {
 }
 
 [node name="Timer" type="ColorRect" parent="CanvasLayer"]
-margin_left = 905.0
+margin_left = 876.0
 margin_top = 16.0
-margin_right = 1007.0
+margin_right = 1005.0
 margin_bottom = 54.0
 color = Color( 0, 0, 0, 0.627451 )
 __meta__ = {
@@ -128,8 +132,8 @@ __meta__ = {
 }
 
 [node name="Minutes" type="Label" parent="CanvasLayer/Timer"]
-margin_left = 6.0
-margin_right = 46.0
+margin_left = 39.0
+margin_right = 79.0
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 9 )
 text = "00"
@@ -139,9 +143,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="clock" type="Sprite" parent="CanvasLayer/Timer/Minutes"]
+position = Vector2( -16.1172, 19.1999 )
+scale = Vector2( 0.0704326, 0.0704326 )
+texture = ExtResource( 18 )
+
 [node name="Label" type="Label" parent="CanvasLayer/Timer"]
-margin_left = 46.0
-margin_right = 56.0
+margin_left = 79.0
+margin_right = 89.0
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 9 )
 text = ":"
@@ -152,8 +161,8 @@ __meta__ = {
 }
 
 [node name="Seconds" type="Label" parent="CanvasLayer/Timer"]
-margin_left = 56.0
-margin_right = 96.0
+margin_left = 89.0
+margin_right = 129.0
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -184,7 +193,7 @@ __meta__ = {
 
 [node name="ItemList" type="ItemList" parent="CanvasLayer/Control/Panel"]
 margin_top = 20.0
-margin_right = 200.0
+margin_right = 300.0
 margin_bottom = 120.0
 custom_fonts/font = SubResource( 2 )
 __meta__ = {
@@ -203,8 +212,82 @@ margin_right = 40.0
 margin_bottom = 20.0
 text = "+"
 
+[node name="Item Count" type="ColorRect" parent="CanvasLayer"]
+margin_left = 450.0
+margin_top = 16.0
+margin_right = 634.0
+margin_bottom = 54.0
+color = Color( 0, 0, 0, 0.627451 )
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x" type="Label" parent="CanvasLayer/Item Count"]
+margin_left = 7.74997
+margin_right = 47.75
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 9 )
+text = "x"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="no_beers" type="Label" parent="CanvasLayer/Item Count"]
+margin_left = 52.25
+margin_top = 1.25
+margin_right = 92.25
+margin_bottom = 41.25
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "00"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x2" type="Label" parent="CanvasLayer/Item Count"]
+margin_left = 99.75
+margin_top = 0.25
+margin_right = 139.75
+margin_bottom = 40.25
+custom_fonts/font = ExtResource( 9 )
+text = "x"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="no_books" type="Label" parent="CanvasLayer/Item Count"]
+margin_left = 144.25
+margin_top = 1.5
+margin_right = 184.25
+margin_bottom = 41.5
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "00"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bluebook" type="Sprite" parent="CanvasLayer/Item Count"]
+position = Vector2( 112.248, 20.4601 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 17 )
+
+[node name="beer" type="Sprite" parent="CanvasLayer/Item Count"]
+position = Vector2( 18.1035, 19.3165 )
+scale = Vector2( 0.025, 0.02 )
+texture = ExtResource( 16 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 173.912, 141 )
+position = Vector2( 282.912, 154 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Player"]
 "anims/Game Over" = SubResource( 1 )
@@ -247,5 +330,7 @@ position = Vector2( 623.468, 24.188 )
 
 [node name="Timer" type="Timer" parent="."]
 script = ExtResource( 7 )
+[connection signal="player_beers_changed" from="Player" to="CanvasLayer/Item Count" method="_on_Player_player_beers_changed"]
+[connection signal="player_books_changed" from="Player" to="CanvasLayer/Item Count" method="_on_Player_player_books_changed"]
 [connection signal="player_stats_changed" from="Player" to="CanvasLayer/StudyXP" method="_on_Player_player_stats_changed"]
 [connection signal="player_stats_changed" from="Player" to="CanvasLayer/SocialXP" method="_on_Player_player_stats_changed"]

@@ -16,4 +16,4 @@ func _ready():
 func _on_Book_body_entered(body):
 	if body.name == "Player":
 		get_tree().queue_delete(self)
-		player.number_books += 1
+		player.add_book()

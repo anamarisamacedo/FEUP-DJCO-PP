@@ -3,14 +3,20 @@ extends Panel
 var is_expanded = false
 
 var ItemListContent = [
-	"Challenge 1",
-	"Challenge 2",
-	"Challenge 3",
-	"Challenge 4", 
-	"Challenge 5",
-	"Challenge 6", 
-	"Challenge 7",
-	"Challenge 8"]
+	"Recolher 5 Apontamentos",
+	"Recolher 5 Finos",
+	"Conversar com 5 Estudantes",
+	"Entregar Apontamentos a 3 Profs",
+	"Passar a um Teste", #encontrar a sala e responder a metade das perguntas corretamente
+	]
+var SecretItemList = [
+	"Convencer um Prof a Subir-te a Nota", #através de um diálogo elaborado
+	"Encontrar os Apontamentos Mágicos", #estão encondidos algures na FEUP e permitem completar challenges académicos automaticamente
+	"Encontrar o Fantasma da FEUP", #só engraçado -> o fantasma conta-te histórias engraçadas da FEUP
+	"Matar um Zombie", #pressionando uma tecla random tipo F perto de um zombie 
+	"Copiar num Teste", #encontrar uma sala de testes e convencer um estudante a deixar-te copiar
+]
+
 var item_list
 var button
 
@@ -26,6 +32,7 @@ func _ready():
 
 	complete_challenge(1)
 	challenge_in_progress(2)
+	add_secret_challenge("Secret Challenge 1")
 	#item_list.select(0,true) #This sets a default so we don't have
 
 func expand():
@@ -43,9 +50,9 @@ func _process(delta):
 	#resize to target size
 	if is_expanded:
 		rect_size.y = lerp(rect_size.y, 120, 0.1)
-		rect_size.x = lerp(rect_size.x, 200, 0.1)
+		rect_size.x = lerp(rect_size.x, 300, 0.1)
 		button.text = "-"
-		if rect_size.x >= 199:
+		if rect_size.x >= 299:
 			item_list.visible = true
 
 	else:
@@ -61,12 +68,6 @@ func _process(delta):
 
 func ReportListItem():
 	var ItemNo = item_list.get_selected_items()
-
-	#The output ItemNo is a list of selected items.  Use this to select
-	#The matching component from the associated array, ItemListContent.
-
-	var SelectedItemtext = ItemListContent[ItemNo[0]]
-	get_node("Label - output").set_text(str(SelectedItemtext))
 	print(ItemNo)
 	
 func complete_challenge(item_id):
@@ -74,3 +75,7 @@ func complete_challenge(item_id):
 	
 func challenge_in_progress(item_id):
 	item_list.set_item_custom_bg_color(item_id, Color(0.8, 0.8, 0, 1))
+	
+func add_secret_challenge(text):
+	item_list.add_item(text,null,false)
+	complete_challenge(item_list.get_item_count() - 1)

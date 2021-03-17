@@ -11,6 +11,8 @@ var minXp = 0
 var moveSpeed = 250 
 var interactDist = 70
 signal player_stats_changed
+signal player_beers_changed
+signal player_books_changed
  
 var vel = Vector2()
 var facingDir = Vector2()
@@ -129,8 +131,20 @@ func game_over():
 	
 func add_beer():
 	number_beers += 1
-	print(number_beers)
+	print("Beers: " + str(number_beers))
+	emit_signal("player_beers_changed", self)
 	
 func remove_beer():
 	number_beers -= 1
-	print(number_beers)
+	print("Beers: " +  str(number_beers))
+	emit_signal("player_beers_changed", self)
+	
+func add_book():
+	number_books += 1
+	print("Books: " + str(number_books))
+	emit_signal("player_books_changed", self)
+	
+func remove_book():
+	number_books -= 1
+	print("Books: " +  str(number_books))
+	emit_signal("player_books_changed", self)
