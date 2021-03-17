@@ -38,6 +38,12 @@ func _input(event):
 		elif event.scancode == KEY_B:
 			set_process_input(false)
 			npc.talk("B")
+		elif event.scancode == KEY_C:
+			set_process_input(false)
+			npc.talk("C")
+		elif event.scancode == KEY_D:
+			set_process_input(false)
+			npc.talk("D")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
