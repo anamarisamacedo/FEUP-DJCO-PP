@@ -2,7 +2,15 @@ extends Panel
 
 var is_expanded = false
 
-var ItemListContent = ["We shall go this way","We shall go that way","which way shall we go?","I think we're lost", "We shall go this way","We shall go that way"]
+var ItemListContent = [
+	"Challenge 1",
+	"Challenge 2",
+	"Challenge 3",
+	"Challenge 4", 
+	"Challenge 5",
+	"Challenge 6", 
+	"Challenge 7",
+	"Challenge 8"]
 var item_list
 var button
 
@@ -16,7 +24,8 @@ func _ready():
 		item_list.add_item(ItemListContent[ItemID],null,false)
 		item_list.set_item_custom_bg_color(ItemID, Color(0.6, 0, 0, 1))
 
-	complete_challenge(2)
+	complete_challenge(1)
+	challenge_in_progress(2)
 	#item_list.select(0,true) #This sets a default so we don't have
 
 func expand():
@@ -33,7 +42,7 @@ func _process(delta):
 
 	#resize to target size
 	if is_expanded:
-		rect_size.y = lerp(rect_size.y, 140, 0.1)
+		rect_size.y = lerp(rect_size.y, 120, 0.1)
 		rect_size.x = lerp(rect_size.x, 200, 0.1)
 		button.text = "-"
 		if rect_size.x >= 199:
@@ -62,3 +71,6 @@ func ReportListItem():
 	
 func complete_challenge(item_id):
 	item_list.set_item_custom_bg_color(item_id, Color(0, 0.3, 0, 1))
+	
+func challenge_in_progress(item_id):
+	item_list.set_item_custom_bg_color(item_id, Color(0.8, 0.8, 0, 1))
