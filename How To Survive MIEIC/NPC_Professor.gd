@@ -70,7 +70,7 @@ func talk(answer = ""):
 							# Update dialogue tree state
 							dialogue_state = 4
 							# Show dialogue popup
-							dialoguePopup.dialogue = "Boa! Vou ter este relatório em consideração na tua nota."
+							dialoguePopup.dialogue = "Boa, Manel! Vou ter este relatório em consideração na tua nota."
 							dialoguePopup.answers = "[A] Obrigado"
 							dialoguePopup.open()
 					match answer:

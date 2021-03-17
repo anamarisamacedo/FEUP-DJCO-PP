@@ -123,7 +123,7 @@ func add_study(xp):
 	curStudy = min(curStudy, maxStudy)
 	emit_signal("player_stats_changed", self)
 
-func _on_Timer_timeout():
+func game_over():
 	set_process(false)
 	$AnimationPlayer2.play("Game Over")
 	
