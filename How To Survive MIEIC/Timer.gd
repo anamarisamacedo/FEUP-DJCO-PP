@@ -40,6 +40,9 @@ func update_labels():
 	else:
 		seconds_label.text = str(seconds)
 
+func stop_time():
+	stop()
+
 func game_over():
 	player.game_over()
 	stop()

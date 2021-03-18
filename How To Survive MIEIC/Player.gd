@@ -13,7 +13,7 @@ signal player_books_changed
  
 var vel = Vector2()
 var facingDir = Vector2()
-
+var timer
 var number_beers = 0
 var number_books = 0
  
@@ -23,6 +23,7 @@ onready var anim = $AnimatedSprite
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	emit_signal("player_stats_changed", self)
+	timer = get_tree().root.get_node("/root/MainScene/Timer")
 		
 func _physics_process (delta):
 	
@@ -90,9 +91,7 @@ func hit(damage):
 	life -= damage
 	emit_signal("player_stats_changed", self)
 	if life <= minXP:
-		print("hello");
-		set_process(false)
-		$AnimationPlayer2.play("Game Over")
+		game_over()
 	else:
 		$AnimationPlayer.play("Hit")
 			
@@ -103,6 +102,7 @@ func add_life(xp):
 	
 func game_over():
 	set_process(false)
+	timer.stop_time()
 	$AnimationPlayer2.play("Game Over")
 	
 func add_beer():
