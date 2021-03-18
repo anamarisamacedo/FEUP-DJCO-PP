@@ -1,6 +1,6 @@
 extends Timer
 
-var player
+var mainscene
 
 var seconds: int = 0
 var minutes: int = 0
@@ -10,7 +10,7 @@ var seconds_label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_tree().root.get_node("/root/MainScene/Player")
+	mainscene = get_tree().root.get_node("/root/MainScene")
 	minutes_label = get_tree().root.get_node("/root/MainScene/CanvasLayer/Timer/Minutes")
 	seconds_label = get_tree().root.get_node("/root/MainScene/CanvasLayer/Timer/Seconds")
 	wait_time = 1.0
@@ -44,5 +44,5 @@ func stop_time():
 	stop()
 
 func game_over():
-	player.game_over()
+	mainscene.game_lost()
 	stop()

@@ -2,6 +2,11 @@ extends Panel
 
 var is_expanded = false
 
+################################
+#TO DO
+#Quando todos os challenges estiverem completos, chamar a função game_win() na mainscene.gd
+#################################
+
 #each challenge defined has [challenge_id, challenge_description, challenge_completed, challenge_countable, challenge_current, challenge_max]
 # challenge completed: 0-> not completed, 1-> under completion, 2->completed
 var challenge_id = 0

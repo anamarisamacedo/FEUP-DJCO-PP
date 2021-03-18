@@ -7,7 +7,7 @@ var minXP = 0
 var moveSpeed = 250 
 var interactDist = 70
 signal player_stats_changed
-var b210key = false;
+var b210key = false
 signal player_beers_changed
 signal player_books_changed
  
@@ -20,10 +20,11 @@ var number_books = 0
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
 
+var mainScene 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	emit_signal("player_stats_changed", self)
-	timer = get_tree().root.get_node("/root/MainScene/Timer")
+	mainScene = get_tree().root.get_node("/root/MainScene")
 		
 func _physics_process (delta):
 	
@@ -91,7 +92,7 @@ func hit(damage):
 	life -= damage
 	emit_signal("player_stats_changed", self)
 	if life <= minXP:
-		game_over()
+		game_lost()
 	else:
 		$AnimationPlayer.play("Hit")
 			
@@ -100,10 +101,9 @@ func add_life(xp):
 	life = min(life, maxXP)
 	emit_signal("player_stats_changed", self)
 	
-func game_over():
+func game_lost():
 	set_process(false)
-	timer.stop_time()
-	$AnimationPlayer2.play("Game Over")
+	mainScene.game_lost()
 	
 func add_beer():
 	number_beers += 1
