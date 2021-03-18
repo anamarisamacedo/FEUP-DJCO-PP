@@ -32,32 +32,32 @@ region = Rect2( 48, 98, 48, 49 )
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 98, 48, 49 )
+region = Rect2( 0, 147, 48, 49 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 96, 98, 48, 49 )
+region = Rect2( 96, 147, 48, 49 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 48, 147, 48, 49 )
+region = Rect2( 48, 49, 48, 49 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 48, 49, 48, 49 )
+region = Rect2( 0, 98, 48, 49 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 147, 48, 49 )
+region = Rect2( 96, 98, 48, 49 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 96, 147, 48, 49 )
+region = Rect2( 48, 147, 48, 49 )
 
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
@@ -78,17 +78,17 @@ animations = [ {
 }, {
 "frames": [ SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
-"name": "right_walk",
+"name": "up_walk",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 8 ) ],
 "loop": true,
-"name": "up_idle",
+"name": "left_idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 9 ) ],
+"frames": [ SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
-"name": "left_idle",
+"name": "right_walk",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
@@ -96,9 +96,9 @@ animations = [ {
 "name": "down_idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 10 ), SubResource( 11 ) ],
+"frames": [ SubResource( 11 ) ],
 "loop": true,
-"name": "up_walk",
+"name": "up_idle",
 "speed": 5.0
 } ]
 
@@ -109,6 +109,7 @@ height = 19.021
 [node name="NPC_Professor" type="KinematicBody2D" groups=[
 "NPCs",
 ]]
+scale = Vector2( 1.35, 1.35 )
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

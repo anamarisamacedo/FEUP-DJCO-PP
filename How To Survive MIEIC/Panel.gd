@@ -49,8 +49,6 @@ func _ready():
 	#if count == (challenges.size()-1) and passar testes completo:
 	#	mainScene.game_win()
 		
-	update_challenge(1, 5)
-	update_challenge(2, 3)
 	add_secret_challenge("Secret Challenge 1")
 	
 
@@ -130,7 +128,7 @@ func challenge_to_string(challenge_id):
 	var item = challenges[challenge_id]
 	var string_item = item[challenge_description]
 	if item[challenge_countable] && item[challenge_completed] == 1:
-		for i in range(95 - item[challenge_description].length()*2.75):
+		for i in range(85 - item[challenge_description].length()*2.75):
 			string_item += " "
 		string_item += str(item[challenge_current]) + "/" + str(item[challenge_max])
 	return string_item

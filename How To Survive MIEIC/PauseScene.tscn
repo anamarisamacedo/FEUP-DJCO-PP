@@ -1,0 +1,108 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Font/RobotMono_25.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Font/RobotMono_36.tres" type="DynamicFont" id=2]
+[ext_resource path="res://PauseScene.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.215686, 0.215686, 0.215686, 0.870588 )
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color( 0, 0, 0, 1 )
+
+[node name="PauseScene" type="CanvasLayer"]
+pause_mode = 2
+layer = 2
+script = ExtResource( 3 )
+
+[node name="Overlay" type="PanelContainer" parent="."]
+margin_right = 14.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -370.0
+margin_top = -201.5
+margin_right = 370.0
+margin_bottom = 201.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+margin_left = 188.0
+margin_right = 552.0
+margin_bottom = 481.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 354.0
+margin_bottom = 471.0
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rows" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 304.0
+margin_bottom = 421.0
+custom_constants/separation = 80
+
+[node name="Title" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/Rows"]
+margin_right = 264.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Paused"
+align = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/PanelContainer/MarginContainer/Rows"]
+margin_top = 152.0
+margin_right = 264.0
+margin_bottom = 381.0
+
+[node name="Row" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/Rows/CenterContainer"]
+margin_right = 264.0
+margin_bottom = 229.0
+custom_constants/separation = 35
+
+[node name="Continue" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/Rows/CenterContainer/Row"]
+margin_right = 264.0
+margin_bottom = 53.0
+custom_fonts/font = ExtResource( 1 )
+text = "  Continue  "
+
+[node name="Restart" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/Rows/CenterContainer/Row"]
+margin_top = 88.0
+margin_right = 264.0
+margin_bottom = 141.0
+custom_fonts/font = ExtResource( 1 )
+text = "Restart"
+
+[node name="Quit" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/Rows/CenterContainer/Row"]
+margin_top = 176.0
+margin_right = 264.0
+margin_bottom = 229.0
+custom_fonts/font = ExtResource( 1 )
+text = " Quit "
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/Rows/CenterContainer/Row/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/Rows/CenterContainer/Row/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/Rows/CenterContainer/Row/Quit" to="." method="_on_Quit_pressed"]

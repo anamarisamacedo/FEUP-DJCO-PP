@@ -36,14 +36,9 @@ animations = [ {
 "name": "right_idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
-"name": "right_walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "up_idle",
+"name": "up_walk",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ) ],
@@ -51,14 +46,19 @@ animations = [ {
 "name": "left_idle",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 2 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "right_walk",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "down_idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "up_walk",
+"name": "up_idle",
 "speed": 5.0
 } ]
 
@@ -67,6 +67,7 @@ animations = [ {
 [node name="NPC_Praxis" type="KinematicBody2D" groups=[
 "NPCs",
 ]]
+scale = Vector2( 1.4, 1.4 )
 script = ExtResource( 13 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
