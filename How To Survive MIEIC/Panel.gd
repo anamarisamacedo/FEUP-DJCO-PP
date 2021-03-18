@@ -1,9 +1,9 @@
 extends Panel
 
 var is_expanded = false
-
+var mainScene
 ################################
-#TO DO
+#TO CHECK (linhas 49, 50 e 123)
 #Quando todos os challenges estiverem completos, chamar a função game_win() na mainscene.gd
 #################################
 
@@ -33,8 +33,9 @@ var SecretItemList = [
 
 var item_list
 var button
-
+var count = 0
 func _ready():
+	mainScene = get_tree().root.get_node("/root/MainScene")
 	$VBoxContainer/show.connect("pressed",self,"expand")
 	#Load the ItemList by stepping through it and adding each item.
 	item_list =  get_node("ItemList")
@@ -44,10 +45,14 @@ func _ready():
 		item_list.add_item(challenge_to_string(challenge_id), null, false)
 		item_list.set_item_custom_bg_color(challenge_id, Color(0.6, 0, 0, 1))
 		item_list.set_item_custom_fg_color(challenge_id, Color(1, 1, 1, 1))
-
+			
+	#if count == (challenges.size()-1) and passar testes completo:
+	#	mainScene.game_win()
+		
 	update_challenge(1, 5)
 	update_challenge(2, 3)
 	add_secret_challenge("Secret Challenge 1")
+	
 
 func expand():
 	is_expanded = !is_expanded
@@ -115,6 +120,7 @@ func update_challenge(challenge_id, new_current):
 	challenges[challenge_id][challenge_current] = new_current
 	if new_current >= challenges[challenge_id][challenge_max]:
 		complete_challenge(challenge_id)
+		count+=1
 	elif (challenges[challenge_id][challenge_completed] == 0 && new_current > 0):
 		challenge_in_progress(challenge_id)
 		

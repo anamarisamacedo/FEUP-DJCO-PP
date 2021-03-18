@@ -7,7 +7,7 @@ var player
 var rng = RandomNumberGenerator.new()
 
 # Movement variables
-export var speed = 25
+export var speed = 60
 var direction : Vector2
 var last_direction = Vector2(0, 1)
 var bounce_countdown = 0
@@ -33,7 +33,7 @@ func _on_Timer_timeout():
 		# If player is near, don't move but turn toward it
 		direction = Vector2.ZERO
 		last_direction = player_relative_position.normalized()
-	elif player_relative_position.length() <= 100 and bounce_countdown == 0:
+	elif player_relative_position.length() <= 200 and bounce_countdown == 0:
 		# If player is within range, move toward it
 		direction = player_relative_position.normalized()
 	elif bounce_countdown == 0:
