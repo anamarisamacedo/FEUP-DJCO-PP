@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Sprites/Tiles/door.png" type="Texture" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hallways/ThirdHallway.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/Tiles/elevator.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 33.7425, 50.1954 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32.0773, 49.8502 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 21.151, 136.414 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 57.4199, 56.0082 )
+
+[node name="ThirdHallway" type="Node2D"]
+position = Vector2( 0, 100 )
+script = ExtResource( 4 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 65536, 21, 0, 65537, 21, 0, 65538, 21, 0, 65539, 21, 0, 65541, 21, 0, 65542, 21, 0, 65543, 21, 0, 65544, 21, 0, 65545, 21, 0, 65546, 21, 0, 65547, 21, 0, 65548, 21, 0, 65549, 21, 0, 65550, 21, 0, 65551, 21, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 131083, 1, 0, 131084, 1, 0, 131085, 1, 0, 131086, 1, 0, 131087, 1, 0, 131088, 15, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 15, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 15, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 327690, 1, 0, 327691, 1, 0, 327692, 1, 0, 327693, 1, 0, 327694, 1, 0, 327695, 1, 0, 327696, 15, 0, 393216, 20, 0, 393217, 20, 0, 393218, 20, 0, 393219, 20, 0, 393220, 20, 0, 393221, 20, 0, 393222, 20, 0, 393223, 20, 0, 393224, 20, 0, 393225, 20, 0, 393226, 20, 0, 393227, 20, 0, 393228, 20, 0, 393229, 20, 0, 393230, 20, 0, 393231, 20, 0 )
+
+[node name="TileMap2" type="TileMap" parent="TileMap"]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 0, 23, 0, 1, 23, 0, 2, 23, 0, 3, 23, 0, 4, 23, 0, 5, 23, 0, 6, 23, 0, 7, 23, 0, 8, 23, 0, 9, 23, 0, 10, 23, 0, 11, 23, 0, 12, 23, 0, 13, 23, 0, 14, 23, 0 )
+
+[node name="Door1" type="Area2D" parent="."]
+position = Vector2( 1.5874, 1.5874 )
+
+[node name="door1" type="Sprite" parent="Door1"]
+position = Vector2( 286.69, 79.4514 )
+scale = Vector2( 0.474141, 0.454392 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door1"]
+position = Vector2( 287.658, 72.7488 )
+shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="Door1"]
+margin_left = 269.337
+margin_top = 18.3394
+margin_right = 306.337
+margin_bottom = 32.3394
+text = "B030"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Door2" type="Area2D" parent="."]
+position = Vector2( 772.362, 79.8599 )
+
+[node name="door2" type="Sprite" parent="Door2"]
+position = Vector2( 6.51141, -2.342 )
+scale = Vector2( 0.493993, 0.473991 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door2"]
+position = Vector2( 9.65918, -0.728135 )
+shape = SubResource( 2 )
+
+[node name="Label" type="Label" parent="Door2"]
+margin_left = -16.0181
+margin_top = -64.7397
+margin_right = 23.9819
+margin_bottom = -50.7397
+text = "B031"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 74.05, 236.625 )
+
+[node name="Back" type="Area2D" parent="."]
+position = Vector2( -39.685, 244.46 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Back"]
+position = Vector2( 15.874, 22.2236 )
+scale = Vector2( 2, 1 )
+shape = SubResource( 3 )
+
+[node name="Elevator" type="Area2D" parent="."]
+position = Vector2( 526.819, 68.974 )
+
+[node name="elevator" type="Sprite" parent="Elevator"]
+position = Vector2( 3.31091, -4.27766 )
+scale = Vector2( 1.52427, 1.31628 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator"]
+position = Vector2( -4.75685, 5.94603 )
+shape = SubResource( 4 )
+[connection signal="body_entered" from="Door1" to="." method="_on_Door1_body_entered"]
+[connection signal="body_entered" from="Door2" to="." method="_on_Door2_body_entered"]
+[connection signal="body_entered" from="Back" to="." method="_on_Back_body_entered"]

@@ -13,8 +13,9 @@
 [ext_resource path="res://Sprites/Player/player_r_2.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/Player/player_l_2.png" type="Texture" id=12]
 [ext_resource path="res://Sprites/Player/player_f_0.png" type="Texture" id=13]
-[ext_resource path="res://DialoguePopup.gd" type="Script" id=14]
+[ext_resource path="res://GUI/DialoguePopup.gd" type="Script" id=14]
 [ext_resource path="res://Font/RobotMono_15.tres" type="DynamicFont" id=15]
+
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

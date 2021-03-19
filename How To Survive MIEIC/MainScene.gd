@@ -1,9 +1,9 @@
 extends Node2D
 
 var timer
-const gameOverScreen = preload("res://GameOver.tscn")
+const gameOverScreen = preload("res://Scenes/GameOver.tscn")
 const player = preload("res://Player.tscn")
-const pause = preload("res://PauseScene.tscn")
+const pause = preload("res://Scenes/PauseScene.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_game()
@@ -29,8 +29,20 @@ func _input(event):
 		var pause_menu = pause.instance()
 		add_child(pause_menu)
 
+func _on_FirstHallway_body_entered(body):
+	if body.name == "Player":
+		get_tree().change_scene("res://Hallways/FirstHallway.tscn")
 
 func _on_SecondHallway_body_entered(body):
 	if body.name == "Player":
-		get_tree().change_scene("res://SecondHallway.tscn")
-	
+		get_tree().change_scene("res://Hallways/SecondHallway.tscn")
+
+
+func _on_ThirdHallway_body_entered(body):
+	if body.name == "Player":
+		get_tree().change_scene("res://Hallways/ThirdHallway.tscn")
+
+
+func _on_OutsideDoor_body_entered(body):
+	if body.name == "Player":
+		get_tree().change_scene("res://Outside.tscn")

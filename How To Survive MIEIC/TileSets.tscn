@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Sprites/Tiles/tilemap2.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Tiles/wall.png" type="Texture" id=2]
 
 [node name="TileSets" type="Node2D"]
 
@@ -16,3 +17,8 @@ position = Vector2( 64, -512 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 63.3711, 512.364, 65.8361, 62.9101 )
+
+[node name="wall" type="Sprite" parent="."]
+position = Vector2( 160, -542.25 )
+scale = Vector2( 0.576577, 0.55 )
+texture = ExtResource( 2 )
