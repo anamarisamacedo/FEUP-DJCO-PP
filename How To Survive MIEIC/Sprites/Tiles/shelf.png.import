@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/estante.png-1456827edb1a1a914c4e4edcdc965dd9.stex"
+path="res://.import/shelf.png-562671c4abe62737257c142da234a3ca.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Tiles/estante.png"
-dest_files=[ "res://.import/estante.png-1456827edb1a1a914c4e4edcdc965dd9.stex" ]
+source_file="res://Sprites/Tiles/shelf.png"
+dest_files=[ "res://.import/shelf.png-562671c4abe62737257c142da234a3ca.stex" ]
 
 [params]
 

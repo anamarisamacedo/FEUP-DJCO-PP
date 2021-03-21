@@ -6,9 +6,6 @@ const player = preload("res://Player.tscn")
 const pause = preload("res://Scenes/PauseScene.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	start_game()
-	
-func start_game():
 	pass
 	
 	

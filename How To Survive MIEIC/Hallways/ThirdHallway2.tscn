@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Sprites/Tiles/door.png" type="Texture" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hallways/ThirdHallway2.gd" type="Script" id=4]
 [ext_resource path="res://Sprites/Tiles/elevator.png" type="Texture" id=5]
+[ext_resource path="res://Characters/Zombie.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 33.7425, 50.1954 )
@@ -12,7 +13,7 @@ extents = Vector2( 33.7425, 50.1954 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32.0773, 49.8502 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 57.4199, 56.0082 )
 
 [node name="ThirdHallway2" type="Node2D"]
@@ -86,7 +87,10 @@ texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator"]
 position = Vector2( -4.75685, 5.94603 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
+
+[node name="Zombie" parent="." instance=ExtResource( 6 )]
+position = Vector2( 282.263, 340.237 )
 [connection signal="body_entered" from="Door1" to="." method="_on_Door1_body_entered"]
 [connection signal="body_entered" from="Door2" to="." method="_on_Door2_body_entered"]
 [connection signal="body_entered" from="Elevator" to="." method="_on_Elevator_body_entered"]

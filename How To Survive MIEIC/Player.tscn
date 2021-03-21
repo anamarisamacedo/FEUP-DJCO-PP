@@ -16,9 +16,18 @@
 [ext_resource path="res://GUI/DialoguePopup.gd" type="Script" id=14]
 [ext_resource path="res://Font/RobotMono_15.tres" type="DynamicFont" id=15]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "MoveRight",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "MoveLeft",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 9 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "MoveUp",
@@ -29,24 +38,14 @@ animations = [ {
 "name": "MoveDown",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "MoveLeft",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "MoveRight",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "IdleLeft",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 10 ) ],
 "loop": true,
-"name": "IdleUp",
+"name": "IdleRight",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ) ],
@@ -54,9 +53,9 @@ animations = [ {
 "name": "IdleDown",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "IdleRight",
+"name": "IdleUp",
 "speed": 5.0
 } ]
 
@@ -111,6 +110,7 @@ scale = Vector2( 1.35, 1.35 )
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 1, 0, 0, 1 )
 frames = SubResource( 1 )
 animation = "IdleDown"
 playing = true
@@ -179,6 +179,7 @@ __meta__ = {
 }
 
 [node name="Answers" type="Label" parent="CanvasLayer/DialoguePopup/ColorRect"]
+visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0

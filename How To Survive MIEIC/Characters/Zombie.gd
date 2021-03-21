@@ -19,10 +19,12 @@ var other_animation_playing = false
 var attack_damage = 20
 var attack_cooldown_time = 1500
 var next_attack_time = 0
-
+var current_scene
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_tree().root.get_node("/root/MainScene/Player")
+	current_scene = get_tree().get_current_scene().get_name()
+	print(current_scene)
+	player = get_tree().root.get_node("/root/"+current_scene+"/Player")
 	rng.randomize()
 
 func _on_Timer_timeout():
@@ -64,7 +66,7 @@ func _physics_process(delta):
 	if direction != Vector2.ZERO:
 		$RayCast2D.cast_to = direction.normalized() * 50
 	
-	# Check if Skeleton can attack
+	# Check if zombie can attack
 	var now = OS.get_ticks_msec()
 	if now >= next_attack_time:
 		# What's the target?

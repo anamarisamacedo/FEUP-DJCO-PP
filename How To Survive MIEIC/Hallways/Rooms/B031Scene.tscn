@@ -1,12 +1,36 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://tileset2.tres" type="TileSet" id=3]
 [ext_resource path="res://Hallways/Rooms/B0301Scene.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/Tiles/shelf.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Items/bluebook.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 39.5063, 25.4594 )
+extents = Vector2( 39.5063, 45.2754 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 44.3385, 78.7105 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 41.96, 60.4763 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Book"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("bluebook:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.4, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="B031" type="Node2D"]
 position = Vector2( 0, 60 )
@@ -20,14 +44,57 @@ tile_data = PoolIntArray( -196607, 21, 0, -196606, 21, 0, -196605, 21, 0, -19660
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
 format = 1
-tile_data = PoolIntArray( -131060, 536870922, 0, -65531, 536870916, 0, 65537, 536870921, 0, 196611, 536870918, 0, 196614, 536870918, 0, 327683, 536870919, 0, 327686, 536870919, 0 )
+tile_data = PoolIntArray( -65531, 536870916, 0, 65537, 536870921, 0, 196611, 536870918, 0, 196614, 536870918, 0, 327683, 536870919, 0, 327686, 536870919, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 143.834, 439.938 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="back" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 130.813, 547.035 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="back"]
+position = Vector2( 130.813, 543.255 )
 shape = SubResource( 1 )
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+
+[node name="Shelf2" type="Area2D" parent="."]
+position = Vector2( 755.147, -11.8921 )
+
+[node name="shelf" type="Sprite" parent="Shelf2"]
+position = Vector2( 6.28357, 9.09231 )
+scale = Vector2( 0.735731, 0.775015 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf2"]
+position = Vector2( 5.94604, 17.8381 )
+shape = SubResource( 2 )
+
+[node name="Shelf" type="Area2D" parent="."]
+
+[node name="shelf" type="Sprite" parent="Shelf"]
+position = Vector2( 847.054, -3.98899 )
+scale = Vector2( 0.735731, 0.775015 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf"]
+position = Vector2( 850.284, 10.7029 )
+shape = SubResource( 3 )
+
+[node name="bluebook" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 490.886, 266.695 )
+scale = Vector2( 3.25707, 3.19546 )
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="bluebook"]
+margin_left = -10.3651
+margin_top = -37.7443
+margin_right = 9.63489
+margin_bottom = -23.7443
+text = "+1 "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Book = SubResource( 4 )
+[connection signal="body_entered" from="back" to="." method="_on_back_body_entered"]
+[connection signal="body_entered" from="Shelf2" to="." method="_on_Shelf2_body_entered"]

@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://tileset2.tres" type="TileSet" id=3]
 [ext_resource path="res://Library2.gd" type="Script" id=4]
 [ext_resource path="res://Sprites/Tiles/8db104fa5a438027931a95a716882443.jpg" type="Texture" id=5]
+[ext_resource path="res://GUI/CameraLibrary2.gd" type="Script" id=6]
+[ext_resource path="res://Characters/NPC_Professor_3.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 96.7885, 20.365 )
@@ -22,20 +24,30 @@ tile_set = ExtResource( 3 )
 format = 1
 tile_data = PoolIntArray( -196607, 14, 0, -196605, 14, 0, -196603, 14, 0, -196597, 14, 0, -196595, 14, 0, -196593, 14, 0, -131069, 10, 0, -131067, 10, 0, -131062, 10, 0, -131060, 10, 0, -65535, 12, 0, -65522, 11, 0, -65521, 11, 0, 131073, 8, 0, 131075, 8, 0, 131077, 536870929, 0, 131082, 17, 0, 131084, 536870920, 0, 131086, 536870920, 0, 196613, 536870929, 0, 196615, 536870928, 0, 196618, 17, 0, 262145, 8, 0, 262147, 8, 0, 262149, 536870929, 0, 262154, 17, 0, 262156, 536870920, 0, 262158, 536870920, 0, 327685, 536870929, 0, 327687, 16, 0, 327690, 17, 0, 393217, 8, 0, 393219, 8, 0, 393221, 536870929, 0, 393226, 17, 0, 393228, 536870920, 0, 393230, 536870920, 0, 458757, 536870929, 0, 458762, 1073741841, 0, 524289, 8, 0, 524291, 8, 0, 524293, 536870929, 0, 524298, 17, 0, 524300, 8, 0, 524302, 8, 0 )
 
+[node name="CameraLibrary2" type="Camera2D" parent="."]
+current = true
+limit_left = -10
+limit_right = 1040
+limit_bottom = 653
+script = ExtResource( 6 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 533.166, 82.7957 )
 
-[node name="elevator" type="Area2D" parent="."]
+[node name="stair" type="Area2D" parent="."]
 position = Vector2( 532.758, -56.1266 )
 
-[node name="stairs" type="Sprite" parent="elevator"]
+[node name="stairs" type="Sprite" parent="stair"]
 position = Vector2( 10.5966, 46.0379 )
 scale = Vector2( 1.83224, 1.16704 )
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 94.542, 384.48, 97.3334, 32 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="elevator"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stair"]
 position = Vector2( 7.77344, 52.2532 )
 shape = SubResource( 1 )
-[connection signal="body_entered" from="elevator" to="." method="_on_elevator_body_entered"]
+
+[node name="NPC_Professor" parent="." instance=ExtResource( 7 )]
+position = Vector2( 537.144, 400.836 )
+[connection signal="body_entered" from="stair" to="." method="_on_elevator_body_entered"]
