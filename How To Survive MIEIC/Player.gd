@@ -16,6 +16,8 @@ var facingDir = Vector2()
 var timer
 var number_beers = 0
 var number_books = 0
+
+var talkedWithCarlos = false
  
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
@@ -25,7 +27,7 @@ var mainScene
 func _ready():
 	emit_signal("player_stats_changed", self)
 		
-func _physics_process (delta):
+func _physics_process (_delta):
 	
 	vel = Vector2()
 	

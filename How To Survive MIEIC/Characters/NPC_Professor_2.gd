@@ -26,7 +26,6 @@ var xp_increase=30
 func _ready():
 	dialoguePopup = get_tree().root.get_node("/root/Global/Player/CanvasLayer/DialoguePopup")
 	player = get_tree().root.get_node("/root/Global/Player")
-	professorJoao = get_tree().root.get_node("/root/Library/NPC_Professor3")
 
 func talk(answer = ""):
 	# Set Fiona's animation to "talk"
@@ -80,7 +79,7 @@ func talk(answer = ""):
 							dialoguePopup.dialogue = "That is correct! Very well student, I see you have been paying attention! Well, I know that the appointments are in room B120, but I don't have the key. Maybe professor João has it. Find him."
 							dialoguePopup.answers = "[A] Thank you, professor. Bye!"
 							dialoguePopup.open()
-							professorJoao.talkedWithCarlos = true
+							player.talkedWithCarlos = true
 						"A" or "B" or "C":
 							# Update dialogue tree state
 							dialogue_state = 6

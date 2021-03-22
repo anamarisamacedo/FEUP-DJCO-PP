@@ -9,12 +9,12 @@ var mainScene
 
 #each challenge defined has [challenge_id, challenge_description, challenge_completed, challenge_countable, challenge_current, challenge_max]
 # challenge completed: 0-> not completed, 1-> under completion, 2->completed
-var challenge_id = 0
-var challenge_description = 1
-var challenge_completed = 2
-var challenge_countable = 3
-var challenge_current = 4
-var challenge_max = 5
+var ChallengeID = 0
+var ChallengeDescription = 1
+var ChallengeCompleted = 2
+var ChallengeCountable = 3
+var ChallengeCurrent = 4
+var ChallengeMax = 5
 var challenges = [
 	[0, "Recolher 5 Apontamentos", 0, true, 0, 5],
 	[1, "Recolher 5 Finos", 0, true, 0, 5],
@@ -53,7 +53,7 @@ func expand():
 	is_expanded = !is_expanded
 
 var last_rect_size = Vector2.ZERO
-func _process(delta):
+func _process(_delta):
 
 	#snap to end
 	if abs(rect_size.y-rect_min_size.y) < 1:
@@ -81,15 +81,15 @@ func _process(delta):
 		last_rect_size = rect_size
 
 func ReportListItem():
-	var ItemNo = item_list.get_selected_items()
+	return item_list.get_selected_items()
 	
 func complete_challenge(challenge_id):
-	challenges[challenge_id][challenge_completed] = 2;
+	challenges[challenge_id][ChallengeCompleted] = 2;
 	item_list.set_item_custom_bg_color(challenge_id, Color(0, 0.3, 0, 1))
 	
 func challenge_in_progress(challenge_id):
 	item_list.set_item_custom_bg_color(challenge_id, Color(0.5, 0.5, 0, 1))
-	challenges[challenge_id][challenge_completed] = 1;
+	challenges[challenge_id][ChallengeCompleted] = 1;
 	
 func add_secret_challenge(text):
 	var challenge_id = add_challenge(text)
@@ -111,22 +111,22 @@ func add_challenge(item_content):
 	return challenge_id
 
 func update_challenge(challenge_id, new_current):
-	challenges[challenge_id][challenge_current] = new_current
-	if new_current >= challenges[challenge_id][challenge_max]:
+	challenges[challenge_id][ChallengeCurrent] = new_current
+	if new_current >= challenges[challenge_id][ChallengeMax]:
 		complete_challenge(challenge_id)
 		count+=1
 		#if count == (challenges.size()-1) and passar testes completo:
 		#	GlobalVariables.game_win()
-	elif (challenges[challenge_id][challenge_completed] == 0 && new_current > 0):
+	elif (challenges[challenge_id][ChallengeCompleted] == 0 && new_current > 0):
 		challenge_in_progress(challenge_id)
 		
 	item_list.set_item_text(challenge_id, challenge_to_string(challenge_id))
 
 func challenge_to_string(challenge_id):
 	var item = challenges[challenge_id]
-	var string_item = item[challenge_description]
-	if item[challenge_countable] && item[challenge_completed] == 1:
-		for i in range(85 - item[challenge_description].length()*2.75):
+	var string_item = item[ChallengeDescription]
+	if item[ChallengeCountable] && item[ChallengeCompleted] == 1:
+		for i in range(85 - item[ChallengeDescription].length()*2.75):
 			string_item += " "
-		string_item += str(item[challenge_current]) + "/" + str(item[challenge_max])
+		string_item += str(item[ChallengeCurrent]) + "/" + str(item[ChallengeMax])
 	return string_item

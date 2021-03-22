@@ -12,9 +12,6 @@ var seconds_label
 func _ready():
 	minutes_label = get_tree().root.get_node("/root/Global/CanvasLayer/Timer/Minutes")
 	seconds_label = get_tree().root.get_node("/root/Global/CanvasLayer/Timer/Seconds")
-	wait_time = 1.0
-	connect("timeout", self, "update")
-	restart()
 
 func restart():
 	seconds = 0
@@ -45,3 +42,8 @@ func stop_time():
 func game_over():
 	mainscene.game_lost()
 	stop()
+ 
+func start_time():
+	wait_time = 1.0
+	connect("timeout", self, "update")
+	restart()

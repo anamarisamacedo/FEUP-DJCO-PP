@@ -26,7 +26,6 @@ var xp_increase=30
 func _ready():
 	dialoguePopup = get_tree().root.get_node("/root/Global/Player/CanvasLayer/DialoguePopup")
 	player = get_tree().root.get_node("/root/Global/Player")
-	professorJoao = get_tree().root.get_node("/root/Library2/NPC_Professor3")
 
 func talk(answer = ""):
 	dialoguePopup.npc = self
@@ -77,7 +76,7 @@ func talk(answer = ""):
 							dialoguePopup.dialogue = "That is correct! Very well student, I see you have been paying attention! Well, I know that the appointments are in room B120, but I don't have the key. Maybe professor João has it. Find him."
 							dialoguePopup.answers = "[A] Thank you, professor. Bye!"
 							dialoguePopup.open()
-							professorJoao.talkedWithCarlos = true
+							player.talkedWithCarlos = true
 						"A":
 							# Update dialogue tree state
 							dialogue_state = 6
@@ -230,8 +229,8 @@ func _physics_process(delta):
 	animates_professor(direction)
 
 
-func get_animation_direction(direction: Vector2):
-	var norm_direction = direction.normalized()
+func get_animation_direction(direction_var: Vector2):
+	var norm_direction = direction_var.normalized()
 	if norm_direction.y >= 0.707:
 		return "down"
 	elif norm_direction.y <= -0.707:
@@ -242,9 +241,9 @@ func get_animation_direction(direction: Vector2):
 		return "right"
 	return "down"
 
-func animates_professor(direction: Vector2):
-	if direction != Vector2.ZERO:
-		last_direction = direction
+func animates_professor(direction_var: Vector2):
+	if direction_var != Vector2.ZERO:
+		last_direction = direction_var
 		
 		# Choose walk animation based on movement direction
 		var animation = get_animation_direction(last_direction) + "_walk"

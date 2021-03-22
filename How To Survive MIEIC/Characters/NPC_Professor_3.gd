@@ -7,7 +7,6 @@ onready var anim = $AnimatedSprite
 enum QuestStatus { NOT_STARTED, STARTED, COMPLETED }
 var quest_status = QuestStatus.NOT_STARTED
 var dialogue_state = 0
-var talkedWithCarlos = false
 var dialoguePopup
 var player
 
@@ -39,7 +38,7 @@ func talk(answer = ""):
 		QuestStatus.NOT_STARTED:
 			match dialogue_state:
 				0:
-					if talkedWithCarlos:
+					if player.talkedWithCarlos:
 						# Update dialogue tree state
 						dialogue_state = 1
 						# Show dialogue popup

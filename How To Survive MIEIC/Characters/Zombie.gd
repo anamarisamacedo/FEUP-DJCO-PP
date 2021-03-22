@@ -78,8 +78,8 @@ func _physics_process(delta):
 			# Add cooldown time to current time
 			next_attack_time = now + attack_cooldown_time
 
-func get_animation_direction(direction: Vector2):
-	var norm_direction = direction.normalized()
+func get_animation_direction(direction_var: Vector2):
+	var norm_direction = direction_var.normalized()
 	if norm_direction.y >= 0.707:
 		return "down"
 	elif norm_direction.y <= -0.707:
@@ -90,9 +90,9 @@ func get_animation_direction(direction: Vector2):
 		return "right"
 	return "down"
 
-func animates_monster(direction: Vector2):
-	if direction != Vector2.ZERO:
-		last_direction = direction
+func animates_monster(direction_var: Vector2):
+	if direction_var != Vector2.ZERO:
+		last_direction = direction_var
 		
 		# Choose walk animation based on movement direction
 		var animation = get_animation_direction(last_direction) + "_walk"

@@ -2,11 +2,11 @@ extends Node2D
 
 # Nodes references
 var tilemap
-var tree_tilemap
+var tilemap2
 
 # Spawner variables
-export var spawn_area : Rect2 = Rect2(-1400, -1400, 4000, 4200)
-export var start_zombies = 25
+export var spawn_area : Rect2 = Rect2(-500, -1000, 1000, 2000)
+export var start_zombies = 10
 var zombie_scene = preload("res://Characters/Zombie.tscn")
 
 # Random number generator
@@ -15,8 +15,8 @@ var rng = RandomNumberGenerator.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Get tilemaps references
-	#tilemap = get_tree().root.get_node("root/TileMap")
-	#tree_tilemap = get_tree().root.get_node("Root/Tree TileMap")
+	tilemap = get_tree().root.get_node("/root/MainScene/TileMap")
+	tilemap2 = get_tree().root.get_node("/root/MainScene/TileMap2")
 	
 	# Initialize random number generator
 	rng.randomize()
@@ -27,18 +27,16 @@ func _ready():
 	
 func test_position(position : Vector2):
 	# Check if the cell type in this position is grass or sand
-	#var cell_coord = tilemap.world_to_map(position)
-	#var cell_type_id = tilemap.get_cellv(cell_coord)
-	#var grass_or_sand = (cell_type_id == tilemap.tile_set.find_tile_by_name("Grass")) || (cell_type_id == tilemap.tile_set.find_tile_by_name("Sand"))
+	var cell_coord = tilemap.world_to_map(position)
+	var cell_type_id = tilemap.get_cellv(cell_coord)
+	var floor_tile = (cell_type_id == tilemap.tile_set.find_tile_by_name("floor"))
 	
-	# Check if there's a tree in this position
-	#cell_coord = tree_tilemap.world_to_map(position)
-	#cell_type_id = tree_tilemap.get_cellv(cell_coord)
-	#var no_trees = (cell_type_id != tilemap.tile_set.find_tile_by_name("Tree"))
+	cell_coord = tilemap2.world_to_map(position)
+	cell_type_id = tilemap2.get_cellv(cell_coord)
+	var grass = (cell_type_id == tilemap2.tile_set.find_tile_by_name("tilemap2"))
 	
-	# If the two conditions are true, the position is valid
-	#return grass_or_sand and no_trees
-	return true
+	# If one of the two conditions are true, the position is valid
+	return floor_tile or grass
 
 func instance_zombie():
 	# Instance the zombie scene and add it to the scene tree
