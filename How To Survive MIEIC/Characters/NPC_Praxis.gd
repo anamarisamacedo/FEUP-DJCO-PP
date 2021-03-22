@@ -10,6 +10,7 @@ var dialogue_state = 0
 var beerFound = false
 var dialoguePopup
 var player
+var alreadyTalked = false
 
 # Random number generator
 var rng = RandomNumberGenerator.new()
@@ -28,14 +29,16 @@ func _ready():
 
 func talk(answer = ""):
 	dialoguePopup.npc = self
-	dialoguePopup.npc_name = "Omoletis Finus"
+	dialoguePopup.npc_name = "Stephen Hawking"
 	
 	# Show the current dialogue
 	match quest_status:
 		QuestStatus.NOT_STARTED:
 			match dialogue_state:
 				0:
-					player.talked_to_student()
+					if alreadyTalked == false:
+						player.talked_to_student()
+						alreadyTalked = true
 					if player.given_beers > 5:
 						# Update dialogue tree state
 						dialogue_state = 1
@@ -91,9 +94,6 @@ func talk(answer = ""):
 					dialogue_state = 5
 					# Show dialogue popup
 					dialoguePopup.dialogue = "Damn, you're the best, I'm going to tell my friends about you."
-					# Update Player XP
-					player.add_social(xp_increase)
-					player.remove_beer()
 					dialoguePopup.answers = "[A] Thank you!"
 					dialoguePopup.open()
 				5:
@@ -104,7 +104,7 @@ func talk(answer = ""):
 					dialoguePopup.close()
 					# Add XP to the player. 
 					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
-					player.add_social(10)
+					player.remove_beer()
 		QuestStatus.STARTED:
 			match dialogue_state:
 				0:

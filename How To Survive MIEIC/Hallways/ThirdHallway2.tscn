@@ -1,19 +1,20 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Sprites/Tiles/door.png" type="Texture" id=2]
+[ext_resource path="res://Collectables/Beer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hallways/ThirdHallway2.gd" type="Script" id=4]
 [ext_resource path="res://Sprites/Tiles/elevator.png" type="Texture" id=5]
 [ext_resource path="res://Characters/Zombie.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 33.7425, 50.1954 )
+extents = Vector2( 33.7425, 56.3412 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 32.0773, 49.8502 )
+extents = Vector2( 32.0773, 51.6622 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 57.4199, 52.5417 )
+extents = Vector2( 56.8771, 54.9898 )
 
 [node name="ThirdHallway2" type="Node2D"]
 position = Vector2( 0, 100 )
@@ -27,10 +28,13 @@ tile_data = PoolIntArray( 0, 23, 0, 1, 23, 0, 2, 23, 0, 3, 23, 0, 4, 23, 0, 5, 2
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 format = 1
-tile_data = PoolIntArray( 65536, 21, 0, 65537, 21, 0, 65538, 21, 0, 65539, 21, 0, 65541, 21, 0, 65542, 21, 0, 65543, 21, 0, 65544, 21, 0, 65545, 21, 0, 65546, 21, 0, 65547, 21, 0, 65548, 21, 0, 65549, 21, 0, 65550, 21, 0, 65551, 21, 0, 196607, 16, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 131083, 1, 0, 131084, 1, 0, 131085, 1, 0, 131086, 1, 0, 131087, 1, 0, 131088, 15, 0, 262143, 16, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 15, 0, 327679, 16, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 15, 0, 393215, 16, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 327690, 1, 0, 327691, 1, 0, 327692, 1, 0, 327693, 1, 0, 327694, 1, 0, 327695, 1, 0, 327696, 15, 0, 393216, 20, 0, 393217, 20, 0, 393218, 20, 0, 393219, 20, 0, 393220, 20, 0, 393221, 20, 0, 393222, 20, 0, 393223, 20, 0, 393224, 20, 0, 393225, 20, 0, 393226, 20, 0, 393227, 20, 0, 393228, 20, 0, 393229, 20, 0, 393230, 20, 0, 393231, 20, 0 )
+tile_data = PoolIntArray( 65536, 21, 0, 65537, 21, 0, 65538, 21, 0, 65539, 21, 0, 65541, 21, 0, 65542, 21, 0, 65545, 21, 0, 65546, 21, 0, 65547, 21, 0, 65548, 21, 0, 65549, 21, 0, 65550, 21, 0, 65551, 21, 0, 196607, 16, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 131083, 1, 0, 131084, 1, 0, 131085, 1, 0, 131086, 1, 0, 131087, 1, 0, 131088, 15, 0, 262143, 16, 0, 196608, 1, 0, 196609, 1, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 15, 0, 327679, 16, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262154, 1, 0, 262155, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 15, 0, 393215, 16, 0, 327680, 1, 0, 327681, 1, 0, 327682, 1, 0, 327683, 1, 0, 327684, 1, 0, 327685, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 327690, 1, 0, 327691, 1, 0, 327692, 1, 0, 327693, 1, 0, 327694, 1, 0, 327695, 1, 0, 327696, 15, 0, 393216, 20, 0, 393217, 20, 0, 393218, 20, 0, 393219, 20, 0, 393220, 20, 0, 393221, 20, 0, 393222, 20, 0, 393223, 20, 0, 393224, 20, 0, 393225, 20, 0, 393226, 20, 0, 393227, 20, 0, 393228, 20, 0, 393229, 20, 0, 393230, 20, 0, 393231, 20, 0 )
+
+[node name="Beer" parent="." instance=ExtResource( 3 )]
+position = Vector2( 46.3713, 177.855 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 524.718, 255.632 )
+position = Vector2( 520.977, 329.283 )
 
 [node name="Door1" type="Area2D" parent="."]
 position = Vector2( 1.5874, 1.5874 )
@@ -76,20 +80,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Elevator" type="Area2D" parent="."]
-position = Vector2( 526.819, 68.974 )
+[node name="Elevator2" type="Area2D" parent="."]
+position = Vector2( 526.025, 61.8307 )
 
-[node name="elevator" type="Sprite" parent="Elevator"]
-position = Vector2( 3.31091, -4.27766 )
-scale = Vector2( 1.52427, 1.31628 )
+[node name="elevator" type="Sprite" parent="Elevator2"]
+position = Vector2( -6.01507, 5.24673 )
+scale = Vector2( 1.55414, 1.35005 )
 texture = ExtResource( 5 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator"]
-position = Vector2( -4.75685, 5.94603 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator2"]
+position = Vector2( -13.1643, 17.2669 )
 shape = SubResource( 3 )
 
 [node name="Zombie" parent="." instance=ExtResource( 6 )]
-position = Vector2( 282.263, 340.237 )
+position = Vector2( 270.765, 240.823 )
 [connection signal="body_entered" from="Door1" to="." method="_on_Door1_body_entered"]
 [connection signal="body_entered" from="Door2" to="." method="_on_Door2_body_entered"]
-[connection signal="body_entered" from="Elevator" to="." method="_on_Elevator_body_entered"]
+[connection signal="body_entered" from="Elevator2" to="." method="_on_Elevator2_body_entered"]

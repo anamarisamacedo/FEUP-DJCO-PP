@@ -15,7 +15,7 @@ extents = Vector2( 32.0773, 49.8502 )
 extents = Vector2( 21.151, 136.414 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 57.4199, 56.0082 )
+extents = Vector2( 64.8456, 56.0082 )
 
 [node name="ThirdHallway" type="Node2D"]
 position = Vector2( 0, 100 )
@@ -54,22 +54,22 @@ __meta__ = {
 }
 
 [node name="Door2" type="Area2D" parent="."]
-position = Vector2( 772.362, 79.8599 )
+position = Vector2( 553.136, 83.6397 )
 
 [node name="door2" type="Sprite" parent="Door2"]
-position = Vector2( 6.51141, -2.342 )
+position = Vector2( -4.82788, -3.60194 )
 scale = Vector2( 0.493993, 0.473991 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door2"]
-position = Vector2( 9.65918, -0.728135 )
+position = Vector2( -6.71973, -4.50789 )
 shape = SubResource( 2 )
 
 [node name="Label" type="Label" parent="Door2"]
-margin_left = -9.65415
-margin_top = -64.7397
-margin_right = 30.3459
-margin_bottom = -50.7397
+margin_left = -18.998
+margin_top = -68.0768
+margin_right = 21.002
+margin_bottom = -54.0768
 text = "B031"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -84,15 +84,15 @@ scale = Vector2( 2, 1 )
 shape = SubResource( 3 )
 
 [node name="Elevator" type="Area2D" parent="."]
-position = Vector2( 526.819, 68.974 )
+position = Vector2( 807.781, 76.5335 )
 
 [node name="elevator" type="Sprite" parent="Elevator"]
-position = Vector2( 3.31091, -4.27766 )
-scale = Vector2( 1.52427, 1.31628 )
+position = Vector2( 36.4138, -8.74583 )
+scale = Vector2( 1.54343, 1.3585 )
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator"]
-position = Vector2( -4.75685, 5.94603 )
+position = Vector2( 31.891, -2.37524 )
 shape = SubResource( 4 )
 
 [node name="Position2D" type="Position2D" parent="."]

@@ -26,6 +26,11 @@ animations = [ {
 "name": "down_walk",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "left_idle",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 3 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "left_walk",
@@ -54,11 +59,6 @@ animations = [ {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "up_walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "left_idle",
 "speed": 5.0
 } ]
 

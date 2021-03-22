@@ -10,7 +10,7 @@ var dialogue_state = 0
 var beerFound = false
 var dialoguePopup
 var player
-
+var alreadyTalked = false
 # Random number generator
 var rng = RandomNumberGenerator.new()
 
@@ -28,14 +28,16 @@ func _ready():
 
 func talk(answer = ""):
 	dialoguePopup.npc = self
-	dialoguePopup.npc_name = "Omoletis Finus"
+	dialoguePopup.npc_name = "Mark Zuckerberg"
 	
 	# Show the current dialogue
 	match quest_status:
 		QuestStatus.NOT_STARTED:
 			match dialogue_state:
 				0:
-					player.talked_to_student()
+					if alreadyTalked == false:
+						player.talked_to_student()
+						alreadyTalked = true
 					# Update dialogue tree state
 					dialogue_state = 1
 					# Show dialogue popup

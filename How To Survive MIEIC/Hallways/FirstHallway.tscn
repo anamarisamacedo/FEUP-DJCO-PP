@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Sprites/Tiles/door.png" type="Texture" id=2]
+[ext_resource path="res://Collectables/Beer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hallways/FirstHallway.gd" type="Script" id=4]
 [ext_resource path="res://Characters/Zombie.tscn" type="PackedScene" id=5]
 
@@ -84,7 +85,10 @@ scale = Vector2( 2, 1 )
 shape = SubResource( 3 )
 
 [node name="Zombie" parent="." instance=ExtResource( 5 )]
-position = Vector2( 517.643, 162.806 )
+position = Vector2( 508.119, 254.875 )
+
+[node name="Beer" parent="." instance=ExtResource( 3 )]
+position = Vector2( 987.303, 260.386 )
 [connection signal="body_entered" from="Door1" to="." method="_on_Door1_body_entered"]
 [connection signal="body_entered" from="Door2" to="." method="_on_Door2_body_entered"]
 [connection signal="body_entered" from="Back" to="." method="_on_Back_body_entered"]

@@ -37,7 +37,6 @@ func _deferred_goto_scene(path):
 
 	# Instance the new scene.
 	current_scene = s.instance()
-	print(current_scene.name)
 	# Add it to the active scene, as child of root.
 	get_tree().get_root().add_child(current_scene)
 
