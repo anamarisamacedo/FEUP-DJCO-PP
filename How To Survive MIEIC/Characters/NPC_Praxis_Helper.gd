@@ -36,16 +36,7 @@ func talk(answer = ""):
 			match dialogue_state:
 				0:
 					player.talked_to_student()
-					if player.given_beers > -1:
-						# Update dialogue tree state
-						dialogue_state = 1
-						quest_status = QuestStatus.COMPLETED
-						player.secret_pass_exam()
-						# Show dialogue popup
-						dialoguePopup.dialogue = "Hey! I hear you've been giving beers around. You're cool bro! Here's a little secret as a thank you: if you want to pass the final exam, just go with option C and the 10 is garanteed."
-						dialoguePopup.answers = "[A] Thank you bro, you're really cool!"
-						dialoguePopup.open()
-					elif player.number_beers > 0:
+					if player.number_beers > 0:
 						# Update dialogue tree state
 						dialogue_state = 4
 						# Show dialogue popup

@@ -16,6 +16,7 @@ var facingDir = Vector2()
 var timer
 var number_beers = 0
 var number_books = 0
+var given_beers = 0
 
 var talkedWithCarlos = false
 
@@ -121,6 +122,7 @@ func add_beer():
 	
 func remove_beer():
 	number_beers -= 1
+	given_beers += 1
 	emit_signal("player_beers_changed", self)
 	
 func add_book():
@@ -140,3 +142,6 @@ func talked_to_student():
 func completed_project():
 	projects_completed += 1
 	challenges.update_challenge(3, projects_completed)
+
+func secret_pass_exam():
+	challenges.add_secret_challenge("Discover how to pass the exam with 0 effort")

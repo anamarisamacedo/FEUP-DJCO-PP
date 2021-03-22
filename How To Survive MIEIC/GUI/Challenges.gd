@@ -24,6 +24,7 @@ var challenges = [
 ]
 
 var SecretItemList = [
+	"Discover how to pass the exam with 0 effort", #dar 5 cervejas a estudantes
 	"Convencer um Prof a Subir-te a Nota", #através de um diálogo elaborado
 	"Encontrar os Apontamentos Mágicos", #estão encondidos algures na FEUP e permitem completar challenges académicos automaticamente
 	"Encontrar o Fantasma da FEUP", #só engraçado -> o fantasma conta-te histórias engraçadas da FEUP
@@ -44,8 +45,6 @@ func _ready():
 		item_list.add_item(challenge_to_string(challenge_id), null, false)
 		item_list.set_item_custom_bg_color(challenge_id, Color(0.6, 0, 0, 1))
 		item_list.set_item_custom_fg_color(challenge_id, Color(1, 1, 1, 1))
-		
-	add_secret_challenge("Secret Challenge 1")
 
 func expand():
 	is_expanded = !is_expanded
