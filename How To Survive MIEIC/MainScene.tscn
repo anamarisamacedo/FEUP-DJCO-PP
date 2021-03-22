@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Characters/ZombieSpawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://GUI/CameraFollow.gd" type="Script" id=3]
 [ext_resource path="res://Characters/NPC_Praxis.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Collectables/Beer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Characters/NPC_Praxis_Helper.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Characters/NPC_Professor.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Collectables/Book.tscn" type="PackedScene" id=14]
 [ext_resource path="res://MainScene.gd" type="Script" id=22]
@@ -40,24 +41,6 @@ script = ExtResource( 3 )
 
 [node name="Book" parent="Objects" instance=ExtResource( 14 )]
 position = Vector2( -218.725, -366.122 )
-
-[node name="Book2" parent="Objects" instance=ExtResource( 14 )]
-position = Vector2( 381.275, -534.122 )
-
-[node name="Book3" parent="Objects" instance=ExtResource( 14 )]
-position = Vector2( 157.275, -418.122 )
-
-[node name="Book4" parent="Objects" instance=ExtResource( 14 )]
-position = Vector2( 497.275, -454.122 )
-
-[node name="Book5" parent="Objects" instance=ExtResource( 14 )]
-position = Vector2( 273.275, -338.122 )
-
-[node name="Book6" parent="Objects" instance=ExtResource( 14 )]
-position = Vector2( 409.275, -326.122 )
-
-[node name="Book7" parent="Objects" instance=ExtResource( 14 )]
-position = Vector2( 185.275, -210.122 )
 
 [node name="Beer3" parent="Objects" instance=ExtResource( 5 )]
 position = Vector2( -533.225, -49.2291 )
@@ -112,6 +95,9 @@ texture = ExtResource( 26 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideDoor"]
 position = Vector2( 0.107147, 4.8595 )
 shape = SubResource( 2 )
+
+[node name="NPC_Praxis" parent="." instance=ExtResource( 6 )]
+position = Vector2( 352, -251.17 )
 [connection signal="body_entered" from="SecondHallway" to="." method="_on_SecondHallway_body_entered"]
 [connection signal="body_entered" from="FirstHallway" to="." method="_on_FirstHallway_body_entered"]
 [connection signal="body_entered" from="ThirdHallway" to="." method="_on_ThirdHallway_body_entered"]

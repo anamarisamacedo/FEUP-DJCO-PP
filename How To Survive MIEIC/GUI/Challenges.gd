@@ -16,11 +16,11 @@ var ChallengeCountable = 3
 var ChallengeCurrent = 4
 var ChallengeMax = 5
 var challenges = [
-	[0, "Recolher 5 Apontamentos", 0, true, 0, 5],
-	[1, "Recolher 5 Finos", 0, true, 0, 5],
-	[2, "Conversar com 5 Estudantes", 0, true, 0, 5],
-	[3, "Entregar 3 Projetos", 0, true, 0, 3],
-	[4, "Passar a um Teste", 0, false]
+	[0, "Gather 5 Books", 0, true, 0, 5],
+	[1, "Gather 5 Beers", 0, true, 0, 5],
+	[2, "Talk with 4 Students", 0, true, 0, 5],
+	[3, "Deliver 3 Projects", 0, true, 0, 3],
+	[4, "Pass the Final Exam", 0, false]
 ]
 
 var SecretItemList = [

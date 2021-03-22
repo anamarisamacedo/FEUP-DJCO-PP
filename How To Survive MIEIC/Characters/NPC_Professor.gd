@@ -106,7 +106,6 @@ func talk(answer = ""):
 					dialoguePopup.close()
 					# Add XP to the player. 
 					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
-					player.add_study(10)
 				6: 
 					# Update dialogue tree state
 					dialogue_state = 0

@@ -36,7 +36,7 @@ func talk(answer = ""):
 			match dialogue_state:
 				0:
 					player.talked_to_student()
-					if player.given_beers > -1:
+					if player.given_beers > 5:
 						# Update dialogue tree state
 						dialogue_state = 1
 						quest_status = QuestStatus.COMPLETED

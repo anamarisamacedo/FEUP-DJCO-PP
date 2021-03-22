@@ -36,125 +36,65 @@ func talk(answer = ""):
 			match dialogue_state:
 				0:
 					player.talked_to_student()
-					if player.number_beers > 0:
-						# Update dialogue tree state
-						dialogue_state = 4
-						# Show dialogue popup
-						dialoguePopup.dialogue = "Hey! Do you want to get me a beer?"
-						dialoguePopup.answers = "[A] Yes, here it is!  [B] Not really"
-						dialoguePopup.open()
-					else:
-						# Update dialogue tree state
-						dialogue_state = 1
-						# Show dialogue popup
-						dialoguePopup.dialogue = "Hey! Do you want to get me a beer?"
-						dialoguePopup.answers = "[A] Ok  [B] Not really"
-						dialoguePopup.open()
+					# Update dialogue tree state
+					dialogue_state = 1
+					# Show dialogue popup
+					dialoguePopup.dialogue = "Hey! Do you need some help?"
+					dialoguePopup.answers = "[A] Yes.  [B] Not really"
+					dialoguePopup.open()
 				1:
 					match answer:
 						"A":
 							# Update dialogue tree state
 							dialogue_state = 2
 							# Show dialogue popup
-							dialoguePopup.dialogue = "Cool. Try to find it and then bring it to me."
-							dialoguePopup.answers = "[A] Ok"
+							dialoguePopup.dialogue = "What do you want to know?"
+							dialoguePopup.answers = "[A] How to I do my Final Exam? [B] How do I deliver projects?"
 							dialoguePopup.open()
 						"B":
 							# Update dialogue tree state
 							dialogue_state = 3
 							# Show dialogue popup
-							dialoguePopup.dialogue = "Ok. If you change your mind, let me know."
+							dialoguePopup.dialogue = "Ok. If you need anything, I'll be around."
 							dialoguePopup.answers = "[A] Ok, bye"
 							dialoguePopup.open()
 				2:
-					# Update dialogue tree state
-					dialogue_state = 0
-					quest_status = QuestStatus.STARTED
-					# Close dialogue popup
-					dialoguePopup.close()
+					match answer:
+						"A":
+							# Update dialogue tree state
+							dialogue_state = 4
+							# Show dialogue popup
+							dialoguePopup.dialogue = "You need to go to room B130 and find the exam paper."
+							dialoguePopup.answers = "[A] Thank you. Bye [B] Thank you. I have another doubt."
+							dialoguePopup.open()
+						"B":
+							# Update dialogue tree state
+							dialogue_state = 4
+							# Show dialogue popup
+							dialoguePopup.dialogue = "You need to talk with the professors to get the assignments. Professor Carlos, Alberto, Augusto and Diogo usually have projects for the students."
+							dialoguePopup.answers = "[A] Thank you. Bye [B] Thank you. I have another doubt."
+							dialoguePopup.open()
 				3:
 					# Update dialogue tree state
 					dialogue_state = 0
 					# Close dialogue popup
 					dialoguePopup.close()
 				4:
-					# Update dialogue tree state
-					dialogue_state = 5
-					# Show dialogue popup
-					dialoguePopup.dialogue = "Damn, you're the best, I'm going to tell my friends about you."
-					# Update Player XP
-					player.add_social(xp_increase)
-					player.remove_beer()
-					dialoguePopup.answers = "[A] Thank you!"
-					dialoguePopup.open()
-				5:
-					# Update dialogue tree state
-					dialogue_state = 0
-					quest_status = QuestStatus.COMPLETED
-					# Close dialogue popup
-					dialoguePopup.close()
-					# Add XP to the player. 
-					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
-					player.add_social(10)
-		QuestStatus.STARTED:
-			match dialogue_state:
-				0:
-					# Update dialogue tree state
-					dialogue_state = 1
-					# Show dialogue popup
-					dialoguePopup.dialogue = "Did you find the beer"
-					if player.number_beers > 0:
-						dialoguePopup.answers = "[A] Yes! [B] Not really"
-					else:
-						dialoguePopup.answers = "[A] Nope"
-					dialoguePopup.open()
-				1:
-					if player.number_beers > 0 and answer == "A":
-						# Update dialogue tree state
-						dialogue_state = 2
-						# Show dialogue popup
-						dialoguePopup.dialogue = "Damn, you're the best, I'm going to tell my friends about you."
-						# Update Player XP
-						player.add_social(xp_increase)
-						player.remove_beer()
-						dialoguePopup.answers = "[A] Thank you"
-						dialoguePopup.open()
-					else:
-						# Update dialogue tree state
-						dialogue_state = 3
-						# Show dialogue popup
-						dialoguePopup.dialogue = "C'mon, you need to find it."
-						dialoguePopup.answers = "[A] Ok."
-						dialoguePopup.open()
-				2:
-					# Update dialogue tree state
-					dialogue_state = 0
-					quest_status = QuestStatus.COMPLETED
-					# Close dialogue popup
-					dialoguePopup.close()
-					# Add XP to the player. 
-					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
-					
-					player.add_social(10)
-				3:
-					# Update dialogue tree state
-					dialogue_state = 0
-					# Close dialogue popup
-					dialoguePopup.close()
-		QuestStatus.COMPLETED:
-			match dialogue_state:
-				0:
-					# Update dialogue tree state
-					dialogue_state = 1
-					# Show dialogue popup
-					dialoguePopup.dialogue = "Thanks again, bro!"
-					dialoguePopup.answers = "[A] Bye"
-					dialoguePopup.open()
-				1:
-					# Update dialogue tree state
-					dialogue_state = 0
-					# Close dialogue popup
-					dialoguePopup.close()
+					match answer:
+						"B":
+							# Update dialogue tree state
+							dialogue_state = 2
+							# Show dialogue popup
+							dialoguePopup.dialogue = "What do you want to know?"
+							dialoguePopup.answers = "[A] How to I do my Final Exam? [B] How do I deliver projects?"
+							dialoguePopup.open()
+						"A":
+							# Update dialogue tree state
+							dialogue_state = 3
+							# Show dialogue popup
+							dialoguePopup.dialogue = "Ok. If you need anything, I'll be around."
+							dialoguePopup.answers = "[A] Ok, bye"
+							dialoguePopup.open()
 
 func _physics_process(delta):
 	var movement = direction * speed * delta
