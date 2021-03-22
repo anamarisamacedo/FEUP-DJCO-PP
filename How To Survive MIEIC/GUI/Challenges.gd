@@ -131,12 +131,29 @@ func update_challenge(challenge_id, new_current):
 
 func challenge_to_string(challenge_id):
 	var item = challenges[challenge_id]
+	print(item)
 	var string_item = item[ChallengeDescription]
 	if item[ChallengeCountable] && item[ChallengeCompleted] == 1:
-		for i in range(85 - item[ChallengeDescription].length()*2.75):
+		for i in range(80 - item[ChallengeDescription].length()*2.75):
 			string_item += " "
 		string_item += str(item[ChallengeCurrent]) + "/" + str(item[ChallengeMax])
+	print(string_item)
 	return string_item
 	
 func restart_challenges():
-	pass
+	challenges = [
+		[0, "Gather 5 Books", 0, true, 0, 5],
+		[1, "Gather 5 Beers", 0, true, 0, 5],
+		[2, "Talk with 4 Students", 0, true, 0, 5],
+		[3, "Deliver 3 Projects", 0, true, 0, 3],
+		[4, "Pass the Final Exam", 0, false]
+	]
+	
+	print(challenges)
+	item_list.clear()
+
+	for challenge_id in range(challenges.size()):
+		item_list.add_item(challenge_to_string(challenge_id), null, false)
+		item_list.set_item_custom_bg_color(challenge_id, Color(0.6, 0, 0, 1))
+		item_list.set_item_custom_fg_color(challenge_id, Color(1, 1, 1, 1))
+

@@ -153,6 +153,13 @@ func restart():
 	number_books = 0
 	given_beers = 0
 	b210key = false
+	talkedWithCarlos = false
+
+	total_books = 0
+	total_beers = 0
+	students_talked_to = 0
+	projects_completed = 0
+	
 	emit_signal("player_books_changed", self)
 	emit_signal("player_beers_changed", self)
 	emit_signal("player_stats_changed", self)
