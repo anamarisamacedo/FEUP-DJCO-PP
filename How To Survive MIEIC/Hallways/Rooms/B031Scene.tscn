@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://tileset2.tres" type="TileSet" id=3]
 [ext_resource path="res://Hallways/Rooms/B0301Scene.gd" type="Script" id=4]
@@ -46,13 +45,10 @@ tile_set = ExtResource( 3 )
 format = 1
 tile_data = PoolIntArray( -65531, 536870916, 0, 65537, 536870921, 0, 196611, 536870918, 0, 196614, 536870918, 0, 327683, 536870919, 0, 327686, 536870919, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 143.834, 439.938 )
-
 [node name="back" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="back"]
-position = Vector2( 130.813, 543.255 )
+position = Vector2( 164.831, 557.114 )
 shape = SubResource( 1 )
 
 [node name="Shelf2" type="Area2D" parent="."]
@@ -96,5 +92,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Book = SubResource( 4 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 167.569, 452.311 )
 [connection signal="body_entered" from="back" to="." method="_on_back_body_entered"]
 [connection signal="body_entered" from="Shelf2" to="." method="_on_Shelf2_body_entered"]

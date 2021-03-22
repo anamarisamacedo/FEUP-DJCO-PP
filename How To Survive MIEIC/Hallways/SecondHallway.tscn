@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Sprites/Tiles/door.png" type="Texture" id=2]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hallways/SecondHallway.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -72,9 +71,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 74.05, 236.625 )
-
 [node name="Back" type="Area2D" parent="."]
 position = Vector2( -39.685, 244.46 )
 
@@ -82,6 +78,9 @@ position = Vector2( -39.685, 244.46 )
 position = Vector2( 15.874, 22.2236 )
 scale = Vector2( 2, 1 )
 shape = SubResource( 3 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 72.317, 250.587 )
 [connection signal="body_entered" from="Door1" to="." method="_on_Door1_body_entered"]
 [connection signal="body_entered" from="Door2" to="." method="_on_Door2_body_entered"]
 [connection signal="body_entered" from="Back" to="." method="_on_Back_body_entered"]

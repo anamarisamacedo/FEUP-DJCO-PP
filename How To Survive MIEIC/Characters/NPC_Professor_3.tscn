@@ -16,37 +16,37 @@ region = Rect2( 96, 0, 48, 46 )
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 48, 0, 48, 46 )
+region = Rect2( 48, 46, 48, 46 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 48, 46, 48, 46 )
+region = Rect2( 48, 92, 48, 46 )
 
 [sub_resource type="AtlasTexture" id=5]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 138, 48, 46 )
+region = Rect2( 0, 92, 48, 46 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 96, 138, 48, 46 )
+region = Rect2( 96, 92, 48, 46 )
 
 [sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 48, 138, 48, 46 )
+region = Rect2( 48, 0, 48, 46 )
 
 [sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 92, 48, 46 )
+region = Rect2( 0, 138, 48, 46 )
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 96, 92, 48, 46 )
+region = Rect2( 96, 138, 48, 46 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
@@ -61,7 +61,7 @@ region = Rect2( 96, 46, 48, 46 )
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 48, 92, 48, 46 )
+region = Rect2( 48, 138, 48, 46 )
 
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
@@ -72,27 +72,27 @@ animations = [ {
 }, {
 "frames": [ SubResource( 3 ) ],
 "loop": true,
-"name": "down_idle",
+"name": "left_idle",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 4 ) ],
 "loop": true,
-"name": "left_idle",
+"name": "right_idle",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
-"name": "up_walk",
+"name": "right_walk",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 7 ) ],
 "loop": true,
-"name": "up_idle",
+"name": "down_idle",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
-"name": "right_walk",
+"name": "up_walk",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 10 ), SubResource( 11 ) ],
@@ -102,7 +102,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 12 ) ],
 "loop": true,
-"name": "right_idle",
+"name": "up_idle",
 "speed": 5.0
 } ]
 

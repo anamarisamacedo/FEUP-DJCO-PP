@@ -10,9 +10,8 @@ var seconds_label
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	mainscene = get_tree().root.get_node("/root/MainScene")
-	minutes_label = get_tree().root.get_node("/root/MainScene/CanvasLayer/Timer/Minutes")
-	seconds_label = get_tree().root.get_node("/root/MainScene/CanvasLayer/Timer/Seconds")
+	minutes_label = get_tree().root.get_node("/root/Global/CanvasLayer/Timer/Minutes")
+	seconds_label = get_tree().root.get_node("/root/Global/CanvasLayer/Timer/Seconds")
 	wait_time = 1.0
 	connect("timeout", self, "update")
 	restart()

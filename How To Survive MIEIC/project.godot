@@ -19,6 +19,11 @@ config/name="Surviving MIEIC"
 run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global.tscn"
+GlobalVariables="*res://GlobalVariables.gd"
+
 [input]
 
 move_left={

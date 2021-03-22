@@ -22,9 +22,8 @@ var next_attack_time = 0
 var current_scene
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	current_scene = get_tree().get_current_scene().get_name()
-	print(current_scene)
-	player = get_tree().root.get_node("/root/"+current_scene+"/Player")
+	#current_scene = get_tree().get_current_scene().get_name()
+	player = get_tree().root.get_node("/root/Global/Player")
 	rng.randomize()
 
 func _on_Timer_timeout():
@@ -111,6 +110,5 @@ func _on_AnimatedSprite_animation_finished():
 func _on_AnimatedSprite_frame_changed():
 	if $AnimatedSprite.animation.ends_with("_attack") and $AnimatedSprite.frame == 1:
 		var target = $RayCast2D.get_collider()
-		print(target)
 		if target != null and target.name == "Player" and player.life > 0:
 			player.hit(attack_damage)

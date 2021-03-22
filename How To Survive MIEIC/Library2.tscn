@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://tileset2.tres" type="TileSet" id=3]
 [ext_resource path="res://Library2.gd" type="Script" id=4]
@@ -31,9 +30,6 @@ limit_right = 1040
 limit_bottom = 653
 script = ExtResource( 6 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 533.166, 82.7957 )
-
 [node name="stair" type="Area2D" parent="."]
 position = Vector2( 532.758, -56.1266 )
 
@@ -48,6 +44,9 @@ region_rect = Rect2( 94.542, 384.48, 97.3334, 32 )
 position = Vector2( 7.77344, 52.2532 )
 shape = SubResource( 1 )
 
-[node name="NPC_Professor" parent="." instance=ExtResource( 7 )]
+[node name="NPC_Professor3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 537.144, 400.836 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 534.234, 82.1173 )
 [connection signal="body_entered" from="stair" to="." method="_on_elevator_body_entered"]

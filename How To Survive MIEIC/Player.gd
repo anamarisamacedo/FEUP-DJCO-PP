@@ -24,7 +24,6 @@ var mainScene
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	emit_signal("player_stats_changed", self)
-	mainScene = get_tree().root.get_node("/root/MainScene")
 		
 func _physics_process (delta):
 	
@@ -103,24 +102,20 @@ func add_life(xp):
 	
 func game_lost():
 	set_process(false)
-	mainScene.game_lost()
-	
+	GlobalVariables.game_lost()
+		
 func add_beer():
 	number_beers += 1
-	print("Beers: " + str(number_beers))
 	emit_signal("player_beers_changed", self)
 	
 func remove_beer():
 	number_beers -= 1
-	print("Beers: " +  str(number_beers))
 	emit_signal("player_beers_changed", self)
 	
 func add_book():
 	number_books += 1
-	print("Books: " + str(number_books))
 	emit_signal("player_books_changed", self)
 	
 func remove_book():
 	number_books -= 1
-	print("Books: " +  str(number_books))
 	emit_signal("player_books_changed", self)

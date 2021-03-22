@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Sprites/Tiles/door.png" type="Texture" id=2]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hallways/ThirdHallway2.gd" type="Script" id=4]
 [ext_resource path="res://Sprites/Tiles/elevator.png" type="Texture" id=5]
 [ext_resource path="res://Characters/Zombie.tscn" type="PackedScene" id=6]
@@ -74,9 +73,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 532.962, 252.181 )
-
 [node name="Elevator" type="Area2D" parent="."]
 position = Vector2( 526.819, 68.974 )
 
@@ -91,6 +87,9 @@ shape = SubResource( 3 )
 
 [node name="Zombie" parent="." instance=ExtResource( 6 )]
 position = Vector2( 282.263, 340.237 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 524.718, 232.928 )
 [connection signal="body_entered" from="Door1" to="." method="_on_Door1_body_entered"]
 [connection signal="body_entered" from="Door2" to="." method="_on_Door2_body_entered"]
 [connection signal="body_entered" from="Elevator" to="." method="_on_Elevator_body_entered"]

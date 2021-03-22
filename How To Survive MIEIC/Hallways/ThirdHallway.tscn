@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Sprites/Tiles/door.png" type="Texture" id=2]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hallways/ThirdHallway.gd" type="Script" id=4]
 [ext_resource path="res://Sprites/Tiles/elevator.png" type="Texture" id=5]
 
@@ -76,9 +75,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 74.05, 236.625 )
-
 [node name="Back" type="Area2D" parent="."]
 position = Vector2( -39.685, 244.46 )
 
@@ -98,6 +94,9 @@ texture = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Elevator"]
 position = Vector2( -4.75685, 5.94603 )
 shape = SubResource( 4 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 56.0633, 249.615 )
 [connection signal="body_entered" from="Door1" to="." method="_on_Door1_body_entered"]
 [connection signal="body_entered" from="Door2" to="." method="_on_Door2_body_entered"]
 [connection signal="body_entered" from="Back" to="." method="_on_Back_body_entered"]

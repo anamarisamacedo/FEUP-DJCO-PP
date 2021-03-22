@@ -5,7 +5,7 @@ extends Area2D
 var player
 
 func _ready():
-	player = get_tree().root.get_node("/root/MainScene/Player")
+	player = get_tree().root.get_node("/root/Global/Player")
 
 
 func _on_Book_body_entered(body):

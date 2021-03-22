@@ -4,9 +4,8 @@ var player
 var bookFound = false
 
 func _ready():
-	player = get_tree().root.get_node("/root/B031/Player")
-
-
+	player = get_tree().root.get_node("/root/Global/Player")
+	player.position = $Position2D.position
 
 func _on_Shelf2_body_entered(body):
 	if body.name == "Player":

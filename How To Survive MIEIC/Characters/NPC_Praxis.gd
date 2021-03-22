@@ -23,8 +23,8 @@ var bounce_countdown = 0
 var xp_increase = 30
 
 func _ready():
-	dialoguePopup = get_tree().root.get_node("/root/MainScene/Player/CanvasLayer/DialoguePopup")
-	player = get_tree().root.get_node("/root/MainScene/Player")
+	dialoguePopup = get_tree().root.get_node("/root/Global/Player/CanvasLayer/DialoguePopup")
+	player = get_tree().root.get_node("/root/Global/Player")
 
 func talk(answer = ""):
 	# Set Fiona's animation to "talk"
