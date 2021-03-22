@@ -27,13 +27,7 @@ func restart_game():
 	var timer = get_tree().root.get_node("/root/Global/Timer")
 	timer.restart()
 	var player = get_tree().root.get_node("/root/Global/Player")
-	player.life = player.maxXP
-	player.number_beers = 0
-	player.number_books = 0
-	player.given_beers = 0
-	player.b210key = false
-	var challenges = get_tree().root.get_node("/root/Global/CanvasLayer/Control/Challenges")
-	challenges.restart_challenges()
+	player.restart()
 	goto_scene("res://MainScene.tscn")
 
 func game_win():

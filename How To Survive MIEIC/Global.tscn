@@ -171,11 +171,9 @@ __meta__ = {
 }
 
 [node name="LifeXP" type="ColorRect" parent="CanvasLayer"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -84.0
+margin_left = 432.0
 margin_top = 48.0
-margin_right = 84.0
+margin_right = 600.0
 margin_bottom = 64.0
 color = Color( 0, 0, 0, 0.627451 )
 script = ExtResource( 10 )
@@ -189,9 +187,6 @@ margin_top = 2.0
 margin_right = 167.0
 margin_bottom = 16.0
 color = Color( 1, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Timer" type="Timer" parent="."]
 script = ExtResource( 6 )

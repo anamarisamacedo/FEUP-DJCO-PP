@@ -150,6 +150,7 @@ func talk(answer = ""):
 						"C":
 							# Update dialogue tree state
 							dialogue_state = 4
+							player.has_keys = true
 							# Show dialogue popup
 							dialoguePopup.dialogue = "That is correct! Very well student, I see you have studied! Here are the keys."
 							dialoguePopup.answers = "[A] Thank you, professor. Bye!"

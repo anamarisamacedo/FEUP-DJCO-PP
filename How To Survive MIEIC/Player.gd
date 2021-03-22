@@ -19,6 +19,7 @@ var number_books = 0
 var given_beers = 0
 
 var talkedWithCarlos = false
+var has_keys = false
 
 var challenges
 var total_books = 0
@@ -145,3 +146,14 @@ func completed_project():
 
 func secret_pass_exam():
 	challenges.add_secret_challenge("Discover how to pass the exam with 0 effort")
+	
+func restart():
+	life = maxXP
+	number_beers = 0
+	number_books = 0
+	given_beers = 0
+	b210key = false
+	emit_signal("player_books_changed", self)
+	emit_signal("player_beers_changed", self)
+	emit_signal("player_stats_changed", self)
+	challenges.restart_challenges()
