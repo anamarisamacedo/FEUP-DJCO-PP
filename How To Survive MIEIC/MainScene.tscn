@@ -39,7 +39,25 @@ script = ExtResource( 3 )
 [node name="Objects" type="Node" parent="."]
 
 [node name="Book" parent="Objects" instance=ExtResource( 14 )]
-position = Vector2( -158.725, -354.122 )
+position = Vector2( -218.725, -366.122 )
+
+[node name="Book2" parent="Objects" instance=ExtResource( 14 )]
+position = Vector2( 381.275, -534.122 )
+
+[node name="Book3" parent="Objects" instance=ExtResource( 14 )]
+position = Vector2( 157.275, -418.122 )
+
+[node name="Book4" parent="Objects" instance=ExtResource( 14 )]
+position = Vector2( 497.275, -454.122 )
+
+[node name="Book5" parent="Objects" instance=ExtResource( 14 )]
+position = Vector2( 273.275, -338.122 )
+
+[node name="Book6" parent="Objects" instance=ExtResource( 14 )]
+position = Vector2( 409.275, -326.122 )
+
+[node name="Book7" parent="Objects" instance=ExtResource( 14 )]
+position = Vector2( 185.275, -210.122 )
 
 [node name="Beer3" parent="Objects" instance=ExtResource( 5 )]
 position = Vector2( -533.225, -49.2291 )

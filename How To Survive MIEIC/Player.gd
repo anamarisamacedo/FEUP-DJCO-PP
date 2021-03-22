@@ -18,6 +18,12 @@ var number_beers = 0
 var number_books = 0
 
 var talkedWithCarlos = false
+
+var challenges
+var total_books = 0
+var total_beers = 0
+var students_talked_to = 0
+var projects_completed = 0
  
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
@@ -26,7 +32,8 @@ var mainScene
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	emit_signal("player_stats_changed", self)
-		
+	challenges = get_tree().root.get_node("/root/Global/CanvasLayer/Control/Challenges")
+
 func _physics_process (_delta):
 	
 	vel = Vector2()
@@ -108,6 +115,8 @@ func game_lost():
 		
 func add_beer():
 	number_beers += 1
+	total_beers += 1
+	challenges.update_challenge(1, total_beers)
 	emit_signal("player_beers_changed", self)
 	
 func remove_beer():
@@ -116,8 +125,18 @@ func remove_beer():
 	
 func add_book():
 	number_books += 1
+	total_books += 1
+	challenges.update_challenge(0, total_books)
 	emit_signal("player_books_changed", self)
 	
 func remove_book():
 	number_books -= 1
 	emit_signal("player_books_changed", self)
+
+func talked_to_student():
+	students_talked_to += 1
+	challenges.update_challenge(2, students_talked_to)
+
+func completed_project():
+	projects_completed += 1
+	challenges.update_challenge(3, projects_completed)

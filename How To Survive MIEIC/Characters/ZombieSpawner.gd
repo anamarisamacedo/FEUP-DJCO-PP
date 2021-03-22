@@ -6,7 +6,7 @@ var tilemap2
 
 # Spawner variables
 export var spawn_area : Rect2 = Rect2(-500, -1000, 1000, 2000)
-export var start_zombies = 10
+export var start_zombies = 5
 var zombie_scene = preload("res://Characters/Zombie.tscn")
 
 # Random number generator

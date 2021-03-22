@@ -45,9 +45,7 @@ func _ready():
 		item_list.set_item_custom_bg_color(challenge_id, Color(0.6, 0, 0, 1))
 		item_list.set_item_custom_fg_color(challenge_id, Color(1, 1, 1, 1))
 		
-		
 	add_secret_challenge("Secret Challenge 1")
-	
 
 func expand():
 	is_expanded = !is_expanded
@@ -84,8 +82,17 @@ func ReportListItem():
 	return item_list.get_selected_items()
 	
 func complete_challenge(challenge_id):
-	challenges[challenge_id][ChallengeCompleted] = 2;
+	challenges[challenge_id][ChallengeCompleted] = 2
 	item_list.set_item_custom_bg_color(challenge_id, Color(0, 0.3, 0, 1))
+	
+func is_challenge_completed(challenge_id):
+	return challenges[challenge_id][ChallengeCompleted] == 2
+
+func all_main_challenges_completed():
+	for i in range(challenges.size()):
+		if !is_challenge_completed(challenges[i][ChallengeID]):
+			return false
+	return true
 	
 func challenge_in_progress(challenge_id):
 	item_list.set_item_custom_bg_color(challenge_id, Color(0.5, 0.5, 0, 1))
@@ -101,6 +108,7 @@ func add_countable_challenge(item_content, item_current, item_max):
 	item_list.add_item(challenge_to_string(challenge_id), null, false)
 	item_list.set_item_custom_bg_color(challenge_id, Color(0.6, 0, 0, 1))
 	item_list.set_item_custom_fg_color(challenge_id, Color(1, 1, 1, 1))
+	return challenge_id
 
 func add_challenge(item_content):
 	var challenge_id = challenges.size();
@@ -115,8 +123,8 @@ func update_challenge(challenge_id, new_current):
 	if new_current >= challenges[challenge_id][ChallengeMax]:
 		complete_challenge(challenge_id)
 		count+=1
-		#if count == (challenges.size()-1) and passar testes completo:
-		#	GlobalVariables.game_win()
+		if all_main_challenges_completed():
+			GlobalVariables.game_win()
 	elif (challenges[challenge_id][ChallengeCompleted] == 0 && new_current > 0):
 		challenge_in_progress(challenge_id)
 		

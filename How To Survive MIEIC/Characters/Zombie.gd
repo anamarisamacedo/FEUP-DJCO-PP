@@ -16,7 +16,7 @@ var bounce_countdown = 0
 var other_animation_playing = false
 
 # Attack variables
-var attack_damage = 20
+var attack_damage = 10
 var attack_cooldown_time = 1500
 var next_attack_time = 0
 var current_scene

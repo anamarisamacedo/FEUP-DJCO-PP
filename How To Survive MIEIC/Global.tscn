@@ -4,7 +4,7 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/Control.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/Items/clock.png" type="Texture" id=4]
-[ext_resource path="res://GUI/Panel.gd" type="Script" id=5]
+[ext_resource path="res://GUI/Challenges.gd" type="Script" id=5]
 [ext_resource path="res://GUI/Timer.gd" type="Script" id=6]
 [ext_resource path="res://Sprites/Items/beer.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/Items/bluebook.png" type="Texture" id=8]
@@ -73,7 +73,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+[node name="Challenges" type="Panel" parent="CanvasLayer/Control"]
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 5 )
@@ -81,7 +81,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemList" type="ItemList" parent="CanvasLayer/Control/Panel"]
+[node name="ItemList" type="ItemList" parent="CanvasLayer/Control/Challenges"]
 margin_top = 18.0
 margin_right = 300.0
 margin_bottom = 118.0
@@ -89,7 +89,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Challenges"]
 margin_left = -0.420456
 margin_top = 0.840912
 margin_right = 39.5795
@@ -98,8 +98,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="show" type="Button" parent="CanvasLayer/Control/Panel/VBoxContainer"]
-margin_right = 40.0
+[node name="show" type="Button" parent="CanvasLayer/Control/Challenges/VBoxContainer"]
+margin_right = 39.0
 margin_bottom = 20.0
 text = "+"
 

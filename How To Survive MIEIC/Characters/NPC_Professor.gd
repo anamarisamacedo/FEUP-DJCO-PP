@@ -204,6 +204,7 @@ func talk(answer = ""):
 							dialoguePopup.dialogue = "Good! See you in classes."
 							dialoguePopup.answers = "[A] Ok, bye!"
 							dialoguePopup.open()
+							player.completed_project()
 					match answer:
 						"A":
 							# Update dialogue tree state
