@@ -28,4 +28,5 @@ position = Vector2( 164.111, 538.711 )
 shape = SubResource( 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 165.3, 457.845 )
 [connection signal="body_entered" from="back" to="." method="_on_back_body_entered"]

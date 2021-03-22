@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://Hallways/Rooms/B0101Scene.gd" type="Script" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://tileset2.tres" type="TileSet" id=3]
-[ext_resource path="res://Hallways/Rooms/B0201Scene.gd" type="Script" id=4]
 [ext_resource path="res://Characters/NPC_Professor_2.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -10,7 +10,7 @@ extents = Vector2( 39.5063, 25.4594 )
 
 [node name="B010" type="Node2D"]
 position = Vector2( 0, 60 )
-script = ExtResource( 4 )
+script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )

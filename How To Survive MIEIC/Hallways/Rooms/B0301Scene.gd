@@ -18,5 +18,5 @@ func _on_Shelf2_body_entered(body):
 
 func _on_back_body_entered(body):
 	if body.name == "Player":
-		get_tree().change_scene("res://Hallways/ThirdHallway2.tscn")
+		GlobalVariables.goto_scene("res://Hallways/ThirdHallway.tscn")
 

@@ -8,9 +8,9 @@ func _ready():
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
-		get_tree().change_scene("res://Outside.tscn")
+		GlobalVariables.goto_scene("res://Outside.tscn")
 
 
 func _on_elevator_body_entered(body):
 	if body.name == "Player":
-		get_tree().change_scene("res://Library2.tscn")
+		GlobalVariables.goto_scene("res://Library2.tscn")
