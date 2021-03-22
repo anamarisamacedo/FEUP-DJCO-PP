@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Characters/NPC_Praxis.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
@@ -6,12 +6,31 @@
 [ext_resource path="res://Library.gd" type="Script" id=4]
 [ext_resource path="res://Sprites/Tiles/8db104fa5a438027931a95a716882443.jpg" type="Texture" id=5]
 [ext_resource path="res://GUI/CameraLibrary.gd" type="Script" id=6]
+[ext_resource path="res://Sprites/Items/bluebook.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 95.8922, 40.8708 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 96.1406, 75.3103 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 46.0052, 49.9437 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Book"
+tracks/0/type = "value"
+tracks/0/path = NodePath("bluebook:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.4, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="Library" type="Node2D"]
 script = ExtResource( 4 )
@@ -59,5 +78,32 @@ position = Vector2( 490, 593 )
 
 [node name="NPC_Praxis" parent="." instance=ExtResource( 1 )]
 position = Vector2( 347, 126.266 )
-[connection signal="body_entered" from="back" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_entered" from="stairs" to="." method="_on_elevator_body_entered"]
+
+[node name="shelf" type="Area2D" parent="."]
+position = Vector2( 500.253, 250.127 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shelf"]
+position = Vector2( -6.60718, -7.55099 )
+shape = SubResource( 3 )
+
+[node name="bluebook" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 532.572, 216.368 )
+scale = Vector2( 2.1365, 2.35531 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="bluebook"]
+margin_left = -7.95221
+margin_top = -35.6662
+margin_right = 32.0478
+margin_bottom = -21.6662
+text = "+1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Book = SubResource( 4 )
+[connection signal="body_entered" from="back" to="." method="_on_back_body_entered"]
+[connection signal="body_entered" from="stairs" to="." method="_on_stairs_body_entered"]
+[connection signal="body_entered" from="shelf" to="." method="_on_shelf_body_entered"]

@@ -137,3 +137,6 @@ func challenge_to_string(challenge_id):
 			string_item += " "
 		string_item += str(item[ChallengeCurrent]) + "/" + str(item[ChallengeMax])
 	return string_item
+	
+func restart_challenges():
+	pass

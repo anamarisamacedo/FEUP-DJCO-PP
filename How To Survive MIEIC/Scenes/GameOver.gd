@@ -13,6 +13,7 @@ func set_title(win: bool):
 func _on_Restart_pressed():
 	get_tree().paused = false
 	GlobalVariables.goto_scene("res://MainScene.tscn")
+	GlobalVariables.remove_gameover()
 
 
 func _on_Quit_pressed():

@@ -3,20 +3,47 @@ extends Node2D
 const pause = preload("res://Scenes/PauseScene.tscn")
 const gameOverScreen = preload("res://Scenes/GameOver.tscn")
 var current_scene = null
+var bookB020Found = false
+var bookB031Found = false
+var bookLibraryFound = false
+var bookLibrary2Found = false
+var pause_menu
+var game_over
 
 func _input(event):
 	if event.is_action_pressed("pause"):
-		var pause_menu = pause.instance()
+		pause_menu = pause.instance()
 		add_child(pause_menu)
 
+func remove_pause():
+	remove_child(pause_menu)
+	restart_game()
+
+func remove_gameover():
+	remove_child(game_over)
+	restart_game()
+	
+func restart_game():
+	var timer = get_tree().root.get_node("/root/Global/Timer")
+	timer.restart()
+	var player = get_tree().root.get_node("/root/Global/Player")
+	player.life = player.maxXP
+	player.number_beers = 0
+	player.number_books = 0
+	player.given_beers = 0
+	player.b210key = false
+	var challenges = get_tree().root.get_node("/root/Global/CanvasLayer/Control/Challenges")
+	challenges.restart_challenges()
+	goto_scene("res://MainScene.tscn")
+
 func game_win():
-	var game_over = gameOverScreen.instance()
+	game_over = gameOverScreen.instance()
 	add_child(game_over)
 	game_over.set_title(true)
 	get_tree().paused = true
 
 func game_lost():
-	var game_over = gameOverScreen.instance()
+	game_over = gameOverScreen.instance()
 	add_child(game_over)
 	game_over.set_title(false)
 	get_tree().paused = true
@@ -25,6 +52,7 @@ func game_lost():
 func goto_scene(path):
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count()-1)
+	print(current_scene)
 	call_deferred("_deferred_goto_scene", path)
 
 

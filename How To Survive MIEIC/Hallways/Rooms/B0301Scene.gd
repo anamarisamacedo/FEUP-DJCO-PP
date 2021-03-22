@@ -1,7 +1,6 @@
 extends Node2D
 
 var player
-var bookFound = false
 
 func _ready():
 	player = get_tree().root.get_node("/root/Global/Player")
@@ -9,8 +8,8 @@ func _ready():
 
 func _on_Shelf2_body_entered(body):
 	if body.name == "Player":
-		if(bookFound == false):
-			bookFound = true
+		if(GlobalVariables.bookB031Found == false):
+			GlobalVariables.bookB031Found = true
 			$AnimationPlayer.play("Book")
 			player.add_book()
 
