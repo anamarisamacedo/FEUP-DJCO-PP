@@ -1,10 +1,6 @@
 extends KinematicBody2D
 
-# Variables
-var moveSpeed : int = 250
-onready var anim = $AnimatedSprite
-
-enum QuestStatus { NOT_STARTED, STARTED, COMPLETED }
+enum QuestStatus { NOT_STARTED, COMPLETED }
 var quest_status = QuestStatus.NOT_STARTED
 var dialogue_state = 0
 var beerFound = false
@@ -14,13 +10,7 @@ var player
 # Random number generator
 var rng = RandomNumberGenerator.new()
 
-# Movement variables
-export var speed = 25
-var direction : Vector2
-var last_direction = Vector2(0, 1)
-var bounce_countdown = 0
-
-var xp_increase = 30
+var alreadyTalked = false
 
 func _ready():
 	dialoguePopup = get_tree().root.get_node("/root/Global/Player/CanvasLayer/DialoguePopup")
@@ -28,123 +18,60 @@ func _ready():
 
 func talk(answer = ""):
 	dialoguePopup.npc = self
-	dialoguePopup.npc_name = "Omoletis Finus"
+	dialoguePopup.npc_name = "Mark Zuckerberg"
 	
-	# Show the current dialogue
 	match quest_status:
 		QuestStatus.NOT_STARTED:
 			match dialogue_state:
 				0:
-					player.talked_to_student()
-					if player.given_beers > 5:
-						# Update dialogue tree state
-						dialogue_state = 1
-						quest_status = QuestStatus.COMPLETED
-						player.secret_pass_exam()
-						# Show dialogue popup
-						dialoguePopup.dialogue = "Hey! I hear you've been giving beers around. You're cool bro! Here's a little secret as a thank you: if you want to pass the final exam, just go with option C and the 10 is garanteed."
-						dialoguePopup.answers = "[A] Thank you bro, you're really cool!"
-						dialoguePopup.open()
-					elif player.number_beers > 0:
-						# Update dialogue tree state
-						dialogue_state = 4
-						# Show dialogue popup
-						dialoguePopup.dialogue = "Hey! Do you want to get me a beer?"
-						dialoguePopup.answers = "[A] Yes, here it is!  [B] Not really"
-						dialoguePopup.open()
-					else:
-						# Update dialogue tree state
-						dialogue_state = 1
-						# Show dialogue popup
-						dialoguePopup.dialogue = "Hey! Do you want to get me a beer?"
-						dialoguePopup.answers = "[A] Ok  [B] Not really"
-						dialoguePopup.open()
+					if alreadyTalked == false:
+						player.talked_to_student()
+						alreadyTalked = true
+					# Update dialogue tree state
+					dialogue_state = 1
+					# Show dialogue popup
+					dialoguePopup.dialogue = "Hey! What do you want?"
+					dialoguePopup.answers = "[A] Can you help me cheat?  [B] Nothing. I'm cool!"
+					dialoguePopup.open()
 				1:
 					match answer:
 						"A":
 							# Update dialogue tree state
 							dialogue_state = 2
 							# Show dialogue popup
-							dialoguePopup.dialogue = "Cool. Try to find it and then bring it to me."
-							dialoguePopup.answers = "[A] Ok"
+							dialoguePopup.dialogue = "I'll do it for 5 beers..."
+							dialoguePopup.answers = "[A] Ok. Here are they. [B] I'm good then."
 							dialoguePopup.open()
 						"B":
 							# Update dialogue tree state
 							dialogue_state = 3
 							# Show dialogue popup
-							dialoguePopup.dialogue = "Ok. If you change your mind, let me know."
-							dialoguePopup.answers = "[A] Ok, bye"
+							dialoguePopup.dialogue = "Why did you distract me then?"
+							dialoguePopup.answers = "[A] Ups! Bye."
 							dialoguePopup.open()
 				2:
-					# Update dialogue tree state
-					dialogue_state = 0
-					quest_status = QuestStatus.STARTED
-					# Close dialogue popup
-					dialoguePopup.close()
-				3:
-					# Update dialogue tree state
-					dialogue_state = 0
-					# Close dialogue popup
-					dialoguePopup.close()
-				4:
-					# Update dialogue tree state
-					dialogue_state = 5
-					# Show dialogue popup
-					dialoguePopup.dialogue = "Damn, you're the best, I'm going to tell my friends about you."
-					# Update Player XP
-					player.add_social(xp_increase)
-					player.remove_beer()
-					dialoguePopup.answers = "[A] Thank you!"
-					dialoguePopup.open()
-				5:
-					# Update dialogue tree state
-					dialogue_state = 0
-					quest_status = QuestStatus.COMPLETED
-					# Close dialogue popup
-					dialoguePopup.close()
-					# Add XP to the player. 
-					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
-					player.add_social(10)
-		QuestStatus.STARTED:
-			match dialogue_state:
-				0:
-					# Update dialogue tree state
-					dialogue_state = 1
-					# Show dialogue popup
-					dialoguePopup.dialogue = "Did you find the beer"
-					if player.number_beers > 0:
-						dialoguePopup.answers = "[A] Yes! [B] Not really"
-					else:
-						dialoguePopup.answers = "[A] Nope"
-					dialoguePopup.open()
-				1:
-					if player.number_beers > 0 and answer == "A":
-						# Update dialogue tree state
-						dialogue_state = 2
-						# Show dialogue popup
-						dialoguePopup.dialogue = "Damn, you're the best, I'm going to tell my friends about you."
-						# Update Player XP
-						player.add_social(xp_increase)
-						player.remove_beer()
-						dialoguePopup.answers = "[A] Thank you"
-						dialoguePopup.open()
-					else:
-						# Update dialogue tree state
-						dialogue_state = 3
-						# Show dialogue popup
-						dialoguePopup.dialogue = "C'mon, you need to find it."
-						dialoguePopup.answers = "[A] Ok."
-						dialoguePopup.open()
-				2:
-					# Update dialogue tree state
-					dialogue_state = 0
-					quest_status = QuestStatus.COMPLETED
-					# Close dialogue popup
-					dialoguePopup.close()
-					# Add XP to the player. 
-					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
-					
-					player.add_social(10)
+					match answer:
+						"A":
+							dialogue_state = 3
+							
+							if player.number_beers >= 5:
+								dialoguePopup.dialogue = "Here are my answers. Now let me finish this."
+								dialoguePopup.answers = "[A] Thank you. Bye."
+								dialoguePopup.open()
+								player.remove_beer(5)
+								player.cheat()
+								quest_status = QuestStatus.COMPLETED
+							else:
+								dialoguePopup.dialogue = "You don't have enough beers, bro! Come back when you do."
+								dialoguePopup.answers = "[A] Sorry. Bye."
+								dialoguePopup.open()
+						"B":
+							# Update dialogue tree state
+							dialogue_state = 3
+							# Show dialogue popup
+							dialoguePopup.dialogue = "Do as you please. Just let me finish this test."
+							dialoguePopup.answers = "[A] Bye"
+							dialoguePopup.open()
 				3:
 					# Update dialogue tree state
 					dialogue_state = 0
@@ -156,56 +83,11 @@ func talk(answer = ""):
 					# Update dialogue tree state
 					dialogue_state = 1
 					# Show dialogue popup
-					dialoguePopup.dialogue = "Thanks again, bro!"
-					dialoguePopup.answers = "[A] Bye"
+					dialoguePopup.dialogue = "I've already given you the answer. Let me finish this exam."
+					dialoguePopup.answers = "[A] Sorry. Bye."
 					dialoguePopup.open()
 				1:
 					# Update dialogue tree state
 					dialogue_state = 0
 					# Close dialogue popup
 					dialoguePopup.close()
-
-func _physics_process(delta):
-	var movement = direction * speed * delta
-	
-	var collision = move_and_collide(movement)
-	
-	if collision != null and collision.collider.name != "Player":
-		direction = direction.rotated(rng.randf_range(PI/4, PI/2))
-		bounce_countdown = rng.randi_range(2, 5)
-		
-	animates_student(direction)
-
-func get_animation_direction(direction_var: Vector2):
-	var norm_direction = direction_var.normalized()
-	if norm_direction.y >= 0.707:
-		return "down"
-	elif norm_direction.y <= -0.707:
-		return "up"
-	elif norm_direction.x <= -0.707:
-		return "left"
-	elif norm_direction.x >= 0.707:
-		return "right"
-	return "down"
-
-func animates_student(direction_var: Vector2):
-	if direction_var != Vector2.ZERO:
-		last_direction = direction_var
-		
-		# Choose walk animation based on movement direction
-		var animation = get_animation_direction(last_direction) + "_walk"
-		
-		# Play the walk animation
-		$AnimatedSprite.play(animation)
-	else:
-		# Choose idle animation based on last movement direction and play it
-		var animation = get_animation_direction(last_direction) + "_idle"
-		$AnimatedSprite.play(animation)
-
-func _on_Timer_timeout():
-	rng.randomize()
-	var random_number = rng.randf()
-	if random_number < 0.01:
-		direction = Vector2.ZERO
-	elif random_number < 0.1:
-		direction = Vector2.DOWN.rotated(rng.randf() * 2 * PI)

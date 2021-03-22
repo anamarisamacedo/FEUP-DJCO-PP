@@ -29,7 +29,7 @@ var SecretItemList = [
 	"Encontrar os Apontamentos Mágicos", #estão encondidos algures na FEUP e permitem completar challenges académicos automaticamente
 	"Encontrar o Fantasma da FEUP", #só engraçado -> o fantasma conta-te histórias engraçadas da FEUP
 	"Matar um Zombie", #pressionando uma tecla random tipo F perto de um zombie 
-	"Copiar num Teste", #encontrar uma sala de testes e convencer um estudante a deixar-te copiar
+	"Cheat on the Exam", #encontrar uma sala de testes e convencer um estudante a deixar-te copiar
 ]
 
 var item_list
@@ -131,13 +131,11 @@ func update_challenge(challenge_id, new_current):
 
 func challenge_to_string(challenge_id):
 	var item = challenges[challenge_id]
-	print(item)
 	var string_item = item[ChallengeDescription]
 	if item[ChallengeCountable] && item[ChallengeCompleted] == 1:
 		for i in range(80 - item[ChallengeDescription].length()*2.75):
 			string_item += " "
 		string_item += str(item[ChallengeCurrent]) + "/" + str(item[ChallengeMax])
-	print(string_item)
 	return string_item
 	
 func restart_challenges():
@@ -149,9 +147,7 @@ func restart_challenges():
 		[4, "Pass the Final Exam", 0, false]
 	]
 	
-	print(challenges)
 	item_list.clear()
-
 	for challenge_id in range(challenges.size()):
 		item_list.add_item(challenge_to_string(challenge_id), null, false)
 		item_list.set_item_custom_bg_color(challenge_id, Color(0.6, 0, 0, 1))
