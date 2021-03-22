@@ -96,7 +96,7 @@ position = Vector2( -4.75685, 5.94603 )
 shape = SubResource( 4 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 56.0633, 249.615 )
+position = Vector2( 106.066, 250.409 )
 [connection signal="body_entered" from="Door1" to="." method="_on_Door1_body_entered"]
 [connection signal="body_entered" from="Door2" to="." method="_on_Door2_body_entered"]
 [connection signal="body_entered" from="Back" to="." method="_on_Back_body_entered"]

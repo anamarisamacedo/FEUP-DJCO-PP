@@ -12,7 +12,6 @@ func _on_Shelf2_body_entered(body):
 		if(bookFound == false):
 			bookFound = true
 			$AnimationPlayer.play("Book")
-			print(player)
 			player.add_book()
 
 

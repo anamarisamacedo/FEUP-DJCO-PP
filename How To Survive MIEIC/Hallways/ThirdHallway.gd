@@ -24,4 +24,4 @@ func _on_Door2_body_entered(body):
 
 func _on_Elevator_body_entered(body):
 	if body.name == "Player":
-		GlobalVariables.goto_scene("res://Hallways/ThirdHallway2.tscn")
+		get_tree().change_scene("res://Hallways/ThirdHallway2.tscn")
