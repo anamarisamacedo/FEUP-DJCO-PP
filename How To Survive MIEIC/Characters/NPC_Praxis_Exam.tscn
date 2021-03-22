@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Sprites/NPCs/praxisNPC_f_1.png" type="Texture" id=5]
-[ext_resource path="res://Characters/NPC_Praxis_Cheater.gd" type="Script" id=13]
+[ext_resource path="res://Characters/NPC_Praxis_Exam.gd" type="Script" id=13]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 12.3271
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 11.9386
 
 [node name="NPC_Praxis" type="KinematicBody2D" groups=[
 "NPCs",
@@ -13,13 +13,12 @@ scale = Vector2( 1.4, 1.4 )
 script = ExtResource( 13 )
 
 [node name="praxisNPC_f_1" type="Sprite" parent="."]
-position = Vector2( -0.642324, -0.900944 )
-scale = Vector2( 1, 1 )
+position = Vector2( -0.642324, -0.395867 )
 texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 1.3, 1.1 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
