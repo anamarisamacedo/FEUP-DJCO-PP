@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Characters/NPC_Praxis_Cheater.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Hallways/Rooms/B0201Scene.gd" type="Script" id=4]
 [ext_resource path="res://Characters/NPC_Praxis_Exam.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Characters/Exam.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Characters/NPC_Professor_Exam.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 39.5063, 25.4594 )
@@ -39,7 +40,7 @@ position = Vector2( 154.597, 456.656 )
 position = Vector2( 303.186, 186.653 )
 
 [node name="Exam" parent="." instance=ExtResource( 6 )]
-position = Vector2( 711.172, 181.213 )
+position = Vector2( 712.586, 202.426 )
 
 [node name="ExamStudents" type="Node" parent="."]
 
@@ -47,10 +48,10 @@ position = Vector2( 711.172, 181.213 )
 position = Vector2( 496.933, 242.758 )
 
 [node name="NPC_Praxis3" parent="ExamStudents" instance=ExtResource( 5 )]
-position = Vector2( 397.938, 241.344 )
+position = Vector2( 398.645, 246.294 )
 
 [node name="NPC_Praxis5" parent="ExamStudents" instance=ExtResource( 5 )]
-position = Vector2( 593.1, 240.636 )
+position = Vector2( 593.1, 243.464 )
 
 [node name="NPC_Praxis10" parent="ExamStudents" instance=ExtResource( 5 )]
 position = Vector2( 207.727, 244.879 )
@@ -72,4 +73,7 @@ position = Vector2( 298.943, 435.798 )
 
 [node name="NPC_Praxis12" parent="ExamStudents" instance=ExtResource( 5 )]
 position = Vector2( 199.948, 434.384 )
+
+[node name="NPC_Professor" parent="." instance=ExtResource( 7 )]
+position = Vector2( 828.729, 77.7817 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

@@ -19,14 +19,10 @@ func talk(answer = ""):
 			if alreadyTalked == false:
 				player.talked_to_student()
 				alreadyTalked = true
-			# Update dialogue tree state
 			dialogue_state = 1
-			# Show dialogue popup
 			dialoguePopup.dialogue = "Shushhh. Let me do my exam!"
 			dialoguePopup.answers = "[A] Sorry. Bye"
 			dialoguePopup.open()
 		1:
-			# Update dialogue tree state
 			dialogue_state = 0
-			# Close dialogue popup
 			dialoguePopup.close()

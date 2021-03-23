@@ -19,7 +19,7 @@ var challenges = [
 	[0, "Gather 5 Books", 0, true, 0, 5],
 	[1, "Gather 5 Beers", 0, true, 0, 5],
 	[2, "Talk with 4 Students", 0, true, 0, 5],
-	[3, "Deliver 3 Projects", 0, true, 0, 3],
+	[3, "Deliver 2 Projects", 0, true, 0, 2],
 	[4, "Pass the Final Exam", 0, false]
 ]
 
@@ -64,7 +64,7 @@ func _process(_delta):
 	#resize to target size
 	if is_expanded:
 		rect_size.y = lerp(rect_size.y, 120, 0.1)
-		rect_size.x = lerp(rect_size.x, 300, 0.1)
+		rect_size.x = lerp(rect_size.x, 400, 0.1)
 		button.text = "-"
 		if rect_size.x >= 299:
 			item_list.visible = true
@@ -136,7 +136,7 @@ func challenge_to_string(challenge_id):
 	var item = challenges[challenge_id]
 	var string_item = item[ChallengeDescription]
 	if item[ChallengeCountable] && item[ChallengeCompleted] == 1:
-		for i in range(80 - item[ChallengeDescription].length()*2.75):
+		for i in range(100 - item[ChallengeDescription].length()*2.75):
 			string_item += " "
 		string_item += str(item[ChallengeCurrent]) + "/" + str(item[ChallengeMax])
 	return string_item
@@ -146,7 +146,7 @@ func restart_challenges():
 		[0, "Gather 5 Books", 0, true, 0, 5],
 		[1, "Gather 5 Beers", 0, true, 0, 5],
 		[2, "Talk with 4 Students", 0, true, 0, 5],
-		[3, "Deliver 3 Projects", 0, true, 0, 3],
+		[3, "Deliver 2 Projects", 0, true, 0, 2],
 		[4, "Pass the Final Exam", 0, false]
 	]
 	

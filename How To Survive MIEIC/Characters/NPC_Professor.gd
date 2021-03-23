@@ -42,11 +42,9 @@ func talk(answer = ""):
 					dialoguePopup.answers = "[A] Yes, teacher! I would like to do a project. [B] No, I'm just walking around. "
 					dialoguePopup.open()
 				1:
-					
 					match answer:
 						"A":
 							dialogue_state = 4
-							# Show dialogue popup
 							dialoguePopup.dialogue = "Oh, I see... I will tell you where to find your project. Go to room B010, maybe you'll find something to help you."
 							dialoguePopup.answers = "[A] Ok, thank you."
 							dialoguePopup.open()
@@ -58,84 +56,67 @@ func talk(answer = ""):
 							dialoguePopup.open()
 				3:
 					dialogue_state = 0
-					dialoguePopup.close()				
+					dialoguePopup.close()
 				4:
-					# Update dialogue tree state
 					dialogue_state = 0
 					GlobalVariables.quest_status_professor1 = QuestStatus.STARTED
-					# Close dialogue popup
 					dialoguePopup.close()
 					player.talkedWithCarlos = true
 		QuestStatus.STARTED:
 			match dialogue_state:
 				0:
 					if player.has_Carlos_project == true:
-						# Update dialogue tree state
 						dialogue_state = 1
-						# Show dialogue popup
 						dialoguePopup.dialogue = "Hey, student! Do you have the project?"
 						dialoguePopup.answers = "[A] Yes, I have it here!"
 						dialoguePopup.open()
 					elif player.b010key == false: 
-						# Update dialogue tree state
 						dialogue_state = 1
-						# Show dialogue popup
 						dialoguePopup.dialogue = "Hey, student! Do you have the project?"
 						dialoguePopup.answers = "[B] Not yet. I can't find the keys to the room."
 						dialoguePopup.open()
 					else:
-						# Update dialogue tree state
 						dialogue_state = 2
-						# Show dialogue popup
 						dialoguePopup.dialogue = "Hey, student! Do you have the project?"
 						dialoguePopup.answers = "[B] Not yet."
 						dialoguePopup.open()
 				1: 
 					match answer:
 						"A":
-							# Update dialogue tree state
 							dialogue_state = 3
 							dialoguePopup.dialogue = "Good! I'm going to raise your grade!."
 							dialoguePopup.answers = "[A] Thank you, bye!"
 							dialoguePopup.open()
 					match answer:
 						"B":
-							# Update dialogue tree state
 							dialogue_state = 4
 							dialoguePopup.dialogue = "Check in the library, maybe you'll have luck."
 							dialoguePopup.answers = "[A] Ok, thank you!"
 							dialoguePopup.open()
 				2:
-					# Update dialogue tree state
 					dialogue_state = 4
 					dialoguePopup.dialogue = "Find me when you have it."
 					dialoguePopup.answers = "[A] Ok, thank you!"
 					dialoguePopup.open()
 				3:
-					# Update dialogue tree state
 					dialogue_state = 0
 					GlobalVariables.quest_status_professor1 = QuestStatus.COMPLETED
-					# Close dialogue popup
 					dialoguePopup.close()
-					# Add XP to the player. 
 					player.completed_project()
 					player.delivered_Carlos_project = true
 					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
 				4:
-					# Update dialogue tree state
 					dialogue_state = 0
 					dialoguePopup.close()
 		QuestStatus.COMPLETED:
 			match dialogue_state:
 				0:
-					# Update dialogue tree state
 					dialogue_state = 1
 					# Show dialogue popup
 					dialoguePopup.dialogue = "Hey, student. Do you need help?"
 					dialoguePopup.answers = "[B] No, thank you."
 					dialoguePopup.open()
 				1:
-					# Update dialogue tree state
 					dialogue_state = 0
 					# Close dialogue popup
 					dialoguePopup.close()
@@ -167,10 +148,8 @@ func get_animation_direction(direction_var: Vector2):
 func animates_professor(direction_var: Vector2):
 	if direction_var != Vector2.ZERO:
 		last_direction = direction_var
-		
 		# Choose walk animation based on movement direction
 		var animation = get_animation_direction(last_direction) + "_walk"
-		
 		# Play the walk animation
 		$AnimatedSprite.play(animation)
 	else:
