@@ -1,83 +1,142 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://Sprites/NPCs/praxisNPC_l_1.png" type="Texture" id=1]
-[ext_resource path="res://Sprites/NPCs/praxisNPC_r_0.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/NPCs/praxisNPC_l_0.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/NPCs/praxisNPC_f_2.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/NPCs/praxisNPC_f_1.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/NPCs/praxisNPC_r_1.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/NPCs/praxisNPC_l_2.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/NPCs/praxisNPC_f_0.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/NPCs/praxisNPC_u_1.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/NPCs/praxisNPC_r_2.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/NPCs/praxisNPC_u_0.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/NPCs/praxisNPC_u_2.png" type="Texture" id=12]
 [ext_resource path="res://Characters/NPC_Praxis_Helper.gd" type="Script" id=13]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="StreamTexture" id=16]
+flags = 4
+load_path = "res://.import/praxisNPC3.png-28bda09260b4f597be571f4e7f27fccd.stex"
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = SubResource( 16 )
+region = Rect2( 147, 0, 147, 158 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = SubResource( 16 )
+region = Rect2( 0, 474, 147, 158 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = SubResource( 16 )
+region = Rect2( 294, 474, 147, 158 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = SubResource( 16 )
+region = Rect2( 0, 0, 147, 158 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = SubResource( 16 )
+region = Rect2( 294, 0, 147, 158 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = SubResource( 16 )
+region = Rect2( 147, 474, 147, 158 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = SubResource( 16 )
+region = Rect2( 0, 158, 147, 158 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = SubResource( 16 )
+region = Rect2( 294, 158, 147, 158 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = SubResource( 16 )
+region = Rect2( 0, 316, 147, 158 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = SubResource( 16 )
+region = Rect2( 294, 316, 147, 158 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = SubResource( 16 )
+region = Rect2( 147, 316, 147, 158 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = SubResource( 16 )
+region = Rect2( 147, 158, 147, 158 )
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = SubResource( 16 )
+region = Rect2( 147, 0, 147, 158 )
+
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ SubResource( 7 ) ],
 "loop": true,
 "name": "talk",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 4 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "up_walk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "down_walk",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "left_idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "left_walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "right_idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "right_walk",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ) ],
+"frames": [ SubResource( 10 ) ],
 "loop": true,
 "name": "up_idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "left_walk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "right_walk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 15 ) ],
+"loop": true,
+"name": "right_idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "left_idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ) ],
 "loop": true,
 "name": "down_idle",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "up_walk",
-"speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 19.3348
 
 [node name="NPC_Praxis" type="KinematicBody2D" groups=[
 "NPCs",
 ]]
-scale = Vector2( 1.4, 1.4 )
 script = ExtResource( 13 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -1.66855, 0 )
-frames = SubResource( 1 )
-animation = "left_idle"
+position = Vector2( 0.709869, -8.32444 )
+scale = Vector2( 0.45, 0.45 )
+frames = SubResource( 2 )
+animation = "down_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2.3784, -1.18921 )
 scale = Vector2( 1.3, 1.1 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
