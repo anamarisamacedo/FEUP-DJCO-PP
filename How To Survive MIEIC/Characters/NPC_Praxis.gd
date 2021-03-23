@@ -57,17 +57,16 @@ func talk(answer = ""):
 						dialoguePopup.answers = "[A] Ok  [B] Not really"
 						dialoguePopup.open()
 				1:
-					match answer:
-						"A":
-							dialogue_state = 2
-							dialoguePopup.dialogue = "Cool. Try to find it and then bring it to me."
-							dialoguePopup.answers = "[A] Ok"
-							dialoguePopup.open()
-						"B":
-							dialogue_state = 3
-							dialoguePopup.dialogue = "Ok. If you change your mind, let me know."
-							dialoguePopup.answers = "[A] Ok, bye"
-							dialoguePopup.open()
+					if answer == "A":
+						dialogue_state = 2
+						dialoguePopup.dialogue = "Cool. Try to find it and then bring it to me."
+						dialoguePopup.answers = "[A] Ok"
+						dialoguePopup.open()
+					else:
+						dialogue_state = 3
+						dialoguePopup.dialogue = "Ok. If you change your mind, let me know."
+						dialoguePopup.answers = "[A] Ok, bye"
+						dialoguePopup.open()
 				2:
 					dialogue_state = 0
 					quest_status = QuestStatus.STARTED
@@ -85,7 +84,7 @@ func talk(answer = ""):
 					dialogue_state = 0
 					quest_status = QuestStatus.COMPLETED
 					dialoguePopup.close()
-					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
+					yield(get_tree().create_timer(0.5), "timeout")
 					player.remove_beer()
 		QuestStatus.STARTED:
 			match dialogue_state:
@@ -113,7 +112,7 @@ func talk(answer = ""):
 					dialogue_state = 0
 					quest_status = QuestStatus.COMPLETED
 					dialoguePopup.close()
-					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
+					yield(get_tree().create_timer(0.5), "timeout")
 				3:
 					dialogue_state = 0
 					dialoguePopup.close()

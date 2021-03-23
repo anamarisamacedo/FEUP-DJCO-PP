@@ -3,6 +3,7 @@ extends KinematicBody2D
 # Variables
 var moveSpeed : int = 250
 onready var anim = $AnimatedSprite
+
 enum QuestStatus { NOT_STARTED, STARTED, COMPLETED }
 var dialogue_state = 0
 var bookFound = false
@@ -20,8 +21,6 @@ export var speed = 25
 var direction : Vector2
 var last_direction = Vector2(0, 1)
 var bounce_countdown = 0
-
-var xp_increase=30
 
 func _ready():
 	dialoguePopup = get_tree().root.get_node("/root/Global/Player/CanvasLayer/DialoguePopup")
@@ -42,18 +41,16 @@ func talk(answer = ""):
 					dialoguePopup.answers = "[A] Yes, teacher! I would like to do a project. [B] No, I'm just walking around. "
 					dialoguePopup.open()
 				1:
-					match answer:
-						"A":
-							dialogue_state = 4
-							dialoguePopup.dialogue = "Oh, I see... I will tell you where to find your project. Go to room B010, maybe you'll find something to help you."
-							dialoguePopup.answers = "[A] Ok, thank you."
-							dialoguePopup.open()
-					match answer:
-						"B":
-							dialogue_state = 3
-							dialoguePopup.dialogue = "Ok! See you in classes."
-							dialoguePopup.answers = "[A] Bye"
-							dialoguePopup.open()
+					if answer == "A":
+						dialogue_state = 4
+						dialoguePopup.dialogue = "Oh, I see... I will tell you where to find your project. Go to room B010, maybe you'll find something to help you."
+						dialoguePopup.answers = "[A] Ok, thank you."
+						dialoguePopup.open()
+					else:
+						dialogue_state = 3
+						dialoguePopup.dialogue = "Ok! See you in classes."
+						dialoguePopup.answers = "[A] Bye"
+						dialoguePopup.open()
 				3:
 					dialogue_state = 0
 					dialoguePopup.close()
@@ -81,18 +78,16 @@ func talk(answer = ""):
 						dialoguePopup.answers = "[B] Not yet."
 						dialoguePopup.open()
 				1: 
-					match answer:
-						"A":
-							dialogue_state = 3
-							dialoguePopup.dialogue = "Good! I'm going to raise your grade!."
-							dialoguePopup.answers = "[A] Thank you, bye!"
-							dialoguePopup.open()
-					match answer:
-						"B":
-							dialogue_state = 4
-							dialoguePopup.dialogue = "Check in the library, maybe you'll have luck."
-							dialoguePopup.answers = "[A] Ok, thank you!"
-							dialoguePopup.open()
+					if player.has_Carlos_project:
+						dialogue_state = 3
+						dialoguePopup.dialogue = "Good! I'm going to raise your grade!"
+						dialoguePopup.answers = "[A] Thank you, bye!"
+						dialoguePopup.open()
+					else:
+						dialogue_state = 4
+						dialoguePopup.dialogue = "Check in the library, maybe you'll have luck."
+						dialoguePopup.answers = "[A] Ok, thank you!"
+						dialoguePopup.open()
 				2:
 					dialogue_state = 4
 					dialoguePopup.dialogue = "Find me when you have it."

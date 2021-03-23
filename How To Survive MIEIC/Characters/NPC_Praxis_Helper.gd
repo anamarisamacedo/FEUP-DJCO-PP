@@ -38,44 +38,41 @@ func talk(answer = ""):
 			dialoguePopup.answers = "[A] Yes.  [B] Not really"
 			dialoguePopup.open()
 		1:
-			match answer:
-				"A":
-					dialogue_state = 2
-					dialoguePopup.dialogue = "What do you want to know?"
-					dialoguePopup.answers = "[A] How to I do my Final Exam? [B] How do I deliver projects?"
-					dialoguePopup.open()
-				"B":
-					dialogue_state = 3
-					dialoguePopup.dialogue = "Ok. If you need anything, I'll be around."
-					dialoguePopup.answers = "[A] Ok, bye"
-					dialoguePopup.open()
+			if answer == "A":
+				dialogue_state = 2
+				dialoguePopup.dialogue = "What do you want to know?"
+				dialoguePopup.answers = "[A] How to I do my Final Exam? [B] How do I deliver projects?"
+				dialoguePopup.open()
+			else:
+				dialogue_state = 3
+				dialoguePopup.dialogue = "Ok. If you need anything, I'll be around."
+				dialoguePopup.answers = "[A] Ok, bye"
+				dialoguePopup.open()
 		2:
-			match answer:
-				"A":
-					dialogue_state = 4
-					dialoguePopup.dialogue = "You need to go to room B021 and find the exam paper."
-					dialoguePopup.answers = "[A] Thank you. Bye [B] Thank you. I have another doubt."
-					dialoguePopup.open()
-				"B":
-					dialogue_state = 4
-					dialoguePopup.dialogue = "You need to talk with the professors to get the assignments. Professor Carlos, Alberto, João and Miguel usually have projects for the students."
-					dialoguePopup.answers = "[A] Thank you. Bye [B] Thank you. I have another doubt."
-					dialoguePopup.open()
+			if answer == "A":
+				dialogue_state = 4
+				dialoguePopup.dialogue = "You need to go to room B021 and find the exam paper."
+				dialoguePopup.answers = "[A] Thank you. Bye [B] Thank you. I have another doubt."
+				dialoguePopup.open()
+			else:
+				dialogue_state = 4
+				dialoguePopup.dialogue = "You need to talk with the professors to get the assignments. Professor Carlos, Alberto, João and Miguel usually have projects for the students."
+				dialoguePopup.answers = "[A] Thank you. Bye [B] Thank you. I have another doubt."
+				dialoguePopup.open()
 		3:
 			dialogue_state = 0
 			dialoguePopup.close()
 		4:
-			match answer:
-				"B":
-					dialogue_state = 2
-					dialoguePopup.dialogue = "What do you want to know?"
-					dialoguePopup.answers = "[A] How to I do my Final Exam? [B] How do I deliver projects?"
-					dialoguePopup.open()
-				"A":
-					dialogue_state = 3
-					dialoguePopup.dialogue = "Ok. If you need anything, I'll be around."
-					dialoguePopup.answers = "[A] Ok, bye"
-					dialoguePopup.open()
+			if answer == "B":
+				dialogue_state = 2
+				dialoguePopup.dialogue = "What do you want to know?"
+				dialoguePopup.answers = "[A] How to I do my Final Exam? [B] How do I deliver projects?"
+				dialoguePopup.open()
+			else:
+				dialogue_state = 3
+				dialoguePopup.dialogue = "Ok. If you need anything, I'll be around."
+				dialoguePopup.answers = "[A] Ok, bye"
+				dialoguePopup.open()
 
 func _physics_process(delta):
 	var movement = direction * speed * delta
