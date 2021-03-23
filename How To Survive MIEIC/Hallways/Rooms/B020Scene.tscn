@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Sprites/Tiles/cacifo.png" type="Texture" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://tileset2.tres" type="TileSet" id=3]
 [ext_resource path="res://Hallways/Rooms/B0201Scene.gd" type="Script" id=4]
 [ext_resource path="res://Sprites/Items/bluebook.png" type="Texture" id=5]
+[ext_resource path="res://Characters/NPC_Professor_2.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 39.5063, 25.4594 )
@@ -14,6 +15,7 @@ extents = Vector2( 24.1218, 74.2907 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Book"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("bluebook:modulate")
 tracks/0/interp = 1
@@ -39,7 +41,7 @@ tile_data = PoolIntArray( -196607, 21, 0, -196606, 21, 0, -196605, 21, 0, -19660
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
 format = 1
-tile_data = PoolIntArray( -65531, 536870916, 0, 65537, 536870921, 0, 196611, 536870918, 0, 196614, 536870918, 0, 327683, 536870919, 0, 327686, 536870919, 0 )
+tile_data = PoolIntArray( -65534, 21, 0, -65531, 536870916, 0, 65537, 536870921, 0, 196611, 536870918, 0, 196614, 536870918, 0, 327683, 536870919, 0, 327686, 536870919, 0 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -84,6 +86,9 @@ text = "+1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="NPC_Professor" parent="." instance=ExtResource( 6 )]
+position = Vector2( 499.467, 67.2453 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Book = SubResource( 3 )
