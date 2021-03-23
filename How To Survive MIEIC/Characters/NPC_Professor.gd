@@ -121,7 +121,7 @@ func talk(answer = ""):
 					dialoguePopup.close()
 					# Add XP to the player. 
 					player.completed_project()
-					#player.delivered_Carlos_project = true
+					player.delivered_Carlos_project = true
 					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
 				4:
 					# Update dialogue tree state
