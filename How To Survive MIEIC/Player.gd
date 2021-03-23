@@ -27,6 +27,7 @@ var total_beers = 0
 var students_talked_to = 0
 var projects_completed = 0
 var cheated = false;
+var did_exam = false
  
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
@@ -94,7 +95,6 @@ func play_animation (anim_name):
 func _input(event):
 	if event.is_action_pressed("interact"):
 		var target = $RayCast2D.get_collider()
-		print(target)
 		if target != null and target.is_in_group("NPCs"):
 			# Talk to NPC
 			target.talk()
@@ -153,6 +153,12 @@ func cheat():
 	cheated = true
 	challenges.add_secret_challenge("Cheat on the Exam")
 	
+func pass_exam():
+	challenges.complete_challenge(4)
+
+func excel_exam():
+	challenges.add_secret_challenge("Have a 20/20 in the Final Exam")
+	
 func restart():
 	life = maxXP
 	number_beers = 0
@@ -166,6 +172,7 @@ func restart():
 	students_talked_to = 0
 	projects_completed = 0
 	cheated = false
+	did_exam = false
 	
 	emit_signal("player_books_changed", self)
 	emit_signal("player_beers_changed", self)

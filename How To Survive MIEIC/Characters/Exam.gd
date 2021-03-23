@@ -16,24 +16,35 @@ func talk(answer = ""):
 	
 	match dialogue_state:
 		0:
-			if did_exam:
+			if player.did_exam:
 				dialogue_state = 12
 				dialoguePopup.dialogue = "You already did this exam."
 				dialoguePopup.answers = "[A] Bye then."
 			else:
 				dialogue_state = 1
 				dialoguePopup.dialogue = "Hello Student! Welcome to the Final DJCO Exam. You only have one shot at completing the exam. Do you wish to begin now?"
-				dialoguePopup.answers = "[A] I'm ready to start. [B] I want to study more before taking the exam."
+				if player.cheated:
+					dialoguePopup.answers = "[A] I'm ready to start. [B] I want to study more. [C] I want to use my copied answers"
+				else:
+					dialoguePopup.answers = "[A] I'm ready to start. [B] I want to study more before taking the exam."
 			dialoguePopup.open()
 		1:
 			if answer == "A":
-				did_exam = true
+				player.did_exam = true
+				correct_answers = 0
 				dialogue_state = 2
 				# Show dialogue popup
 				dialoguePopup.dialogue = "1. Which of the following is NOT a part of the Elemental Tetrad?"
 				dialoguePopup.answers = "[A] Aesthetics  [B] Mechanics  [C] Villains  [D] Story"
 				dialoguePopup.open()
-
+			elif answer == "C" and player.cheated:
+				player.did_exam = true
+				dialogue_state = 12
+				# Show dialogue popup
+				player.pass_exam()
+				dialoguePopup.dialogue = "Congratulations! You've passed with a final grade of 12/20."
+				dialoguePopup.answers = "Cool cool cool!"
+				dialoguePopup.open()
 			else:
 				# Update dialogue tree state
 				dialogue_state = 12
@@ -119,6 +130,9 @@ func talk(answer = ""):
 				correct_answers += 1
 			dialogue_state = 12
 			if correct_answers >= 5:
+				player.pass_exam()
+				if correct_answers == 10:
+					player.excel_exam()
 				dialoguePopup.dialogue = "Congratulations! You've passed with a final grade of " + str(correct_answers*2) + "/20."
 				dialoguePopup.answers = "Cool cool cool!"
 			else:
