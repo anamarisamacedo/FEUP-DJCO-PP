@@ -32,10 +32,9 @@ var pass_exam = false
 var has_Carlos_project = false
 var has_Miguel_Project = false
 var delivered_Carlos_project = false
-var delivered_Alberto_project = false
-var delivered_Augusto_project = false
-var delivered_Joao_project = false
 var delivered_Miguel_project = false
+var killed_zombie = false
+var retake_exam = false
  
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
@@ -107,6 +106,15 @@ func _input(event):
 			# Talk to NPC
 			target.talk()
 			return
+	if event.is_action_pressed("kill"):
+		var target = $RayCast2D.get_collider()
+		if target != null and target.is_in_group("Zombie"):
+			# Kill Zombie
+			target.die()
+			if !killed_zombie:
+				challenges.add_secret_challenge("Kill a Zombie")
+			killed_zombie = true
+			return
 
 func hit(damage):
 	life -= damage
@@ -169,7 +177,7 @@ func excel_exam():
 	challenges.add_secret_challenge("Have a 20/20 in the Final Exam")
 	
 func deliver_project():
-	var number_projects = delivered_Carlos_project + delivered_Alberto_project + delivered_Augusto_project + delivered_Joao_project
+	var number_projects = delivered_Carlos_project + delivered_Miguel_project
 	challenges.update_challenge(3, number_projects)
 	
 func raise_grade():
@@ -178,7 +186,9 @@ func raise_grade():
 
 func retake_exam():
 	did_exam = false
-	challenges.add_secret_challenge("Convince a professor to let you retake the exam")
+	if !retake_exam:
+		challenges.add_secret_challenge("Convince a professor to let you retake the exam")
+	retake_exam = true
 	
 func restart():
 	life = maxXP
@@ -197,9 +207,10 @@ func restart():
 	pass_exam = false
 	has_Carlos_project = false
 	delivered_Carlos_project = false
-	delivered_Alberto_project = false
-	delivered_Augusto_project = false
-	delivered_Joao_project = false
+	has_Miguel_Project = false
+	delivered_Miguel_project = false
+	killed_zombie = false
+	retake_exam = false
 	
 	emit_signal("player_books_changed", self)
 	emit_signal("player_beers_changed", self)

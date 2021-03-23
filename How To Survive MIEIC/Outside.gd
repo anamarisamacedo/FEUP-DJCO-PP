@@ -10,7 +10,7 @@ func _ready():
 	if GlobalVariables.beerOutside2Picked == true:
 		get_tree().root.get_node("/root/Outside/Beer2").queue_free()
 	if GlobalVariables.quest_status_praxis_project == GlobalVariables.QuestStatus.PROJECT:
-		get_tree().root.get_node("/root/Outside/NPC_Praxis_project").queue_free()
+		get_tree().root.get_node("/root/Outside/NPC_Praxis2").queue_free()
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":

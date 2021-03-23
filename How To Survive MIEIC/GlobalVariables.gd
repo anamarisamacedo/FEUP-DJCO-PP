@@ -50,6 +50,31 @@ func restart_game():
 	timer.restart()
 	var player = get_tree().root.get_node("/root/Global/Player")
 	player.restart()
+	quest_status_professor1 = QuestStatus.NOT_STARTED
+	quest_status_professor2 = QuestStatus.NOT_STARTED
+	quest_status_professor3 = QuestStatus.NOT_STARTED
+	quest_status_professor4 = QuestStatus.NOT_STARTED
+	quest_status_praxis_project = QuestStatus.NOT_STARTED
+	quest_status_praxis_cheater = QuestStatus.NOT_STARTED
+	bookB020Found = false
+	bookB031Found = false
+	bookLibraryFound = false
+	bookLibrary2Found = false
+	beerFirstHallwayPicked = false
+	beerSecondHallwayPicked = false
+	beerThirdHallwayPicked = false
+	beerMainScenePicked = false
+	beer2MainScenePicked = false
+	beer3MainScenePicked = false
+	beer4MainScenePicked = false
+	beer5MainScenePicked = false
+	beerOutsidePicked = false
+	beerOutside2Picked = false
+	beerB130ScenePicked = false
+	beerLibraryPicked = false
+	beerLibrary2Picked = false
+	beerThirdHallway2Picked = false
+	bookMainScenePicked = false
 	goto_scene("res://MainScene.tscn")
 
 func game_win():

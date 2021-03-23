@@ -5,7 +5,8 @@
 [ext_resource path="res://tileset2.tres" type="TileSet" id=3]
 [ext_resource path="res://Hallways/Rooms/B0201Scene.gd" type="Script" id=4]
 [ext_resource path="res://Sprites/Items/bluebook.png" type="Texture" id=5]
-[ext_resource path="res://Characters/NPC_Professor_2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Characters/NPC_Professor_Exam.tscn" type="PackedScene" id=6]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 39.5063, 25.4594 )

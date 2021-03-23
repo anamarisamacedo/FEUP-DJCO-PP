@@ -33,22 +33,18 @@ func talk(answer = ""):
 				player.did_exam = true
 				correct_answers = 0
 				dialogue_state = 2
-				# Show dialogue popup
 				dialoguePopup.dialogue = "1. Which of the following is NOT a part of the Elemental Tetrad?"
 				dialoguePopup.answers = "[A] Aesthetics  [B] Mechanics  [C] Villains  [D] Story"
 				dialoguePopup.open()
 			elif answer == "C" and player.cheated:
 				player.did_exam = true
 				dialogue_state = 12
-				# Show dialogue popup
 				player.pass_exam()
 				dialoguePopup.dialogue = "Congratulations! You've passed with a final grade of 12/20."
 				dialoguePopup.answers = "Cool cool cool!"
 				dialoguePopup.open()
 			else:
-				# Update dialogue tree state
 				dialogue_state = 12
-				# Show dialogue popup
 				dialoguePopup.dialogue = "Come back when you're ready."
 				dialoguePopup.answers = "Ok bye"
 				dialoguePopup.open()
@@ -56,7 +52,6 @@ func talk(answer = ""):
 			if answer == "C":
 				correct_answers += 1
 			dialogue_state = 3
-			# Show dialogue popup
 			dialoguePopup.dialogue = "2. A Game is a:"
 			dialoguePopup.answers = "[A] Form of Art  [B] Experience  [C] All of the above  [D] None of the above"
 			dialoguePopup.open()
@@ -64,7 +59,6 @@ func talk(answer = ""):
 			if answer == "C":
 				correct_answers += 1
 			dialogue_state = 4
-			# Show dialogue popup
 			dialoguePopup.dialogue = "3. Adult Women represent a portion of video game-playing population of: "
 			dialoguePopup.answers = "[A] 0  [B] 9  [C] 26  [D] 33"
 			dialoguePopup.open()
@@ -72,7 +66,6 @@ func talk(answer = ""):
 			if answer == "D":
 				correct_answers += 1
 			dialogue_state = 5
-			# Show dialogue popup
 			dialoguePopup.dialogue = "4. Which of the following has a bigger influence in the game buying decision process?"
 			dialoguePopup.answers = "[A] Price  [B] Quality of the Graphics  [C] Story  [D] Online Gameplay Capability"
 			dialoguePopup.open()
@@ -80,7 +73,6 @@ func talk(answer = ""):
 			if answer == "B":
 				correct_answers += 1
 			dialogue_state = 6
-			# Show dialogue popup
 			dialoguePopup.dialogue = "5. Which of the following is not a gratification a player seeks in a game?"
 			dialoguePopup.answers = "[A] Recognition  [B] Socialization  [C] Gustation  [D] Challenge"
 			dialoguePopup.open()
@@ -88,16 +80,13 @@ func talk(answer = ""):
 			if answer == "C":
 				correct_answers += 1
 			dialogue_state = 7
-			# Show dialogue popup
 			dialoguePopup.dialogue = "6. What is the most popular game in the world?"
 			dialoguePopup.answers = "[A] Call of Duty  [B] League of Legends  [C] Among Us  [D] Counter Strike"
 			dialoguePopup.open()
 		7:
 			if answer == "C":
 				correct_answers += 1
-			# Update dialogue tree state
 			dialogue_state = 8
-			# Show dialogue popup
 			dialoguePopup.dialogue = "7. How many Game Engine Layers are there?"
 			dialoguePopup.answers = "[A] 14  [B] 7  [C] 21  [D] 3"
 			dialoguePopup.open()
@@ -105,7 +94,6 @@ func talk(answer = ""):
 			if answer == "A":
 				correct_answers += 1
 			dialogue_state = 9
-			# Show dialogue popup
 			dialoguePopup.dialogue = "8. What is the most sold game in the world up until now?"
 			dialoguePopup.answers = "[A] Wii Sports  [B] Tetris  [C] Minecraft [D] Grand Theft Auto V"
 			dialoguePopup.open()
@@ -113,7 +101,6 @@ func talk(answer = ""):
 			if answer == "C":
 				correct_answers += 1
 			dialogue_state = 10
-			# Show dialogue popup
 			dialoguePopup.dialogue = "9. Which of these is not part of the staff of DJCO? (if you don't know this one you're in real trouble)"
 			dialoguePopup.answers = "[A] Rui Rodrigues  [B] Augusto Sousa  [C] Rodrigo Assaf  [D] Eduardo Fonseca"
 			dialoguePopup.open()
@@ -121,7 +108,6 @@ func talk(answer = ""):
 			if answer == "B":
 				correct_answers += 1
 			dialogue_state = 11
-			# Show dialogue popup
 			dialoguePopup.dialogue = "10. What is the best game genre?"
 			dialoguePopup.answers = "[A] RPG  [B] RPG  [C] RPG  [D] All of the above"
 			dialoguePopup.open()
@@ -136,11 +122,9 @@ func talk(answer = ""):
 				dialoguePopup.dialogue = "Congratulations! You've passed with a final grade of " + str(correct_answers*2) + "/20."
 				dialoguePopup.answers = "Cool cool cool!"
 			else:
-				dialoguePopup.dialogue = "I'm sorry, Manel! You've failed with a final grade of " + str(correct_answers*2) + "/20."
+				dialoguePopup.dialogue = "I'm sorry, Manel! You've failed with a final grade of " + str(correct_answers*2) + "/20. If you want to discuss the exam, find Professor Augusto."
 				dialoguePopup.answers = "[Any Key] Oh noooo."
 			dialoguePopup.open()
 		12:
-			# Update dialogue tree state
 			dialogue_state = 0
-			# Close dialogue popup
 			dialoguePopup.close()

@@ -14,4 +14,4 @@ func _on_Area2D_body_entered(body):
 func _on_project_body_entered(body):
 	if body.name == "Player":
 		$AnimationPlayer.play("Project")
-		player.project1Found = true
+		player.has_Carlos_project = true

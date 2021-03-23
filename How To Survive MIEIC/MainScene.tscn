@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Characters/ZombieSpawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Characters/NPC_Praxis.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Collectables/Beer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Characters/NPC_Praxis_Helper.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Characters/Exam.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Characters/NPC_Professor_4.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Characters/NPC_Professor.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Collectables/Book.tscn" type="PackedScene" id=14]
@@ -118,9 +117,6 @@ texture = ExtResource( 26 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideDoor"]
 position = Vector2( 0.107147, 4.8595 )
 shape = SubResource( 3 )
-
-[node name="Exam" parent="." instance=ExtResource( 7 )]
-position = Vector2( 352, -87.17 )
 
 [node name="Collectables" type="Node2D" parent="."]
 

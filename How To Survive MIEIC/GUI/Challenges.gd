@@ -19,21 +19,20 @@ var challenges = [
 	[0, "Gather 5 Books", 0, true, 0, 5],
 	[1, "Gather 5 Beers", 0, true, 0, 5],
 	[2, "Talk with 4 Students", 0, true, 0, 5],
-	[3, "Deliver 3 Projects", 0, true, 0, 3],
+	[3, "Deliver 2 Projects", 0, true, 0, 2],
 	[4, "Pass the Final Exam", 0, false]
 ]
 
-var SecretItemList = [
-	"Discover how to pass the exam with 0 effort", #dar 5 cervejas a estudantes
-	"Cheat on the Exam", #encontrar uma sala de testes e convencer um estudante a deixar-te copiar
-	"Have a 20/20 in the Final Exam",
-	"Convince a professor to raise your grade", #através de um diálogo elaborado
-	"Convince a professor to let you retake the exam",
-	"Encontrar os Apontamentos Mágicos", #estão encondidos algures na FEUP e permitem completar challenges académicos automaticamente
-	"Encontrar o Fantasma da FEUP", #só engraçado -> o fantasma conta-te histórias engraçadas da FEUP
-	"Matar um Zombie", #pressionando uma tecla random tipo F perto de um zombie 
-	
-]
+#var SecretItemList = [
+#Done	"Discover how to pass the exam with 0 effort", #dar 5 cervejas a estudantes
+#Done	"Cheat on the Exam", #encontrar uma sala de testes e convencer um estudante a deixar-te copiar
+#Done	"Have a 20/20 in the Final Exam",
+#Done	"Convince a professor to raise your grade", #através de um diálogo elaborado
+#Done	"Convince a professor to let you retake the exam",
+#NOT	"Encontrar os Apontamentos Mágicos", #estão encondidos algures na FEUP e permitem completar challenges académicos automaticamente
+#NOT	"Encontrar o Fantasma da FEUP", #só engraçado -> o fantasma conta-te histórias engraçadas da FEUP
+#DONE	"Kill a Zombie", #pressionando uma tecla random tipo F perto de um zombie 
+#]
 
 var item_list
 var button
@@ -64,7 +63,7 @@ func _process(_delta):
 	#resize to target size
 	if is_expanded:
 		rect_size.y = lerp(rect_size.y, 120, 0.1)
-		rect_size.x = lerp(rect_size.x, 300, 0.1)
+		rect_size.x = lerp(rect_size.x, 400, 0.1)
 		button.text = "-"
 		if rect_size.x >= 299:
 			item_list.visible = true
@@ -136,7 +135,7 @@ func challenge_to_string(challenge_id):
 	var item = challenges[challenge_id]
 	var string_item = item[ChallengeDescription]
 	if item[ChallengeCountable] && item[ChallengeCompleted] == 1:
-		for i in range(80 - item[ChallengeDescription].length()*2.75):
+		for i in range(100 - item[ChallengeDescription].length()*2.75):
 			string_item += " "
 		string_item += str(item[ChallengeCurrent]) + "/" + str(item[ChallengeMax])
 	return string_item
@@ -146,7 +145,7 @@ func restart_challenges():
 		[0, "Gather 5 Books", 0, true, 0, 5],
 		[1, "Gather 5 Beers", 0, true, 0, 5],
 		[2, "Talk with 4 Students", 0, true, 0, 5],
-		[3, "Deliver 3 Projects", 0, true, 0, 3],
+		[3, "Deliver 2 Projects", 0, true, 0, 2],
 		[4, "Pass the Final Exam", 0, false]
 	]
 	

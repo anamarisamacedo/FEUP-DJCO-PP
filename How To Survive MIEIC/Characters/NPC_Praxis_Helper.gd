@@ -33,65 +33,46 @@ func talk(answer = ""):
 			if alreadyTalked == false:
 				player.talked_to_student()
 				alreadyTalked = true
-			# Update dialogue tree state
 			dialogue_state = 1
-			# Show dialogue popup
 			dialoguePopup.dialogue = "Hey! Do you need some help?"
 			dialoguePopup.answers = "[A] Yes.  [B] Not really"
 			dialoguePopup.open()
 		1:
-			match answer:
-				"A":
-					# Update dialogue tree state
-					dialogue_state = 2
-					# Show dialogue popup
-					dialoguePopup.dialogue = "What do you want to know?"
-					dialoguePopup.answers = "[A] How to I do my Final Exam? [B] How do I deliver projects?"
-					dialoguePopup.open()
-				"B":
-					# Update dialogue tree state
-					dialogue_state = 3
-					# Show dialogue popup
-					dialoguePopup.dialogue = "Ok. If you need anything, I'll be around."
-					dialoguePopup.answers = "[A] Ok, bye"
-					dialoguePopup.open()
+			if answer == "A":
+				dialogue_state = 2
+				dialoguePopup.dialogue = "What do you want to know?"
+				dialoguePopup.answers = "[A] How to I do my Final Exam? [B] How do I deliver projects?"
+				dialoguePopup.open()
+			else:
+				dialogue_state = 3
+				dialoguePopup.dialogue = "Ok. If you need anything, I'll be around."
+				dialoguePopup.answers = "[A] Ok, bye"
+				dialoguePopup.open()
 		2:
-			match answer:
-				"A":
-					# Update dialogue tree state
-					dialogue_state = 4
-					# Show dialogue popup
-					dialoguePopup.dialogue = "You need to go to room B130 and find the exam paper."
-					dialoguePopup.answers = "[A] Thank you. Bye [B] Thank you. I have another doubt."
-					dialoguePopup.open()
-				"B":
-					# Update dialogue tree state
-					dialogue_state = 4
-					# Show dialogue popup
-					dialoguePopup.dialogue = "You need to talk with the professors to get the assignments. Professor Carlos, Alberto, João and Miguel usually have projects for the students."
-					dialoguePopup.answers = "[A] Thank you. Bye [B] Thank you. I have another doubt."
-					dialoguePopup.open()
+			if answer == "A":
+				dialogue_state = 4
+				dialoguePopup.dialogue = "You need to go to room B021 and find the exam paper."
+				dialoguePopup.answers = "[A] Thank you. Bye [B] Thank you. I have another doubt."
+				dialoguePopup.open()
+			else:
+				dialogue_state = 4
+				dialoguePopup.dialogue = "You need to talk with the professors to get the assignments. Professor Carlos, Alberto, João and Miguel usually have projects for the students."
+				dialoguePopup.answers = "[A] Thank you. Bye [B] Thank you. I have another doubt."
+				dialoguePopup.open()
 		3:
-			# Update dialogue tree state
 			dialogue_state = 0
-			# Close dialogue popup
 			dialoguePopup.close()
 		4:
-			match answer:
-				"B":
-					# Update dialogue tree state
-					dialogue_state = 2
-					# Show dialogue popup
-					dialoguePopup.dialogue = "What do you want to know?"
-					dialoguePopup.answers = "[A] How to I do my Final Exam? [B] How do I deliver projects?"
-					dialoguePopup.open()
-				"A":
-					# Update dialogue tree state
-					dialogue_state = 3
-					# Show dialogue popup
-					dialoguePopup.dialogue = "Ok. If you need anything, I'll be around."
-					dialoguePopup.answers = "[A] Ok, bye"
-					dialoguePopup.open()
+			if answer == "B":
+				dialogue_state = 2
+				dialoguePopup.dialogue = "What do you want to know?"
+				dialoguePopup.answers = "[A] How to I do my Final Exam? [B] How do I deliver projects?"
+				dialoguePopup.open()
+			else:
+				dialogue_state = 3
+				dialoguePopup.dialogue = "Ok. If you need anything, I'll be around."
+				dialoguePopup.answers = "[A] Ok, bye"
+				dialoguePopup.open()
 
 func _physics_process(delta):
 	var movement = direction * speed * delta
@@ -119,10 +100,8 @@ func get_animation_direction(direction_var: Vector2):
 func animates_student(direction_var: Vector2):
 	if direction_var != Vector2.ZERO:
 		last_direction = direction_var
-		
 		# Choose walk animation based on movement direction
 		var animation = get_animation_direction(last_direction) + "_walk"
-		
 		# Play the walk animation
 		$AnimatedSprite.play(animation)
 	else:
