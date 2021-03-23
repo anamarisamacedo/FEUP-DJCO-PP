@@ -9,6 +9,10 @@ var bookLibraryFound = false
 var bookLibrary2Found = false
 var pause_menu
 var game_over
+enum QuestStatus { NOT_STARTED, STARTED, COMPLETED }
+var quest_status_professor1 = QuestStatus.NOT_STARTED
+var quest_status_professor2 = QuestStatus.NOT_STARTED
+var quest_status_professor3 = QuestStatus.NOT_STARTED
 
 func _input(event):
 	if event.is_action_pressed("pause"):
@@ -27,13 +31,7 @@ func restart_game():
 	var timer = get_tree().root.get_node("/root/Global/Timer")
 	timer.restart()
 	var player = get_tree().root.get_node("/root/Global/Player")
-	player.life = player.maxXP
-	player.number_beers = 0
-	player.number_books = 0
-	player.given_beers = 0
-	player.b210key = false
-	var challenges = get_tree().root.get_node("/root/Global/CanvasLayer/Control/Challenges")
-	challenges.restart_challenges()
+	player.restart()
 	goto_scene("res://MainScene.tscn")
 
 func game_win():

@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://Characters/NPC_Praxis_Cheater.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://tileset2.tres" type="TileSet" id=3]
 [ext_resource path="res://Hallways/Rooms/B0201Scene.gd" type="Script" id=4]
+[ext_resource path="res://Characters/NPC_Praxis_Exam.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Characters/Exam.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 39.5063, 25.4594 )
@@ -21,7 +24,7 @@ tile_data = PoolIntArray( -196607, 21, 0, -196606, 21, 0, -196605, 21, 0, -19660
 position = Vector2( -7, -7 )
 tile_set = ExtResource( 3 )
 format = 1
-tile_data = PoolIntArray( -131060, 536870922, 0, -65531, 536870916, 0, 65537, 536870921, 0, 196611, 536870918, 0, 196614, 536870918, 0, 327683, 536870919, 0, 327686, 536870919, 0 )
+tile_data = PoolIntArray( -131060, 536870922, 0, -65531, 536870916, 0, 65537, 536870921, 0, 131075, 7, 0, 131078, 7, 0, 327683, 7, 0, 327686, 7, 0 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -31,4 +34,42 @@ shape = SubResource( 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 154.597, 456.656 )
+
+[node name="NPC_Cheater" parent="." instance=ExtResource( 1 )]
+position = Vector2( 303.186, 186.653 )
+
+[node name="Exam" parent="." instance=ExtResource( 6 )]
+position = Vector2( 711.172, 181.213 )
+
+[node name="ExamStudents" type="Node" parent="."]
+
+[node name="NPC_Praxis2" parent="ExamStudents" instance=ExtResource( 5 )]
+position = Vector2( 496.933, 242.758 )
+
+[node name="NPC_Praxis3" parent="ExamStudents" instance=ExtResource( 5 )]
+position = Vector2( 397.938, 241.344 )
+
+[node name="NPC_Praxis5" parent="ExamStudents" instance=ExtResource( 5 )]
+position = Vector2( 593.1, 240.636 )
+
+[node name="NPC_Praxis10" parent="ExamStudents" instance=ExtResource( 5 )]
+position = Vector2( 207.727, 244.879 )
+
+[node name="NPC_Praxis6" parent="ExamStudents" instance=ExtResource( 5 )]
+position = Vector2( 498.348, 435.798 )
+
+[node name="NPC_Praxis7" parent="ExamStudents" instance=ExtResource( 5 )]
+position = Vector2( 399.353, 434.384 )
+
+[node name="NPC_Praxis8" parent="ExamStudents" instance=ExtResource( 5 )]
+position = Vector2( 693.509, 435.091 )
+
+[node name="NPC_Praxis9" parent="ExamStudents" instance=ExtResource( 5 )]
+position = Vector2( 594.514, 433.677 )
+
+[node name="NPC_Praxis11" parent="ExamStudents" instance=ExtResource( 5 )]
+position = Vector2( 298.943, 435.798 )
+
+[node name="NPC_Praxis12" parent="ExamStudents" instance=ExtResource( 5 )]
+position = Vector2( 199.948, 434.384 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

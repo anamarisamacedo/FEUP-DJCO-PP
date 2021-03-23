@@ -5,7 +5,7 @@ var moveSpeed : int = 250
 onready var anim = $AnimatedSprite
 
 enum QuestStatus { NOT_STARTED, STARTED, COMPLETED }
-var quest_status = QuestStatus.NOT_STARTED
+var quest_status
 var dialogue_state = 0
 var dialoguePopup
 var player
@@ -25,12 +25,9 @@ func _ready():
 	dialoguePopup = get_tree().root.get_node("/root/Global/Player/CanvasLayer/DialoguePopup")
 	player = get_tree().root.get_node("/root/Global/Player")
 	library2 = get_tree().root.get_node("/root/Library2")
-
-func talk(answer = ""):
-	# Set Fiona's animation to "talk"
-	#$AnimatedSprite.play("talk")
+	quest_status = GlobalVariables.quest_status_professor3
 	
-	# Set dialoguePopup npc to Fiona
+func talk(answer = ""):
 	dialoguePopup.npc = self
 	dialoguePopup.npc_name = "Professor João"
 	
@@ -44,7 +41,7 @@ func talk(answer = ""):
 						dialogue_state = 1
 						# Show dialogue popup
 						dialoguePopup.dialogue = "Hi student!  Do you need help?"
-						dialoguePopup.answers = "[A] Yes! Prof. Carlos said you have the key to B010. I need an appointment [B] No, I'm just walking around. "
+						dialoguePopup.answers = "[A] Yes! I need to enter on B010. Prof. Carlos said you have the keys. [B] No, I'm just walking around. "
 						dialoguePopup.open()
 					else:
 						# Update dialogue tree state
@@ -59,8 +56,8 @@ func talk(answer = ""):
 							# Update dialogue tree state
 							dialogue_state = 4
 							# Show dialogue popup
-							dialoguePopup.dialogue = "Yes, I have the key! But to know that you are telling me the true, answer this question. When did the expression 'Game Engines' arise?"
-							dialoguePopup.answers = "[A] Mid-80's [B] Early 90's [C] Mid'90's [D] When people started to play with their cars."
+							dialoguePopup.dialogue = "Yes, I have the key! But to know that you are telling me the true, answer this question. Wich of this is not a game engine?"
+							dialoguePopup.answers = "[A] Godot [B] LibGDX [C] GameMaker [D] Ubity"
 							dialoguePopup.open()
 					match answer:
 						"B":
@@ -78,7 +75,7 @@ func talk(answer = ""):
 				
 				4:
 					match answer:
-						"C":
+						"D":
 							# Update dialogue tree state
 							dialogue_state = 5
 							# Show dialogue popup
@@ -99,7 +96,7 @@ func talk(answer = ""):
 							dialoguePopup.dialogue = "That is not the answer... You need to pay more attention. Find me when you know the answer."
 							dialoguePopup.answers = "[A] Ok, professor."
 							dialoguePopup.open()
-						"D":
+						"C":
 							# Update dialogue tree state
 							dialogue_state = 6
 							# Show dialogue popup
@@ -109,7 +106,7 @@ func talk(answer = ""):
 				5:
 					# Update dialogue tree state
 					dialogue_state = 0
-					quest_status = QuestStatus.COMPLETED
+					GlobalVariables.quest_status_professor3 = QuestStatus.COMPLETED
 					# Close dialogue popup
 					dialoguePopup.close()
 					# Add XP to the player. 
@@ -119,7 +116,7 @@ func talk(answer = ""):
 				6: 
 					# Update dialogue tree state
 					dialogue_state = 0
-					quest_status = QuestStatus.STARTED
+					GlobalVariables.quest_status_professor3 = QuestStatus.STARTED
 					# Close dialogue popup
 					dialoguePopup.close()
 		QuestStatus.STARTED:
@@ -136,8 +133,8 @@ func talk(answer = ""):
 						"A":
 							dialogue_state = 2
 							# Show dialogue popup
-							dialoguePopup.dialogue = "When did the expression 'Game Engines' arise?"
-							dialoguePopup.answers = "[A] Mid-80's [B] Early 90's [C] Mid'90's [D] When people started to play with their cars."
+							dialoguePopup.dialogue = "Wich of this is not a game engine?"
+							dialoguePopup.answers = "[A] Godot [B] LibGDX [C] GameMaker [D] Ubity"
 							dialoguePopup.open()
 						"B":
 							# Update dialogue tree state
@@ -148,7 +145,7 @@ func talk(answer = ""):
 							dialoguePopup.open()
 				2:
 					match answer:
-						"C":
+						"D":
 							# Update dialogue tree state
 							dialogue_state = 4
 							# Show dialogue popup
@@ -169,7 +166,7 @@ func talk(answer = ""):
 							dialoguePopup.dialogue = "That is not the answer... Find me when you know it."
 							dialoguePopup.answers = "[A] Ok, professor."
 							dialoguePopup.open()
-						"D":
+						"C":
 							# Update dialogue tree state
 							dialogue_state = 5
 							# Show dialogue popup
@@ -185,7 +182,7 @@ func talk(answer = ""):
 				4:
 					# Update dialogue tree state
 					dialogue_state = 0
-					quest_status = QuestStatus.COMPLETED
+					GlobalVariables.quest_status_professor3 = QuestStatus.COMPLETED
 					# Close dialogue popup
 					dialoguePopup.close()
 					# Add XP to the player. 

@@ -26,6 +26,8 @@ var total_books = 0
 var total_beers = 0
 var students_talked_to = 0
 var projects_completed = 0
+var cheated = false;
+var did_exam = false
  
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
@@ -121,9 +123,9 @@ func add_beer():
 	challenges.update_challenge(1, total_beers)
 	emit_signal("player_beers_changed", self)
 	
-func remove_beer():
-	number_beers -= 1
-	given_beers += 1
+func remove_beer(number = 1):
+	number_beers -= number
+	given_beers += number
 	emit_signal("player_beers_changed", self)
 	
 func add_book():
@@ -146,3 +148,33 @@ func completed_project():
 
 func secret_pass_exam():
 	challenges.add_secret_challenge("Discover how to pass the exam with 0 effort")
+
+func cheat():
+	cheated = true
+	challenges.add_secret_challenge("Cheat on the Exam")
+	
+func pass_exam():
+	challenges.complete_challenge(4)
+
+func excel_exam():
+	challenges.add_secret_challenge("Have a 20/20 in the Final Exam")
+	
+func restart():
+	life = maxXP
+	number_beers = 0
+	number_books = 0
+	given_beers = 0
+	b010key = false
+	talkedWithCarlos = false
+
+	total_books = 0
+	total_beers = 0
+	students_talked_to = 0
+	projects_completed = 0
+	cheated = false
+	did_exam = false
+	
+	emit_signal("player_books_changed", self)
+	emit_signal("player_beers_changed", self)
+	emit_signal("player_stats_changed", self)
+	challenges.restart_challenges()

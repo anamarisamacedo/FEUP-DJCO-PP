@@ -5,7 +5,7 @@ var moveSpeed : int = 250
 onready var anim = $AnimatedSprite
 
 enum QuestStatus { NOT_STARTED, STARTED, COMPLETED }
-var quest_status = QuestStatus.NOT_STARTED
+var quest_status
 var dialogue_state = 0
 var bookFound = false
 var dialoguePopup
@@ -26,12 +26,9 @@ var xp_increase=30
 func _ready():
 	dialoguePopup = get_tree().root.get_node("/root/Global/Player/CanvasLayer/DialoguePopup")
 	player = get_tree().root.get_node("/root/Global/Player")
+	quest_status = GlobalVariables.quest_status_professor2
 
-func talk(answer = ""):
-	# Set Fiona's animation to "talk"
-	#$AnimatedSprite.play("talk")
-	
-	# Set dialoguePopup npc to Fiona
+func talk(answer = ""):	
 	dialoguePopup.npc = self
 	dialoguePopup.npc_name = "Professor Carlos"
 	
@@ -90,7 +87,7 @@ func talk(answer = ""):
 				5:
 					# Update dialogue tree state
 					dialogue_state = 0
-					quest_status = QuestStatus.COMPLETED
+					GlobalVariables.quest_status_professor2 = QuestStatus.COMPLETED
 					# Close dialogue popup
 					dialoguePopup.close()
 					# Add XP to the player. 
@@ -99,7 +96,7 @@ func talk(answer = ""):
 				6: 
 					# Update dialogue tree state
 					dialogue_state = 0
-					quest_status = QuestStatus.STARTED
+					GlobalVariables.quest_status_professor2 = QuestStatus.STARTED
 					# Close dialogue popup
 					dialoguePopup.close()
 		QuestStatus.STARTED:
@@ -151,7 +148,7 @@ func talk(answer = ""):
 				4:
 					# Update dialogue tree state
 					dialogue_state = 0
-					quest_status = QuestStatus.COMPLETED
+					GlobalVariables.quest_status_professor2 = QuestStatus.COMPLETED
 					# Close dialogue popup
 					dialoguePopup.close()
 					# Add XP to the player. 

@@ -4,8 +4,6 @@ extends KinematicBody2D
 var moveSpeed : int = 250
 onready var anim = $AnimatedSprite
 
-enum QuestStatus { NOT_STARTED, STARTED, COMPLETED }
-var quest_status = QuestStatus.NOT_STARTED
 var dialogue_state = 0
 var beerFound = false
 var dialoguePopup
@@ -30,73 +28,70 @@ func talk(answer = ""):
 	dialoguePopup.npc = self
 	dialoguePopup.npc_name = "Mark Zuckerberg"
 	
-	# Show the current dialogue
-	match quest_status:
-		QuestStatus.NOT_STARTED:
-			match dialogue_state:
-				0:
-					if alreadyTalked == false:
-						player.talked_to_student()
-						alreadyTalked = true
+	match dialogue_state:
+		0:
+			if alreadyTalked == false:
+				player.talked_to_student()
+				alreadyTalked = true
+			# Update dialogue tree state
+			dialogue_state = 1
+			# Show dialogue popup
+			dialoguePopup.dialogue = "Hey! Do you need some help?"
+			dialoguePopup.answers = "[A] Yes.  [B] Not really"
+			dialoguePopup.open()
+		1:
+			match answer:
+				"A":
 					# Update dialogue tree state
-					dialogue_state = 1
+					dialogue_state = 2
 					# Show dialogue popup
-					dialoguePopup.dialogue = "Hey! Do you need some help?"
-					dialoguePopup.answers = "[A] Yes.  [B] Not really"
+					dialoguePopup.dialogue = "What do you want to know?"
+					dialoguePopup.answers = "[A] How to I do my Final Exam? [B] How do I deliver projects?"
 					dialoguePopup.open()
-				1:
-					match answer:
-						"A":
-							# Update dialogue tree state
-							dialogue_state = 2
-							# Show dialogue popup
-							dialoguePopup.dialogue = "What do you want to know?"
-							dialoguePopup.answers = "[A] How to I do my Final Exam? [B] How do I deliver projects?"
-							dialoguePopup.open()
-						"B":
-							# Update dialogue tree state
-							dialogue_state = 3
-							# Show dialogue popup
-							dialoguePopup.dialogue = "Ok. If you need anything, I'll be around."
-							dialoguePopup.answers = "[A] Ok, bye"
-							dialoguePopup.open()
-				2:
-					match answer:
-						"A":
-							# Update dialogue tree state
-							dialogue_state = 4
-							# Show dialogue popup
-							dialoguePopup.dialogue = "You need to go to room B130 and find the exam paper."
-							dialoguePopup.answers = "[A] Thank you. Bye [B] Thank you. I have another doubt."
-							dialoguePopup.open()
-						"B":
-							# Update dialogue tree state
-							dialogue_state = 4
-							# Show dialogue popup
-							dialoguePopup.dialogue = "You need to talk with the professors to get the assignments. Professor Carlos, Alberto, Augusto and Diogo usually have projects for the students."
-							dialoguePopup.answers = "[A] Thank you. Bye [B] Thank you. I have another doubt."
-							dialoguePopup.open()
-				3:
+				"B":
 					# Update dialogue tree state
-					dialogue_state = 0
-					# Close dialogue popup
-					dialoguePopup.close()
-				4:
-					match answer:
-						"B":
-							# Update dialogue tree state
-							dialogue_state = 2
-							# Show dialogue popup
-							dialoguePopup.dialogue = "What do you want to know?"
-							dialoguePopup.answers = "[A] How to I do my Final Exam? [B] How do I deliver projects?"
-							dialoguePopup.open()
-						"A":
-							# Update dialogue tree state
-							dialogue_state = 3
-							# Show dialogue popup
-							dialoguePopup.dialogue = "Ok. If you need anything, I'll be around."
-							dialoguePopup.answers = "[A] Ok, bye"
-							dialoguePopup.open()
+					dialogue_state = 3
+					# Show dialogue popup
+					dialoguePopup.dialogue = "Ok. If you need anything, I'll be around."
+					dialoguePopup.answers = "[A] Ok, bye"
+					dialoguePopup.open()
+		2:
+			match answer:
+				"A":
+					# Update dialogue tree state
+					dialogue_state = 4
+					# Show dialogue popup
+					dialoguePopup.dialogue = "You need to go to room B130 and find the exam paper."
+					dialoguePopup.answers = "[A] Thank you. Bye [B] Thank you. I have another doubt."
+					dialoguePopup.open()
+				"B":
+					# Update dialogue tree state
+					dialogue_state = 4
+					# Show dialogue popup
+					dialoguePopup.dialogue = "You need to talk with the professors to get the assignments. Professor Carlos, Alberto, Augusto and Diogo usually have projects for the students."
+					dialoguePopup.answers = "[A] Thank you. Bye [B] Thank you. I have another doubt."
+					dialoguePopup.open()
+		3:
+			# Update dialogue tree state
+			dialogue_state = 0
+			# Close dialogue popup
+			dialoguePopup.close()
+		4:
+			match answer:
+				"B":
+					# Update dialogue tree state
+					dialogue_state = 2
+					# Show dialogue popup
+					dialoguePopup.dialogue = "What do you want to know?"
+					dialoguePopup.answers = "[A] How to I do my Final Exam? [B] How do I deliver projects?"
+					dialoguePopup.open()
+				"A":
+					# Update dialogue tree state
+					dialogue_state = 3
+					# Show dialogue popup
+					dialoguePopup.dialogue = "Ok. If you need anything, I'll be around."
+					dialoguePopup.answers = "[A] Ok, bye"
+					dialoguePopup.open()
 
 func _physics_process(delta):
 	var movement = direction * speed * delta

@@ -17,7 +17,7 @@ extents = Vector2( 13.7488, 15.5231 )
 resource_name = "Project"
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Label:modulate")
+tracks/0/path = NodePath("CanvasLayer/Label:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -27,6 +27,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("project:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 
 [node name="B010" type="Node2D"]
@@ -67,19 +79,22 @@ texture = ExtResource( 6 )
 position = Vector2( 0, 62.7023 )
 shape = SubResource( 2 )
 
-[node name="Label" type="Label" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Project = SubResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 221.928
-margin_top = 108.43
+margin_top = 168.43
 margin_right = 785.928
-margin_bottom = 184.43
+margin_bottom = 244.43
 custom_fonts/font = ExtResource( 4 )
 text = "Looks like someone let one project done here! 
   You can now delivery it to the professor."
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Project = SubResource( 3 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="project" to="." method="_on_project_body_entered"]

@@ -3,9 +3,8 @@ extends KinematicBody2D
 # Variables
 var moveSpeed : int = 250
 onready var anim = $AnimatedSprite
-
-enum QuestStatus { NOT_STARTED, STARTED, FINDED, COMPLETED }
-var quest_status = QuestStatus.NOT_STARTED
+enum QuestStatus { NOT_STARTED, STARTED, COMPLETED }
+var quest_status
 var dialogue_state = 0
 var bookFound = false
 var dialoguePopup
@@ -27,7 +26,8 @@ func _ready():
 	dialoguePopup = get_tree().root.get_node("/root/Global/Player/CanvasLayer/DialoguePopup")
 	player = get_tree().root.get_node("/root/Global/Player")
 	challenges = get_tree().root.get_node("/root/Global/CanvasLayer/Control/Challenges")
-
+	quest_status = GlobalVariables.quest_status_professor1
+	
 func talk(answer = ""):
 	dialoguePopup.npc = self
 	dialoguePopup.npc_name = "Professor Carlos"
@@ -51,8 +51,8 @@ func talk(answer = ""):
 							# Update dialogue tree state
 							dialogue_state = 4
 							# Show dialogue popup
-							dialoguePopup.dialogue = "Oh, I see... I can raise it if you delivery me 1 project, but first I need to know that you pay attention to our classes. Wich of this is not a game engine?"
-							dialoguePopup.answers = "[A] Godot [B] LibGDX [C] GameMaker [D] Ubity"
+							dialoguePopup.dialogue = "Oh, I see... I can raise it if you delivery me 1 project. Go to room B010, maybe you'll find something to help you."
+							dialoguePopup.answers = "[A] Ok, thank you."
 							dialoguePopup.open()
 					match answer:
 						"B":
@@ -69,124 +69,13 @@ func talk(answer = ""):
 					dialoguePopup.close()
 				
 				4:
-					match answer:
-						"D":
-							# Update dialogue tree state
-							dialogue_state = 5
-							# Show dialogue popup
-							dialoguePopup.dialogue = "That is correct! Very well student, I see you have been paying attention! Go to room B010, maybe you'll find something to help you."
-							dialoguePopup.answers = "[A] Thank you, professor. Bye!"
-							dialoguePopup.open()
-							player.talkedWithCarlos = true
-						"A":
-							# Update dialogue tree state
-							dialogue_state = 6
-							# Show dialogue popup
-							dialoguePopup.dialogue = "That is not the answer... You need to pay more attention. Find me when you know the answer."
-							dialoguePopup.answers = "[A] Ok, professor."
-							dialoguePopup.open()
-						"C":
-							# Update dialogue tree state
-							dialogue_state = 6
-							# Show dialogue popup
-							dialoguePopup.dialogue = "That is not the answer... You need to pay more attention. Find me when you know the answer."
-							dialoguePopup.answers = "[A] Ok, professor."
-							dialoguePopup.open()
-						"B":
-							# Update dialogue tree state
-							dialogue_state = 6
-							# Show dialogue popup
-							dialoguePopup.dialogue = "That is not the answer... You need to pay more attention. Find me when you know the answer."
-							dialoguePopup.answers = "[A] Ok, professor."
-							dialoguePopup.open()
-				5:
 					# Update dialogue tree state
 					dialogue_state = 0
-					quest_status = QuestStatus.FINDED
+					GlobalVariables.quest_status_professor1 = QuestStatus.STARTED
 					# Close dialogue popup
 					dialoguePopup.close()
-					# Add XP to the player. 
-					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
-				6: 
-					# Update dialogue tree state
-					dialogue_state = 0
-					quest_status = QuestStatus.STARTED
-					# Close dialogue popup
-					dialoguePopup.close()
+					player.talkedWithCarlos = true
 		QuestStatus.STARTED:
-			match dialogue_state:
-				0:
-					# Update dialogue tree state
-					dialogue_state = 1
-					# Show dialogue popup
-					dialoguePopup.dialogue = "Do you already know the answer, student?"
-					dialoguePopup.answers = "[A] Yes [B] Not yet..."
-					dialoguePopup.open()
-				1:
-					match answer:
-						"A":
-							dialogue_state = 2
-							# Show dialogue popup
-							dialoguePopup.dialogue = "Wich of this is not a game engine?"
-							dialoguePopup.answers = "[A] Godot [B] LibGDX [C] GameMaker [D] Ubity"
-							dialoguePopup.open()
-						"B":
-							# Update dialogue tree state
-							dialogue_state = 3
-							# Show dialogue popup
-							dialoguePopup.dialogue = "Find me when you know it."
-							dialoguePopup.answers = "[A] Ok, professor."
-							dialoguePopup.open()
-				2:
-					match answer:
-						"D":
-							# Update dialogue tree state
-							dialogue_state = 4
-							# Show dialogue popup
-							dialoguePopup.dialogue = "That is correct! Very well student, I see you have studied! I know that the appointments are in room B120, but I don't have the key. Maybe professor João has it. Find him."
-							dialoguePopup.answers = "[A] Thank you, professor. Bye!"
-							dialoguePopup.open()
-							player.talkedWithCarlos = true
-						"A":
-							# Update dialogue tree state
-							dialogue_state = 5
-							# Show dialogue popup
-							dialoguePopup.dialogue = "That is not the answer... Find me when you know it."
-							dialoguePopup.answers = "[A] Ok, professor."
-							dialoguePopup.open()
-						"B":
-							# Update dialogue tree state
-							dialogue_state = 5
-							# Show dialogue popup
-							dialoguePopup.dialogue = "That is not the answer... Find me when you know it."
-							dialoguePopup.answers = "[A] Ok, professor."
-							dialoguePopup.open()
-						"C":
-							# Update dialogue tree state
-							dialogue_state = 5
-							# Show dialogue popup
-							dialoguePopup.dialogue = "That is not the answer... Find me when you know it."
-							dialoguePopup.answers = "[A] Ok, professor."
-							dialoguePopup.open()
-					
-				3:
-					# Update dialogue tree state
-					dialogue_state = 0
-					# Close dialogue popup
-					dialoguePopup.close
-				4:
-					# Update dialogue tree state
-					dialogue_state = 0
-					quest_status = QuestStatus.FINDED
-					# Close dialogue popup
-					dialoguePopup.close()
-					
-				5: 
-					# Update dialogue tree state
-					dialogue_state = 0
-					# Close dialogue popup
-					dialoguePopup.close()
-		QuestStatus.FINDED:
 			match dialogue_state:
 				0:
 					if player.project1Found == true:
@@ -196,39 +85,52 @@ func talk(answer = ""):
 						dialoguePopup.dialogue = "Hey, student! Do you have the project?"
 						dialoguePopup.answers = "[A] Yes, I have it here!"
 						dialoguePopup.open()
-					else: 
+					elif player.b010key == false: 
 						# Update dialogue tree state
 						dialogue_state = 1
 						# Show dialogue popup
 						dialoguePopup.dialogue = "Hey, student! Do you have the project?"
 						dialoguePopup.answers = "[B] Not yet. I can't find the keys to the room."
 						dialoguePopup.open()
+					else:
+						# Update dialogue tree state
+						dialogue_state = 2
+						# Show dialogue popup
+						dialoguePopup.dialogue = "Hey, student! Do you have the project?"
+						dialoguePopup.answers = "[B] Not yet."
+						dialoguePopup.open()
 				1: 
 					match answer:
 						"A":
 							# Update dialogue tree state
-							dialogue_state = 2
+							dialogue_state = 3
 							dialoguePopup.dialogue = "Good! I'm going to raise your grade!."
 							dialoguePopup.answers = "[A] Thank you, bye!"
 							dialoguePopup.open()
 					match answer:
-						"A":
+						"B":
 							# Update dialogue tree state
-							dialogue_state = 3
+							dialogue_state = 4
 							dialoguePopup.dialogue = "Check in the library, maybe you'll have luck."
 							dialoguePopup.answers = "[A] Ok, thank you!"
 							dialoguePopup.open()
 				2:
 					# Update dialogue tree state
+					dialogue_state = 4
+					dialoguePopup.dialogue = "Find me when you have it."
+					dialoguePopup.answers = "[A] Ok, thank you!"
+					dialoguePopup.open()
+				3:
+					# Update dialogue tree state
 					dialogue_state = 0
-					quest_status = QuestStatus.COMPLETED
+					GlobalVariables.quest_status_professor1 = QuestStatus.COMPLETED
 					# Close dialogue popup
 					dialoguePopup.close()
 					# Add XP to the player. 
-					player.deliver_project()
-					player.delivered_Carlos_project = true
+					player.completed_project()
+					#player.delivered_Carlos_project = true
 					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
-				3:
+				4:
 					# Update dialogue tree state
 					dialogue_state = 0
 					# Close dialogue popup
@@ -239,7 +141,7 @@ func talk(answer = ""):
 					# Update dialogue tree state
 					dialogue_state = 1
 					# Show dialogue popup
-					dialoguePopup.dialogue = "Hey, student. Do you NEED HELP?"
+					dialoguePopup.dialogue = "Hey, student. Do you need help?"
 					dialoguePopup.answers = "[B] No, thank you."
 					dialoguePopup.open()
 				1:
