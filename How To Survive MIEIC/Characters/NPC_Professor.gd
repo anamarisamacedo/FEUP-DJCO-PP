@@ -224,7 +224,7 @@ func talk(answer = ""):
 							dialogue_state = 1
 							dialoguePopup.dialogue = "Very well student. I will allow you to retake the exam. Bye."
 							dialoguePopup.answers = "[A] Thank you!"
-							player.did_exam = false
+							player.retake_exam()
 							dialoguePopup.open()
 						"D":
 							dialogue_state = 1

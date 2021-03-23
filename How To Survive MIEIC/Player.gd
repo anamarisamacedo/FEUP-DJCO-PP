@@ -173,6 +173,10 @@ func deliver_project():
 func raise_grade():
 	pass_exam()
 	challenges.add_secret_challenge("Convince a professor to raise your grade")
+
+func retake_exam():
+	did_exam = false
+	challenges.add_secret_challenge("Convince a professor to let you retake the exam")
 	
 func restart():
 	life = maxXP

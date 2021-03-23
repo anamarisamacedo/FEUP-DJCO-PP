@@ -28,6 +28,7 @@ var SecretItemList = [
 	"Cheat on the Exam", #encontrar uma sala de testes e convencer um estudante a deixar-te copiar
 	"Have a 20/20 in the Final Exam",
 	"Convince a professor to raise your grade", #através de um diálogo elaborado
+	"Convince a professor to let you retake the exam",
 	"Encontrar os Apontamentos Mágicos", #estão encondidos algures na FEUP e permitem completar challenges académicos automaticamente
 	"Encontrar o Fantasma da FEUP", #só engraçado -> o fantasma conta-te histórias engraçadas da FEUP
 	"Matar um Zombie", #pressionando uma tecla random tipo F perto de um zombie 
