@@ -27,11 +27,7 @@ func _ready():
 	dialoguePopup = get_tree().root.get_node("/root/Global/Player/CanvasLayer/DialoguePopup")
 	player = get_tree().root.get_node("/root/Global/Player")
 
-func talk(answer = ""):
-	# Set Fiona's animation to "talk"
-	#$AnimatedSprite.play("talk")
-	
-	# Set dialoguePopup npc to Fiona
+func talk(answer = ""):	
 	dialoguePopup.npc = self
 	dialoguePopup.npc_name = "Professor Carlos"
 	

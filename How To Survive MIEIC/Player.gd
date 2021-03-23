@@ -94,6 +94,7 @@ func play_animation (anim_name):
 func _input(event):
 	if event.is_action_pressed("interact"):
 		var target = $RayCast2D.get_collider()
+		print(target)
 		if target != null and target.is_in_group("NPCs"):
 			# Talk to NPC
 			target.talk()

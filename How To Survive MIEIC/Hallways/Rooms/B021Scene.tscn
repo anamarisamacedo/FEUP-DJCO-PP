@@ -39,7 +39,7 @@ position = Vector2( 154.597, 456.656 )
 position = Vector2( 303.186, 186.653 )
 
 [node name="Exam" parent="." instance=ExtResource( 6 )]
-position = Vector2( 711.172, 186.87 )
+position = Vector2( 711.172, 181.213 )
 
 [node name="ExamStudents" type="Node" parent="."]
 

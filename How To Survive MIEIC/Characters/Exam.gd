@@ -42,7 +42,6 @@ func talk(answer = ""):
 				dialoguePopup.answers = "Ok bye"
 				dialoguePopup.open()
 		2:
-			print("hello")
 			if answer == "C":
 				correct_answers += 1
 			dialogue_state = 3
