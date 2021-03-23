@@ -62,12 +62,6 @@ tile_data = PoolIntArray( -2162707, 40, 0, -2162706, 40, 0, -2162705, 40, 0, -21
 current = true
 script = ExtResource( 3 )
 
-[node name="Book" parent="." instance=ExtResource( 14 )]
-position = Vector2( -218.725, -366.122 )
-
-[node name="Beer" parent="." instance=ExtResource( 5 )]
-position = Vector2( -533.225, -49.2291 )
-
 [node name="Professors" type="Node" parent="."]
 
 [node name="NPC_Professor" parent="Professors" instance=ExtResource( 13 )]
@@ -127,8 +121,28 @@ shape = SubResource( 3 )
 
 [node name="Exam" parent="." instance=ExtResource( 7 )]
 position = Vector2( 352, -87.17 )
-[connection signal="body_entered" from="Book" to="." method="_on_Book_body_entered"]
+
+[node name="Collectables" type="Node2D" parent="."]
+
+[node name="Book" parent="Collectables" instance=ExtResource( 14 )]
+position = Vector2( -218.725, -366.122 )
+
+[node name="Beer2" parent="Collectables" instance=ExtResource( 5 )]
+position = Vector2( 535.366, -1043.05 )
+
+[node name="Beer3" parent="Collectables" instance=ExtResource( 5 )]
+position = Vector2( 51.7261, -1476.94 )
+
+[node name="Beer4" parent="Collectables" instance=ExtResource( 5 )]
+position = Vector2( 513.142, 207.5 )
+
+[node name="Beer5" parent="Collectables" instance=ExtResource( 5 )]
+position = Vector2( -540.891, 791.663 )
+
+[node name="Beer" parent="Collectables" instance=ExtResource( 5 )]
+position = Vector2( -533.225, -49.2291 )
 [connection signal="body_entered" from="FirstHallway" to="." method="_on_FirstHallway_body_entered"]
 [connection signal="body_entered" from="SecondHallway" to="." method="_on_SecondHallway_body_entered"]
 [connection signal="body_entered" from="ThirdHallway" to="." method="_on_ThirdHallway_body_entered"]
 [connection signal="body_entered" from="OutsideDoor" to="." method="_on_OutsideDoor_body_entered"]
+[connection signal="body_entered" from="Collectables/Book" to="." method="_on_Book_body_entered"]
