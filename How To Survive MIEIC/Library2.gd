@@ -5,7 +5,9 @@ var player
 func _ready():
 	player = get_tree().root.get_node("/root/Global/Player")
 	player.position = $Position2D.position
-	
+	if GlobalVariables.beerLibrary2Picked == true:
+		get_tree().root.get_node("/root/Library2/Beer").queue_free()
+		
 func _on_elevator_body_entered(body):
 	if body.name == "Player":
 		GlobalVariables.goto_scene("res://Library.tscn")

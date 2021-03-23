@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://Characters/Zombie.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://tileset2.tres" type="TileSet" id=3]
 [ext_resource path="res://Hallways/Rooms/B0301Scene.gd" type="Script" id=4]
@@ -29,4 +30,7 @@ shape = SubResource( 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 165.3, 457.845 )
+
+[node name="Zombie" parent="." instance=ExtResource( 1 )]
+position = Vector2( 603.288, 454.247 )
 [connection signal="body_entered" from="back" to="." method="_on_back_body_entered"]
