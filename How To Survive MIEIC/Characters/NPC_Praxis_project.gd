@@ -35,9 +35,6 @@ func talk(answer = ""):
 		QuestStatus.NOT_STARTED:
 			match dialogue_state:
 				0:
-					if alreadyTalked == false:
-						player.talked_to_student()
-						alreadyTalked = true
 					# Update dialogue tree state
 					dialogue_state = 1
 					# Show dialogue popup
