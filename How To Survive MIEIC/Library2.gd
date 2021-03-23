@@ -20,5 +20,4 @@ func _on_shelfBook_body_entered(body):
 			player.add_book()
 
 func key_found():
-	print("ENTERED")
 	$AnimationPlayer2.play("Key")

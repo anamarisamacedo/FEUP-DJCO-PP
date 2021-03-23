@@ -140,7 +140,6 @@ func _on_Timer_timeout():
 		direction = Vector2.ZERO
 	elif random_number < 0.1:
 		direction = Vector2.DOWN.rotated(rng.randf() * 2 * PI)
-	print("hello")
 	# Update bounce countdown
 	if bounce_countdown > 0:
 		bounce_countdown = bounce_countdown - 1

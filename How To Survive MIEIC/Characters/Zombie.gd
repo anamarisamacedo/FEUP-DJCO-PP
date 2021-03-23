@@ -20,6 +20,7 @@ var attack_damage = 10
 var attack_cooldown_time = 1500
 var next_attack_time = 0
 var current_scene
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#current_scene = get_tree().get_current_scene().get_name()
@@ -105,10 +106,20 @@ func animates_monster(direction_var: Vector2):
 		$AnimatedSprite.play(animation)
 
 func _on_AnimatedSprite_animation_finished():
-	other_animation_playing = false
+	if $AnimatedSprite.animation == "die":
+		get_tree().queue_delete(self)
+	else:
+		other_animation_playing = false
 
 func _on_AnimatedSprite_frame_changed():
 	if $AnimatedSprite.animation.ends_with("_attack") and $AnimatedSprite.frame == 1:
 		var target = $RayCast2D.get_collider()
 		if target != null and target.name == "Player" and player.life > 0:
 			player.hit(attack_damage)
+
+func die():
+	$Timer.stop()
+	direction = Vector2.ZERO
+	set_process(false)
+	other_animation_playing = true
+	$AnimatedSprite.play("die")

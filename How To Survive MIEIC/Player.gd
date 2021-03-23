@@ -36,6 +36,7 @@ var delivered_Alberto_project = false
 var delivered_Augusto_project = false
 var delivered_Joao_project = false
 var delivered_Miguel_project = false
+var killed_zombie = false
  
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
@@ -106,6 +107,15 @@ func _input(event):
 		if target != null and target.is_in_group("NPCs"):
 			# Talk to NPC
 			target.talk()
+			return
+	if event.is_action_pressed("kill"):
+		var target = $RayCast2D.get_collider()
+		if target != null and target.is_in_group("Zombie"):
+			# Kill Zombie
+			target.die()
+			if !killed_zombie:
+				challenges.add_secret_challenge("Kill a Zombie")
+			killed_zombie = true
 			return
 
 func hit(damage):
@@ -200,6 +210,7 @@ func restart():
 	delivered_Alberto_project = false
 	delivered_Augusto_project = false
 	delivered_Joao_project = false
+	killed_zombie = false
 	
 	emit_signal("player_books_changed", self)
 	emit_signal("player_beers_changed", self)
