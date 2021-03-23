@@ -8,7 +8,6 @@ var moveSpeed = 250
 var interactDist = 70
 signal player_stats_changed
 var b010key = false
-var project1Found = false
 signal player_beers_changed
 signal player_books_changed
  

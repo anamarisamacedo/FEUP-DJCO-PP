@@ -49,7 +49,7 @@ func talk(answer = ""):
 						"A":
 							dialogue_state = 4
 							# Show dialogue popup
-							dialoguePopup.dialogue = "Oh, I see... I can raise it if you delivery me 1 project. Go to room B010, maybe you'll find something to help you."
+							dialoguePopup.dialogue = "Oh, I see... I will tell you where to find your project. Go to room B010, maybe you'll find something to help you."
 							dialoguePopup.answers = "[A] Ok, thank you."
 							dialoguePopup.open()
 					match answer:
@@ -71,7 +71,7 @@ func talk(answer = ""):
 		QuestStatus.STARTED:
 			match dialogue_state:
 				0:
-					if player.project1Found == true:
+					if player.has_Carlos_project == true:
 						# Update dialogue tree state
 						dialogue_state = 1
 						# Show dialogue popup

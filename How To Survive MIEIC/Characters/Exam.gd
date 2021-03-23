@@ -137,7 +137,7 @@ func talk(answer = ""):
 				dialoguePopup.answers = "Cool cool cool!"
 			else:
 				dialoguePopup.dialogue = "I'm sorry, Manel! You've failed with a final grade of " + str(correct_answers*2) + "/20."
-				dialoguePopup.answers = "Oh noooo."
+				dialoguePopup.answers = "[Any Key] Oh noooo."
 			dialoguePopup.open()
 		12:
 			# Update dialogue tree state
