@@ -26,8 +26,14 @@ var total_books = 0
 var total_beers = 0
 var students_talked_to = 0
 var projects_completed = 0
-var cheated = false;
+var cheated = false
 var did_exam = false
+var pass_exam = false
+var has_Carlos_project = false
+var delivered_Carlos_project = false
+var delivered_Alberto_project = false
+var delivered_Augusto_project = false
+var delivered_Joao_project = false
  
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
@@ -154,10 +160,23 @@ func cheat():
 	challenges.add_secret_challenge("Cheat on the Exam")
 	
 func pass_exam():
+	pass_exam = true
 	challenges.complete_challenge(4)
 
 func excel_exam():
 	challenges.add_secret_challenge("Have a 20/20 in the Final Exam")
+	
+func deliver_project():
+	var number_projects = delivered_Carlos_project + delivered_Alberto_project + delivered_Augusto_project + delivered_Joao_project
+	challenges.update_challenge(3, number_projects)
+	
+func raise_grade():
+	pass_exam()
+	challenges.add_secret_challenge("Convince a professor to raise your grade")
+
+func retake_exam():
+	did_exam = false
+	challenges.add_secret_challenge("Convince a professor to let you retake the exam")
 	
 func restart():
 	life = maxXP
@@ -173,6 +192,12 @@ func restart():
 	projects_completed = 0
 	cheated = false
 	did_exam = false
+	pass_exam = false
+	has_Carlos_project = false
+	delivered_Carlos_project = false
+	delivered_Alberto_project = false
+	delivered_Augusto_project = false
+	delivered_Joao_project = false
 	
 	emit_signal("player_books_changed", self)
 	emit_signal("player_beers_changed", self)

@@ -25,11 +25,14 @@ var challenges = [
 
 var SecretItemList = [
 	"Discover how to pass the exam with 0 effort", #dar 5 cervejas a estudantes
-	"Convencer um Prof a Subir-te a Nota", #através de um diálogo elaborado
+	"Cheat on the Exam", #encontrar uma sala de testes e convencer um estudante a deixar-te copiar
+	"Have a 20/20 in the Final Exam",
+	"Convince a professor to raise your grade", #através de um diálogo elaborado
+	"Convince a professor to let you retake the exam",
 	"Encontrar os Apontamentos Mágicos", #estão encondidos algures na FEUP e permitem completar challenges académicos automaticamente
 	"Encontrar o Fantasma da FEUP", #só engraçado -> o fantasma conta-te histórias engraçadas da FEUP
 	"Matar um Zombie", #pressionando uma tecla random tipo F perto de um zombie 
-	"Cheat on the Exam", #encontrar uma sala de testes e convencer um estudante a deixar-te copiar
+	
 ]
 
 var item_list

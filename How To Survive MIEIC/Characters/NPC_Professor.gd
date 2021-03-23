@@ -11,6 +11,8 @@ var dialoguePopup
 var player
 var professorJoao
 var challenges
+var preserverance = 0
+
 # Random number generator
 var rng = RandomNumberGenerator.new()
 
@@ -37,18 +39,14 @@ func talk(answer = ""):
 		QuestStatus.NOT_STARTED:
 			match dialogue_state:
 				0:
-					
-					# Update dialogue tree state
 					dialogue_state = 1
-					# Show dialogue popup
 					dialoguePopup.dialogue = "Hi student! I know you from DJCO classes! Do you need help? "
-					dialoguePopup.answers = "[A] Yes, teacher! I would like to raise my grade. [B] No, I'm just walking around. "
+					dialoguePopup.answers = "[A] Yes, teacher! I would like to do a project. [B] No, I'm just walking around. "
 					dialoguePopup.open()
 				1:
 					
 					match answer:
 						"A":
-							# Update dialogue tree state
 							dialogue_state = 4
 							# Show dialogue popup
 							dialoguePopup.dialogue = "Oh, I see... I can raise it if you delivery me 1 project. Go to room B010, maybe you'll find something to help you."
@@ -56,18 +54,13 @@ func talk(answer = ""):
 							dialoguePopup.open()
 					match answer:
 						"B":
-							# Update dialogue tree state
 							dialogue_state = 3
-							# Show dialogue popup
 							dialoguePopup.dialogue = "Ok! See you in classes."
 							dialoguePopup.answers = "[A] Bye"
 							dialoguePopup.open()
 				3:
-					# Update dialogue tree state
 					dialogue_state = 0
-					# Close dialogue popup
-					dialoguePopup.close()
-				
+					dialoguePopup.close()				
 				4:
 					# Update dialogue tree state
 					dialogue_state = 0
@@ -133,7 +126,6 @@ func talk(answer = ""):
 				4:
 					# Update dialogue tree state
 					dialogue_state = 0
-					# Close dialogue popup
 					dialoguePopup.close()
 		QuestStatus.COMPLETED:
 			match dialogue_state:
