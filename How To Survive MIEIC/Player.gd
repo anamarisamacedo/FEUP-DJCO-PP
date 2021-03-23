@@ -19,6 +19,7 @@ var number_books = 0
 var given_beers = 0
 
 var talkedWithCarlos = false
+var talkedWithMiguel = false
 
 var challenges
 var total_books = 0
@@ -29,10 +30,12 @@ var cheated = false
 var did_exam = false
 var pass_exam = false
 var has_Carlos_project = false
+var has_Miguel_Project = false
 var delivered_Carlos_project = false
 var delivered_Alberto_project = false
 var delivered_Augusto_project = false
 var delivered_Joao_project = false
+var delivered_Miguel_project = false
  
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite

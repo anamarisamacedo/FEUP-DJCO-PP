@@ -15,10 +15,13 @@ var beerThirdHallway2Picked = false
 var bookMainScenePicked = false
 var pause_menu
 var game_over
-enum QuestStatus { NOT_STARTED, STARTED, COMPLETED }
+enum QuestStatus { NOT_STARTED, STARTED, PROJECT, COMPLETED }
 var quest_status_professor1 = QuestStatus.NOT_STARTED
 var quest_status_professor2 = QuestStatus.NOT_STARTED
 var quest_status_professor3 = QuestStatus.NOT_STARTED
+var quest_status_professor4 = QuestStatus.NOT_STARTED
+var quest_status_praxis_project = QuestStatus.NOT_STARTED
+var quest_status_praxis_cheater = QuestStatus.NOT_STARTED
 
 func _input(event):
 	if event.is_action_pressed("pause"):

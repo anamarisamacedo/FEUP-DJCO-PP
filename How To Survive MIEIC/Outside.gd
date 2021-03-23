@@ -7,6 +7,8 @@ func _ready():
 	player.position = $Position2D.position
 	if GlobalVariables.beerOutsidePicked == true:
 		get_tree().root.get_node("/root/Outside/Beer").queue_free()
+	if GlobalVariables.quest_status_praxis_project == GlobalVariables.QuestStatus.PROJECT:
+		get_tree().root.get_node("/root/Outside/NPC_Praxis_project").queue_free()
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":

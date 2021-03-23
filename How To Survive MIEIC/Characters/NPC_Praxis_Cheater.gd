@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 enum QuestStatus { NOT_STARTED, COMPLETED }
-var quest_status = QuestStatus.NOT_STARTED
+var quest_status
 var dialogue_state = 0
 var beerFound = false
 var dialoguePopup
@@ -20,7 +20,7 @@ func talk(answer = ""):
 	dialoguePopup.npc = self
 	dialoguePopup.npc_name = "Mark Zuckerberg"
 	
-	match quest_status:
+	match GlobalVariables.quest_status_praxis_cheater:
 		QuestStatus.NOT_STARTED:
 			match dialogue_state:
 				0:
@@ -60,7 +60,7 @@ func talk(answer = ""):
 								dialoguePopup.open()
 								player.remove_beer(5)
 								player.cheat()
-								quest_status = QuestStatus.COMPLETED
+								GlobalVariables.quest_status_praxis_cheater = QuestStatus.COMPLETED
 							else:
 								dialoguePopup.dialogue = "You don't have enough beers, bro! Come back when you do."
 								dialoguePopup.answers = "[A] Sorry. Bye."

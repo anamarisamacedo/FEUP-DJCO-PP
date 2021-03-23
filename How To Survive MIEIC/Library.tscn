@@ -9,7 +9,7 @@
 [ext_resource path="res://Sprites/Items/bluebook.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 95.8922, 40.8708 )
+extents = Vector2( 95.8922, 7.5434 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 96.1406, 5.14227 )
@@ -57,7 +57,7 @@ script = ExtResource( 6 )
 position = Vector2( 486.026, 652.15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="back"]
-position = Vector2( -0.9182, 30.1225 )
+position = Vector2( -0.9182, -8.55871 )
 shape = SubResource( 1 )
 
 [node name="stairs" type="Area2D" parent="."]

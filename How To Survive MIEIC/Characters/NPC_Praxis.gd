@@ -111,7 +111,7 @@ func talk(answer = ""):
 					# Update dialogue tree state
 					dialogue_state = 1
 					# Show dialogue popup
-					dialoguePopup.dialogue = "Did you find the beer"
+					dialoguePopup.dialogue = "Did you find the beer?"
 					if player.number_beers > 0:
 						dialoguePopup.answers = "[A] Yes! [B] Not really"
 					else:
@@ -124,7 +124,6 @@ func talk(answer = ""):
 						# Show dialogue popup
 						dialoguePopup.dialogue = "Damn, you're the best, I'm going to tell my friends about you."
 						# Update Player XP
-						player.add_social(xp_increase)
 						player.remove_beer()
 						dialoguePopup.answers = "[A] Thank you"
 						dialoguePopup.open()
@@ -144,7 +143,6 @@ func talk(answer = ""):
 					# Add XP to the player. 
 					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
 					
-					player.add_social(10)
 				3:
 					# Update dialogue tree state
 					dialogue_state = 0

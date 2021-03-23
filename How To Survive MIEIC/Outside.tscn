@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Collectables/Beer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Tiles/outsidedoor.png" type="Texture" id=2]
@@ -7,12 +7,13 @@
 [ext_resource path="res://Outside.gd" type="Script" id=5]
 [ext_resource path="res://GUI/CameraOutside.gd" type="Script" id=6]
 [ext_resource path="res://Characters/NPC_Praxis.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Characters/NPC_Praxis_project.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 61.9039, 67.6294 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 552.863, 69.6887 )
+extents = Vector2( 552.863, 9.20123 )
 
 [node name="Outside" type="Node2D"]
 position = Vector2( 0, 120 )
@@ -38,6 +39,9 @@ script = ExtResource( 6 )
 [node name="NPC_Praxis" parent="." instance=ExtResource( 7 )]
 position = Vector2( 882.435, 102.89 )
 
+[node name="NPC_Praxis2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 101.202, 393.38 )
+
 [node name="Library" type="Area2D" parent="."]
 
 [node name="outsidedoor" type="Sprite" parent="Library"]
@@ -53,11 +57,11 @@ shape = SubResource( 1 )
 position = Vector2( 488.849, 546.806 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="B_building"]
-position = Vector2( 29.9405, 30.8791 )
+position = Vector2( 25.4506, -74.6323 )
 shape = SubResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 517.455, 411.943 )
+position = Vector2( 517.455, 365.922 )
 
 [node name="Beer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 72.018, 58.8863 )

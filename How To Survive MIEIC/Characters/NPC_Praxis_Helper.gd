@@ -68,7 +68,7 @@ func talk(answer = ""):
 					# Update dialogue tree state
 					dialogue_state = 4
 					# Show dialogue popup
-					dialoguePopup.dialogue = "You need to talk with the professors to get the assignments. Professor Carlos, Alberto, Augusto and Diogo usually have projects for the students."
+					dialoguePopup.dialogue = "You need to talk with the professors to get the assignments. Professor Carlos, Alberto, João and Miguel usually have projects for the students."
 					dialoguePopup.answers = "[A] Thank you. Bye [B] Thank you. I have another doubt."
 					dialoguePopup.open()
 		3:

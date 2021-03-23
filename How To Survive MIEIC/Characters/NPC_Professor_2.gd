@@ -5,7 +5,6 @@ var moveSpeed : int = 250
 onready var anim = $AnimatedSprite
 
 enum QuestStatus { NOT_STARTED, STARTED, COMPLETED }
-var quest_status
 var dialogue_state = 0
 var bookFound = false
 var dialoguePopup
@@ -26,14 +25,13 @@ var xp_increase=30
 func _ready():
 	dialoguePopup = get_tree().root.get_node("/root/Global/Player/CanvasLayer/DialoguePopup")
 	player = get_tree().root.get_node("/root/Global/Player")
-	quest_status = GlobalVariables.quest_status_professor2
 
 func talk(answer = ""):	
 	dialoguePopup.npc = self
 	dialoguePopup.npc_name = "Professor Carlos"
 	
 	# Show the current dialogue
-	match quest_status:
+	match GlobalVariables.quest_status_professor2:
 		QuestStatus.NOT_STARTED:
 			match dialogue_state:
 				0:
