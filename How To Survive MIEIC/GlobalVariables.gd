@@ -7,6 +7,12 @@ var bookB020Found = false
 var bookB031Found = false
 var bookLibraryFound = false
 var bookLibrary2Found = false
+var beerFirstHallwayPicked = false
+var beerMainScenePicked = false
+var beerOutsidePicked = false
+var beerB130ScenePicked = false
+var beerThirdHallway2Picked = false
+var bookMainScenePicked = false
 var pause_menu
 var game_over
 enum QuestStatus { NOT_STARTED, STARTED, COMPLETED }

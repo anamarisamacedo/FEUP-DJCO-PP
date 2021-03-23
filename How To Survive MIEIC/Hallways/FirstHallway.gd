@@ -6,7 +6,8 @@ var back_position
 func _ready():
 	player = get_tree().root.get_node("/root/Global/Player")
 	player.position = $Position2D.position
-	
+	if GlobalVariables.beerFirstHallwayPicked == true:
+		get_tree().root.get_node("/root/FirstHallway/Beer").queue_free()
 
 func _on_Back_body_entered(body):
 	if body.name == "Player":
@@ -26,3 +27,4 @@ func _on_Door1_body_entered(body):
 func _on_Door2_body_entered(body):
 	if body.name == "Player":
 		GlobalVariables.goto_scene("res://Hallways/Rooms/B011Scene.tscn")
+
