@@ -1,12 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Sprites/Tiles/cacifo.png" type="Texture" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://tileset2.tres" type="TileSet" id=3]
 [ext_resource path="res://Hallways/Rooms/B0201Scene.gd" type="Script" id=4]
 [ext_resource path="res://Sprites/Items/bluebook.png" type="Texture" id=5]
-[ext_resource path="res://Characters/NPC_Professor_Exam.tscn" type="PackedScene" id=6]
-
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 39.5063, 25.4594 )
@@ -87,9 +85,6 @@ text = "+1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="NPC_Professor" parent="." instance=ExtResource( 6 )]
-position = Vector2( 499.467, 67.2453 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Book = SubResource( 3 )

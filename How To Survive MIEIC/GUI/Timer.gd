@@ -15,7 +15,7 @@ func _ready():
 
 func restart():
 	seconds = 0
-	minutes = 5
+	minutes = 10
 	update_labels()
 	start()
 

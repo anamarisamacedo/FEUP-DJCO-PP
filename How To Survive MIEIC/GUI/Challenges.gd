@@ -18,7 +18,7 @@ var ChallengeMax = 5
 var challenges = [
 	[0, "Gather 5 Books", 0, true, 0, 5],
 	[1, "Gather 5 Beers", 0, true, 0, 5],
-	[2, "Talk with 4 Students", 0, true, 0, 5],
+	[2, "Talk with 4 Students", 0, true, 0, 4],
 	[3, "Deliver 2 Projects", 0, true, 0, 2],
 	[4, "Pass the Final Exam", 0, false]
 ]
@@ -144,7 +144,7 @@ func restart_challenges():
 	challenges = [
 		[0, "Gather 5 Books", 0, true, 0, 5],
 		[1, "Gather 5 Beers", 0, true, 0, 5],
-		[2, "Talk with 4 Students", 0, true, 0, 5],
+		[2, "Talk with 4 Students", 0, true, 0, 4],
 		[3, "Deliver 2 Projects", 0, true, 0, 2],
 		[4, "Pass the Final Exam", 0, false]
 	]
