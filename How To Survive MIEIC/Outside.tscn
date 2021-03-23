@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Collectables/Beer.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Sprites/Tiles/outsidedoor.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Tiles/8a712e8e5d10f6687fa916a9ea00e106.jpg" type="Texture" id=2]
 [ext_resource path="res://tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://tileset2.tres" type="TileSet" id=4]
 [ext_resource path="res://Outside.gd" type="Script" id=5]
@@ -11,7 +11,7 @@
 [ext_resource path="res://Characters/Zombie.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 61.9039, 67.6294 )
+extents = Vector2( 73.4599, 9.46738 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 552.863, 9.20123 )
@@ -46,12 +46,14 @@ position = Vector2( 101.202, 393.38 )
 [node name="Library" type="Area2D" parent="."]
 
 [node name="outsidedoor" type="Sprite" parent="Library"]
-position = Vector2( 515.657, -60.9292 )
-scale = Vector2( 2.3978, 2.11748 )
+position = Vector2( 519.044, -61.7588 )
+scale = Vector2( 2.30395, 2.11426 )
 texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( -0.343765, 5.78353, 65.0895, 58.3302 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Library"]
-position = Vector2( 516.568, -56.6964 )
+position = Vector2( 517.627, -10.08 )
 shape = SubResource( 1 )
 
 [node name="B_building" type="Area2D" parent="."]
@@ -62,7 +64,7 @@ position = Vector2( 25.4506, -74.6323 )
 shape = SubResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 517.455, 365.922 )
+position = Vector2( 502.622, 358.506 )
 
 [node name="Beer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 72.018, 58.8863 )
