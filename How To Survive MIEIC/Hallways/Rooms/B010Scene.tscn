@@ -1,12 +1,33 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Hallways/Rooms/B0101Scene.gd" type="Script" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://tileset2.tres" type="TileSet" id=3]
+[ext_resource path="res://Font/new_dynamicfont.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Characters/NPC_Professor_2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sprites/Items/project1.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 39.5063, 25.4594 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 13.7488, 15.5231 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Project"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.4, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="B010" type="Node2D"]
 position = Vector2( 0, 60 )
@@ -33,4 +54,32 @@ position = Vector2( 509.319, 76.8215 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 159.354, 469.737 )
+
+[node name="project" type="Area2D" parent="."]
+position = Vector2( 640.516, -3.1748 )
+
+[node name="project1" type="Sprite" parent="project"]
+position = Vector2( 0.491943, 0.576355 )
+scale = Vector2( 0.733415, 0.72591 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="project"]
+position = Vector2( 0, 62.7023 )
+shape = SubResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 221.928
+margin_top = 108.43
+margin_right = 785.928
+margin_bottom = 184.43
+custom_fonts/font = ExtResource( 4 )
+text = "Looks like someone let one project done here! 
+  You can now delivery it to the professor."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Project = SubResource( 3 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="project" to="." method="_on_project_body_entered"]

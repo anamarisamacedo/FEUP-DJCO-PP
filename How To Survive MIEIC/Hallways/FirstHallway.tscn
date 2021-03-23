@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Sprites/Tiles/door.png" type="Texture" id=2]
 [ext_resource path="res://Collectables/Beer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hallways/FirstHallway.gd" type="Script" id=4]
 [ext_resource path="res://Characters/Zombie.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Font/new_dynamicfont.tres" type="DynamicFont" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 33.7425, 50.1954 )
@@ -14,6 +15,22 @@ extents = Vector2( 32.0773, 49.8502 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 21.151, 136.414 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "NeedKey"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="FirstHallway" type="Node2D"]
 position = Vector2( 0, 100 )
@@ -89,6 +106,42 @@ position = Vector2( 508.119, 254.875 )
 
 [node name="Beer" parent="." instance=ExtResource( 3 )]
 position = Vector2( 987.303, 260.386 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/NeedKey = SubResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -224.0
+margin_top = -10.0
+margin_right = 225.0
+margin_bottom = 74.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -107.5
+margin_top = -69.5
+margin_right = 103.5
+margin_bottom = -12.5
+custom_fonts/font = ExtResource( 6 )
+text = "You need a key to
+  open this room"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="body_entered" from="Door1" to="." method="_on_Door1_body_entered"]
 [connection signal="body_entered" from="Door2" to="." method="_on_Door2_body_entered"]
 [connection signal="body_entered" from="Back" to="." method="_on_Back_body_entered"]

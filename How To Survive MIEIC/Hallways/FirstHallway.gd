@@ -17,7 +17,10 @@ func _on_Back_body_entered(body):
 
 func _on_Door1_body_entered(body):
 	if body.name == "Player":
-		GlobalVariables.goto_scene("res://Hallways/Rooms/B010Scene.tscn")
+		if player.b010key == true:
+			GlobalVariables.goto_scene("res://Hallways/Rooms/B010Scene.tscn")
+		else:
+			$AnimationPlayer.play("NeedKey")
 
 
 func _on_Door2_body_entered(body):

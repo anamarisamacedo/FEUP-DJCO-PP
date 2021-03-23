@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Sprites/Tiles/armário2.png" type="Texture" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
@@ -10,17 +10,35 @@
 [ext_resource path="res://Sprites/Tiles/shelf.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Tiles/armário1.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/Items/bluebook.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Items/key.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 96.7885, 20.365 )
+extents = Vector2( 96.7885, 4.30674 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30.1019, 50.948 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Book"
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("bluebook:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.4, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Key"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("key:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -63,14 +81,14 @@ region_enabled = true
 region_rect = Rect2( 94.542, 384.48, 97.3334, 32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stair"]
-position = Vector2( 7.77344, 52.2532 )
+position = Vector2( 6.71399, 84.0371 )
 shape = SubResource( 1 )
 
 [node name="NPC_Professor3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 537.144, 400.836 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 534.234, 82.1173 )
+position = Vector2( 532.115, 152.042 )
 
 [node name="armário3" type="Sprite" parent="."]
 position = Vector2( 177.268, -18.5782 )
@@ -119,8 +137,8 @@ shape = SubResource( 2 )
 
 [node name="bluebook" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 537.341, 157.954 )
-scale = Vector2( 1.62656, 1.75299 )
+position = Vector2( 554.292, 172.257 )
+scale = Vector2( 2.31845, 2.48646 )
 texture = ExtResource( 10 )
 
 [node name="Label" type="Label" parent="bluebook"]
@@ -135,5 +153,24 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Book = SubResource( 3 )
+
+[node name="key" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 534.742, 274.59 )
+scale = Vector2( 3.09123, 2.95583 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="key"]
+margin_left = -30.4232
+margin_top = -43.7781
+margin_right = 36.5768
+margin_bottom = -29.7781
+text = "Key found!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/Key = SubResource( 4 )
 [connection signal="body_entered" from="stair" to="." method="_on_elevator_body_entered"]
 [connection signal="body_entered" from="shelfBook" to="." method="_on_shelfBook_body_entered"]

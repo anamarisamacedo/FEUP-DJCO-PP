@@ -9,7 +9,7 @@ var quest_status = QuestStatus.NOT_STARTED
 var dialogue_state = 0
 var dialoguePopup
 var player
-
+var library2
 # Random number generator
 var rng = RandomNumberGenerator.new()
 
@@ -24,6 +24,7 @@ var xp_increase=30
 func _ready():
 	dialoguePopup = get_tree().root.get_node("/root/Global/Player/CanvasLayer/DialoguePopup")
 	player = get_tree().root.get_node("/root/Global/Player")
+	library2 = get_tree().root.get_node("/root/Library2")
 
 func talk(answer = ""):
 	# Set Fiona's animation to "talk"
@@ -43,7 +44,7 @@ func talk(answer = ""):
 						dialogue_state = 1
 						# Show dialogue popup
 						dialoguePopup.dialogue = "Hi student!  Do you need help?"
-						dialoguePopup.answers = "[A] Yes, professor! Professor Carlos said you have the key to B120. I need some appointments. [B] No, I'm just walking around. "
+						dialoguePopup.answers = "[A] Yes! Prof. Carlos said you have the key to B010. I need an appointment [B] No, I'm just walking around. "
 						dialoguePopup.open()
 					else:
 						# Update dialogue tree state
@@ -113,8 +114,8 @@ func talk(answer = ""):
 					dialoguePopup.close()
 					# Add XP to the player. 
 					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
-					player.add_study(10)
-					player.b210key = true
+					library2.key_found()
+					player.b010key = true
 				6: 
 					# Update dialogue tree state
 					dialogue_state = 0
@@ -189,8 +190,8 @@ func talk(answer = ""):
 					dialoguePopup.close()
 					# Add XP to the player. 
 					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
-					player.add_study(10)
-					player.b210key = true
+					library2.key_found()
+					player.b010key = true
 				5: 
 					# Update dialogue tree state
 					dialogue_state = 0

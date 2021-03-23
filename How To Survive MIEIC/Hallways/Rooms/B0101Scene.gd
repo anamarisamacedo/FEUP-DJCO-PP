@@ -9,3 +9,9 @@ func _ready():
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		GlobalVariables.goto_scene("res://Hallways/FirstHallway.tscn")
+
+
+func _on_project_body_entered(body):
+	if body.name == "Player":
+		$AnimationPlayer.play("Project")
+		player.project1Found = true
