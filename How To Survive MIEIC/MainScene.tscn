@@ -62,7 +62,7 @@ current = true
 script = ExtResource( 3 )
 
 [node name="Book" parent="." instance=ExtResource( 14 )]
-position = Vector2( -218.725, -366.122 )
+position = Vector2( -222.725, -366.122 )
 
 [node name="Beer" parent="." instance=ExtResource( 5 )]
 position = Vector2( -533.225, -49.2291 )

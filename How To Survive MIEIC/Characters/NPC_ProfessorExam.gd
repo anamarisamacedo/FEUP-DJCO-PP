@@ -93,6 +93,7 @@ func talk(answer = ""):
 					dialoguePopup.answers = "[A] Thank you! Bye."
 					player.raised_grade()
 				else:
+					preserverance += 1
 					dialoguePopup.dialogue = "And are preserverant, student?"
 					dialoguePopup.answers = "[A] YES [B] Not really."
 				dialoguePopup.open()

@@ -123,8 +123,7 @@ func talk(answer = ""):
 					dialoguePopup.close()
 					player.remove_beer()
 					get_tree().root.get_node("/root/Outside/NPC_Praxis2").queue_free()
-					yield(get_tree().create_timer(0.5), "timeout") #I added a little delay in case the level advancement panel appears.
-					
+					yield(get_tree().create_timer(0.5), "timeout")
 				3:
 					dialogue_state = 0
 					dialoguePopup.close()
