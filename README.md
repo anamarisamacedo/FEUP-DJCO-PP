@@ -26,7 +26,7 @@ The player has to complete 5 challenges before time ends and without being kille
 
 ### Secret Challenges
 
-There are some extra and secret challenges that are not needed to win the game, but that can 
+There are some extra and secret challenges that are not needed to win the game, but are used to excite the game.
 
 * Pass the Final Exam with a Grade of 20/20:
 * Convince a Professor to Raise Your Final Exam Grade:
