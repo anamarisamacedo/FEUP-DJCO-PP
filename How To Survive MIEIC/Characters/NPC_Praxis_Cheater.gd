@@ -41,16 +41,16 @@ func talk(answer = ""):
 						dialoguePopup.open()
 				2:
 					if answer == "A":
-						dialogue_state = 3
-						
 						if player.number_beers >= 5:
-							dialoguePopup.dialogue = "Here are my answers. Now let me finish this."
-							dialoguePopup.answers = "[A] Thank you. Bye."
-							dialoguePopup.open()
 							player.remove_beer(5)
 							player.cheat()
 							GlobalVariables.quest_status_praxis_cheater = QuestStatus.COMPLETED
+							dialogue_state = 1
+							dialoguePopup.dialogue = "Here are my answers. Now let me finish this."
+							dialoguePopup.answers = "[A] Thank you. Bye."
+							dialoguePopup.open()
 						else:
+							dialogue_state = 3
 							dialoguePopup.dialogue = "You don't have enough beers, bro! Come back when you do."
 							dialoguePopup.answers = "[A] Sorry. Bye."
 							dialoguePopup.open()
