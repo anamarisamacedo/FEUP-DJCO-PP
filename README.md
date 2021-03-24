@@ -8,7 +8,7 @@ How To Survive MIEIC is a single player Role-Playing Game (RPG) where the player
 
 The game has three types of Non-player characteres: students, teachers, and zombies. Students simply ask the player for beers. Two of the students have specific roles. One appears at the begining of the game to help the player start the challenges, and the other is used to do a group project with the player in order to complete a specific challenge. There are also four different teachers with different roles and they are used to complete the challenges. Last but not least, the game has zombies who can attack the player until his life XP reaches zero. 
 
-The player interacts with students and teachers by dialogues.
+The player interacts with students and teachers by dialogues, pressing the space bar.
 
 ### Collectable objects 
 
@@ -26,11 +26,11 @@ The player has to complete 5 challenges before time ends and without being kille
 
 ### Secret Challenges
 
-There are some secret challenges that are not needed to win the game, but that the player can 
+There are some extra and secret challenges that are not needed to win the game, but that can 
 
 * Pass the Final Exam with a Grade of 20/20:
 * Convince a Professor to Raise Your Final Exam Grade:
-* Kill a Zombie: There is a way to kill the zombies, 
+* Kill a Zombie: There is a way to kill the zombies, wich 
 * Discover How to Pass the Exam with 0 Effort
 * Convince a Professor to Let You Retake the Exam
 
