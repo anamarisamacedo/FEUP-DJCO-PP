@@ -14,22 +14,22 @@
 [ext_resource path="res://MainScene.gd" type="Script" id=22]
 [ext_resource path="res://tileset2.tres" type="TileSet" id=24]
 
-[sub_resource type="ConvexPolygonShape2D" id=4]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 36, 63, 3.49536, 63, 3.49536, 0.824112, 36, 0.824112 )
 
-[sub_resource type="ConvexPolygonShape2D" id=5]
+[sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 28, 60, 1.78238, 60, 1.78238, 1.56023, 28, 1.56023 )
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=3]
 points = PoolVector2Array( 63.5278, 88.1945, 2.41669, 88.1945, 2.41669, 0.694489, 63.5278, 0.694489 )
 
-[sub_resource type="ConvexPolygonShape2D" id=7]
+[sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 48, 83, 0.0971985, 83, 0.0971985, 0.277802, 48, 0.277802 )
 
-[sub_resource type="ConvexPolygonShape2D" id=8]
+[sub_resource type="ConvexPolygonShape2D" id=5]
 points = PoolVector2Array( 70.875, 29, 4.90274, 29, 4.90274, 0, 70.875, 0 )
 
-[sub_resource type="TileSet" id=9]
+[sub_resource type="TileSet" id=6]
 0/name = "plants.png 0"
 0/texture = ExtResource( 9 )
 0/tex_offset = Vector2( 0, 0 )
@@ -40,14 +40,14 @@ points = PoolVector2Array( 70.875, 29, 4.90274, 29, 4.90274, 0, 70.875, 0 )
 0/navigation_offset = Vector2( 0, 0 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 4 )
+0/shape = SubResource( 1 )
 0/shape_one_way = false
 0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 4 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
@@ -61,14 +61,14 @@ points = PoolVector2Array( 70.875, 29, 4.90274, 29, 4.90274, 0, 70.875, 0 )
 1/navigation_offset = Vector2( 0, 0 )
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 5 )
+1/shape = SubResource( 2 )
 1/shape_one_way = false
 1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
+"shape": SubResource( 2 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
@@ -124,14 +124,14 @@ points = PoolVector2Array( 70.875, 29, 4.90274, 29, 4.90274, 0, 70.875, 0 )
 5/navigation_offset = Vector2( 0, 0 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape = SubResource( 6 )
+5/shape = SubResource( 3 )
 5/shape_one_way = false
 5/shape_one_way_margin = 1.0
 5/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 6 ),
+"shape": SubResource( 3 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 5/z_index = 0
@@ -145,14 +145,14 @@ points = PoolVector2Array( 70.875, 29, 4.90274, 29, 4.90274, 0, 70.875, 0 )
 6/navigation_offset = Vector2( 0, 0 )
 6/shape_offset = Vector2( 0, 0 )
 6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-6/shape = SubResource( 7 )
+6/shape = SubResource( 4 )
 6/shape_one_way = false
 6/shape_one_way_margin = 1.0
 6/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 7 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 6/z_index = 0
@@ -166,14 +166,14 @@ points = PoolVector2Array( 70.875, 29, 4.90274, 29, 4.90274, 0, 70.875, 0 )
 7/navigation_offset = Vector2( 0, 0 )
 7/shape_offset = Vector2( 0, 0 )
 7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-7/shape = SubResource( 8 )
+7/shape = SubResource( 5 )
 7/shape_one_way = false
 7/shape_one_way_margin = 1.0
 7/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 8 ),
+"shape": SubResource( 5 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 7/z_index = 0
@@ -192,7 +192,7 @@ points = PoolVector2Array( 70.875, 29, 4.90274, 29, 4.90274, 0, 70.875, 0 )
 8/shapes = [  ]
 8/z_index = 0
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=7]
 script/source = "extends Node2D
 
 var player 
@@ -216,10 +216,10 @@ func _on_Door2_body_entered(body):
 		GlobalVariables.goto_scene(\"res://Hallways/Rooms/B021Scene.tscn\")
 "
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 11.3378, 10 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 81.2068, 7.32483 )
 
 [node name="MainScene" type="Node2D"]
@@ -238,7 +238,7 @@ tile_data = PoolIntArray( -2162707, 40, 0, -2162706, 40, 0, -2162705, 40, 0, -21
 
 [node name="TileMap3" type="TileMap" parent="."]
 scale = Vector2( 1.5, 1.5 )
-tile_set = SubResource( 9 )
+tile_set = SubResource( 6 )
 format = 1
 tile_data = PoolIntArray( -1245184, 0, 0, -1245183, 0, 0, -1245180, 0, 0, -1245179, 0, 0, -851968, 1, 0, -458756, 2, 0, -327686, 3, 0, -262146, 3, 0, -327680, 1, 0, -65539, 2, 0, -65531, 6, 0, 65530, 536870915, 0, 196605, 3, 0, 196608, 536870913, 0, 327674, 2, 0, 458750, 3, 0, 589819, 3, 0, 524293, 5, 0 )
 
@@ -267,29 +267,29 @@ position = Vector2( 352, -251.17 )
 [node name="FirstHallway" type="Area2D" parent="."]
 position = Vector2( 585.246, 583.809 )
 scale = Vector2( 2.2, 6.5 )
-script = SubResource( 1 )
+script = SubResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FirstHallway"]
 position = Vector2( 8.16376, -1.20467 )
-shape = SubResource( 2 )
+shape = SubResource( 8 )
 
 [node name="SecondHallway" type="Area2D" parent="."]
 position = Vector2( 601.625, -510.349 )
 scale = Vector2( 2.2, 6.5 )
-script = SubResource( 1 )
+script = SubResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SecondHallway"]
 position = Vector2( 0.146088, -0.0416718 )
-shape = SubResource( 2 )
+shape = SubResource( 8 )
 
 [node name="ThirdHallway" type="Area2D" parent="."]
 position = Vector2( 597.882, -1525.91 )
 scale = Vector2( 2.2, 6.5 )
-script = SubResource( 1 )
+script = SubResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ThirdHallway"]
 position = Vector2( 0.671112, -1.61279 )
-shape = SubResource( 2 )
+shape = SubResource( 8 )
 
 [node name="OutsideDoor" type="Area2D" parent="."]
 position = Vector2( 283.287, -1781.12 )
@@ -303,7 +303,7 @@ region_rect = Rect2( -0.0934219, 5.28284, 64.5888, 58.5805 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OutsideDoor"]
 position = Vector2( -7.91098, 48.5134 )
-shape = SubResource( 3 )
+shape = SubResource( 9 )
 
 [node name="Collectables" type="Node2D" parent="."]
 

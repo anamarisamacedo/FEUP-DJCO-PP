@@ -1,6 +1,6 @@
 extends Timer
 
-var mainscene
+var player
 
 var seconds: int = 0
 var minutes: int = 0
@@ -12,6 +12,7 @@ var seconds_label
 func _ready():
 	minutes_label = get_tree().root.get_node("/root/Global/CanvasLayer/Timer/Minutes")
 	seconds_label = get_tree().root.get_node("/root/Global/CanvasLayer/Timer/Seconds")
+	player = get_tree().root.get_node("/root/Global/Player")
 
 func restart():
 	seconds = 0
@@ -40,7 +41,7 @@ func stop_time():
 	stop()
 
 func game_over():
-	mainscene.game_lost()
+	player.game_lost()
 	stop()
  
 func start_time():
