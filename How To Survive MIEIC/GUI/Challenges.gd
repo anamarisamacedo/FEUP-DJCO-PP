@@ -38,6 +38,7 @@ var item_list
 var button
 var count = 0
 func _ready():
+# warning-ignore:return_value_discarded
 	$VBoxContainer/show.connect("pressed",self,"expand")
 	#Load the ItemList by stepping through it and adding each item.
 	item_list =  get_node("ItemList")
@@ -135,7 +136,7 @@ func challenge_to_string(challenge_id):
 	var item = challenges[challenge_id]
 	var string_item = item[ChallengeDescription]
 	if item[ChallengeCountable] && item[ChallengeCompleted] == 1:
-		for i in range(100 - item[ChallengeDescription].length()*2.75):
+		for _i in range(100 - item[ChallengeDescription].length()*2.75):
 			string_item += " "
 		string_item += str(item[ChallengeCurrent]) + "/" + str(item[ChallengeMax])
 	return string_item

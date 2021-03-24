@@ -10,7 +10,7 @@ func _ready():
 	dialoguePopup = get_tree().root.get_node("/root/Global/Player/CanvasLayer/DialoguePopup")
 	player = get_tree().root.get_node("/root/Global/Player")
 
-func talk(answer = ""):
+func talk(_answer = ""):
 	dialoguePopup.npc = self
 	dialoguePopup.npc_name = "Mark Zuckerberg"
 	

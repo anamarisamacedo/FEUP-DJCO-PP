@@ -22,7 +22,7 @@ func _ready():
 	rng.randomize()
 	
 	# Create zombies
-	for i in range(start_zombies):
+	for _i in range(start_zombies):
 		instance_zombie()
 	
 func test_position(position : Vector2):

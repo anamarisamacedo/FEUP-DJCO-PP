@@ -46,5 +46,6 @@ func game_over():
  
 func start_time():
 	wait_time = 1.0
+# warning-ignore:return_value_discarded
 	connect("timeout", self, "update")
 	restart()

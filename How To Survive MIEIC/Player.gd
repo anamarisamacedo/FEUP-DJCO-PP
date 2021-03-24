@@ -28,13 +28,13 @@ var students_talked_to = 0
 var projects_completed = 0
 var cheated = false
 var did_exam = false
-var pass_exam = false
+var passed_exam = false
 var has_Carlos_project = false
 var has_Miguel_Project = false
 var delivered_Carlos_project = false
 var delivered_Miguel_project = false
 var killed_zombie = false
-var retake_exam = false
+var retook_exam = false
  
 onready var rayCast = $RayCast2D
 onready var anim = $AnimatedSprite
@@ -71,6 +71,7 @@ func _physics_process (_delta):
 	vel = vel.normalized()
 	
 	# move the player
+# warning-ignore:return_value_discarded
 	move_and_slide(vel * moveSpeed, Vector2.ZERO)
 	manage_animations()
 
@@ -170,7 +171,7 @@ func cheat():
 	challenges.add_secret_challenge("Cheat on the Exam")
 	
 func pass_exam():
-	pass_exam = true
+	passed_exam = true
 	challenges.complete_challenge(4)
 
 func excel_exam():
@@ -186,9 +187,9 @@ func raise_grade():
 
 func retake_exam():
 	did_exam = false
-	if !retake_exam:
+	if !retook_exam:
 		challenges.add_secret_challenge("Convince a professor to let you retake the exam")
-	retake_exam = true
+	retook_exam = true
 	
 func restart():
 	life = maxXP
@@ -204,13 +205,13 @@ func restart():
 	projects_completed = 0
 	cheated = false
 	did_exam = false
-	pass_exam = false
+	passed_exam = false
 	has_Carlos_project = false
 	delivered_Carlos_project = false
 	has_Miguel_Project = false
 	delivered_Miguel_project = false
 	killed_zombie = false
-	retake_exam = false
+	retook_exam = false
 	
 	emit_signal("player_books_changed", self)
 	emit_signal("player_beers_changed", self)
