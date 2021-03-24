@@ -7,6 +7,7 @@ How To Survive MIEIC is a single player Role-Playing Game (RPG) where the player
 ### NPCs
 
 The game has three types of Non-player characteres: students, teachers, and zombies. Students simply ask the player for beers. Two of the students have specific roles. One appears at the begining of the game to help the player start the challenges, and the other is used to do a group project with the player in order to complete a specific challenge. There are also four different teachers with different roles and they are used to complete the challenges. Last but not least, the game has zombies who can attack the player until his life XP reaches zero. 
+
 The player interacts with students and teachers by dialogues.
 
 ### Collectable objects 
