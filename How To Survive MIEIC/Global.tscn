@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://GlobalVariables.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://GUI/Item Count.gd" type="Script" id=9]
 [ext_resource path="res://GUI/LifeXP.gd" type="Script" id=10]
 [ext_resource path="res://Font/new_dynamicfont.tres" type="DynamicFont" id=11]
+[ext_resource path="res://Audio/ValleyOfLaziness4.wav" type="AudioStream" id=12]
 
 [node name="Global" type="Node2D"]
 script = ExtResource( 1 )
@@ -199,6 +200,11 @@ script = ExtResource( 6 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 336, 264 )
 z_index = 100
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 12 )
+autoplay = true
 [connection signal="player_beers_changed" from="Player" to="CanvasLayer/ItemCount" method="_on_Player_player_beers_changed"]
 [connection signal="player_books_changed" from="Player" to="CanvasLayer/ItemCount" method="_on_Player_player_books_changed"]
 [connection signal="player_stats_changed" from="Player" to="CanvasLayer/LifeXP" method="_on_Player_player_stats_changed"]
