@@ -34,6 +34,7 @@ func _on_ThirdHallway_body_entered(body):
 func _on_OutsideDoor_body_entered(body):
 	if body.name == "Player":
 		GlobalVariables.goto_scene("res://Outside.tscn")
+		GlobalVariables.player_position = GlobalVariables.Player_positions.OUTSIDE_POSITION
 
 
 func _on_Book_body_entered(body):

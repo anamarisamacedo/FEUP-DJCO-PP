@@ -24,10 +24,16 @@ func talk(answer = ""):
 		QuestStatus.NOT_STARTED:
 			match dialogue_state:
 				0:
-					dialogue_state = 1
-					dialoguePopup.dialogue = "Hey! What do you want?"
-					dialoguePopup.answers = "[A] Can you help me cheat?  [B] Nothing. I'm cool!"
-					dialoguePopup.open()
+					if player.did_exam && player.passed_exam:
+						dialogue_state = 3
+						dialoguePopup.dialogue = "Shushhh. Let me do my exam!"
+						dialoguePopup.answers = "[A] Sorry. Bye"
+						dialoguePopup.open()
+					else:
+						dialogue_state = 1
+						dialoguePopup.dialogue = "Hey! What do you want?"
+						dialoguePopup.answers = "[A] Can you help me cheat?  [B] Nothing. I'm cool!"
+						dialoguePopup.open()
 				1:
 					if answer == "A":
 						dialogue_state = 2

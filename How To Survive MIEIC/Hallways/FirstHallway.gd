@@ -12,8 +12,7 @@ func _ready():
 func _on_Back_body_entered(body):
 	if body.name == "Player":
 		GlobalVariables.goto_scene("res://MainScene.tscn")
-		#back_position = get_tree().root.get_node("/root/MainScene")
-		#player.position = back_position.position
+		GlobalVariables.player_position = GlobalVariables.Player_positions.FIRST_BACK_POSITION
 
 
 func _on_Door1_body_entered(body):

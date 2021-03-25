@@ -31,7 +31,13 @@ var quest_status_professor3 = QuestStatus.NOT_STARTED
 var quest_status_professor4 = QuestStatus.NOT_STARTED
 var quest_status_praxis_project = QuestStatus.NOT_STARTED
 var quest_status_praxis_cheater = QuestStatus.NOT_STARTED
+enum Player_positions { INITIAL_POSITION, FIRST_BACK_POSITION, SECOND_BACK_POSITION, THIRD_BACK_POSITION, OUTSIDE_BACK_POSITION, LIBRARY_BACK_POSITION, OUTSIDE_POSITION, LIBRARY2_BACK_POSITION, THIRDHALLWAY2_BACK_POSITION }
+var player_position = Player_positions.INITIAL_POSITION
+var player
 
+func _ready():
+	player = get_tree().root.get_node("/root/Global/Player")
+	
 func _input(event):
 	if event.is_action_pressed("pause"):
 		pause_menu = pause.instance()
@@ -48,7 +54,6 @@ func remove_gameover():
 func restart_game():
 	var timer = get_tree().root.get_node("/root/Global/Timer")
 	timer.restart()
-	var player = get_tree().root.get_node("/root/Global/Player")
 	player.restart()
 	quest_status_professor1 = QuestStatus.NOT_STARTED
 	quest_status_professor2 = QuestStatus.NOT_STARTED
@@ -110,3 +115,27 @@ func _deferred_goto_scene(path):
 
 	# Optionally, to make it compatible with the SceneTree.change_scene() API.
 	get_tree().set_current_scene(current_scene)
+	
+	if current_scene.name == "MainScene": 
+		if player_position == Player_positions.FIRST_BACK_POSITION:
+			player.position = get_tree().root.get_node("/root/"+ current_scene.name + "/FirstBackPosition").position
+		if player_position == Player_positions.SECOND_BACK_POSITION:
+			player.position = get_tree().root.get_node("/root/"+ current_scene.name + "/SecondBackPosition").position
+		if player_position == Player_positions.THIRD_BACK_POSITION:
+			player.position = get_tree().root.get_node("/root/"+ current_scene.name + "/ThirdBackPosition").position	
+		if player_position == Player_positions.OUTSIDE_BACK_POSITION:
+			player.position = get_tree().root.get_node("/root/"+ current_scene.name + "/OutsideBackPosition").position	
+	if current_scene.name == "Outside":
+		if player_position == Player_positions.OUTSIDE_POSITION:
+			player.position = get_tree().root.get_node("/root/"+ current_scene.name + "/OutsidePosition").position	
+		if player_position == Player_positions.LIBRARY_BACK_POSITION:
+			player.position = get_tree().root.get_node("/root/"+ current_scene.name + "/LibraryBackPosition").position	
+	if current_scene.name == "Library":
+		if player_position == Player_positions.LIBRARY2_BACK_POSITION:
+			player.position = get_tree().root.get_node("/root/"+ current_scene.name + "/Library2BackPosition").position	
+	if current_scene.name == "ThirdHallway":
+		print("AIHDIK")
+		if player_position == Player_positions.THIRDHALLWAY2_BACK_POSITION:
+			player.position = get_tree().root.get_node("/root/"+ current_scene.name + "/ThirdHallway2BackPosition").position	
+	
+		

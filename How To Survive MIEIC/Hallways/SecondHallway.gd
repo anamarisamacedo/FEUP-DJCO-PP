@@ -11,6 +11,7 @@ func _ready():
 func _on_Back_body_entered(body):
 	if body.name == "Player":
 		GlobalVariables.goto_scene("res://MainScene.tscn")
+		GlobalVariables.player_position = GlobalVariables.Player_positions.SECOND_BACK_POSITION
 
 
 func _on_Door1_body_entered(body):

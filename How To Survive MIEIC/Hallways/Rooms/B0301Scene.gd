@@ -5,8 +5,9 @@ var player
 func _ready():
 	player = get_tree().root.get_node("/root/Global/Player")
 	player.position = $Position2D.position
-	if GlobalVariables.quest_status_praxis_project != GlobalVariables.QuestStatus.PROJECT:
-		get_tree().root.get_node("/root/B031/NPC_Praxis_Project").queue_free()
+	if GlobalVariables.current_scene.name == "B031":
+		if GlobalVariables.quest_status_praxis_project != GlobalVariables.QuestStatus.PROJECT:
+			get_tree().root.get_node("/root/B031/NPC_Praxis_Project").queue_free()
 
 func _on_Shelf2_body_entered(body):
 	if body.name == "Player":

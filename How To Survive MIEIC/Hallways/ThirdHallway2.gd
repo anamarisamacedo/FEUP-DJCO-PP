@@ -19,4 +19,5 @@ func _on_Door2_body_entered(body):
 
 func _on_Elevator2_body_entered(body):
 	if body.name == "Player":
-		get_tree().change_scene("res://Hallways/ThirdHallway.tscn")
+		GlobalVariables.goto_scene("res://Hallways/ThirdHallway.tscn")
+		GlobalVariables.player_position = GlobalVariables.Player_positions.THIRDHALLWAY2_BACK_POSITION

@@ -11,6 +11,7 @@ func _ready():
 func _on_back_body_entered(body):
 	if body.name == "Player":
 		GlobalVariables.goto_scene("res://Outside.tscn")
+		GlobalVariables.player_position = GlobalVariables.Player_positions.LIBRARY_BACK_POSITION
 
 
 func _on_stairs_body_entered(body):

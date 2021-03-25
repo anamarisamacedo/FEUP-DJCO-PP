@@ -28,10 +28,14 @@ func talk(answer = ""):
 	
 	match dialogue_state:
 		0:
-			if player.did_exam && !player.pass_exam:
+			if player.did_exam && !player.passed_exam:
 				dialoguePopup.dialogue = "Hey, student! I hear you failed the exam."
 				dialoguePopup.answers = "[A] Is there anything I can do? [B] Is all your fault!"
 				dialogue_state = 2
+			elif player.did_exam && player.passed_exam:
+				dialoguePopup.dialogue = "Congratulations, student! You passed your exam!"
+				dialoguePopup.answers = "[A] Thank you. Bye."
+				dialogue_state = 1
 			else:
 				dialoguePopup.dialogue = "Hey, student! Don't forget to do your final exam in Room B021. Good luck!"
 				dialoguePopup.answers = "[A] Thank you. Bye."
