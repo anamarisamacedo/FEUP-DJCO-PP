@@ -43,7 +43,13 @@ There are some extra and secret challenges that are not needed to win the game, 
 
 ## Installation
 
-To execute the game, 
+1. Download the executable files;
+2. Open the executable file;
+3. Have fun playing!
+
+Note:
+* Linux users: only need to download the .x86_64 extension file;
+* Windows users: need to download .exe & .pck extension files, have them on the same directory and to run, open the .exe file.
 
 ## Playing Instructions
 
