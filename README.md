@@ -4,9 +4,9 @@
 
 How To Survive MIEIC is a single player Role-Playing Game (RPG) where the player is a MIEIC student from FEUP who needs to balance his social life with his academic life through some predefined challenges, without dying and before time ends.
 
-![F](https://github.com/anamarisamacedo/FEUP-DJCO-PP/blob/main/DJCO-PP-G09-How%20to%20Survive%20MIEIC-snapshot1.png)
+![F](https://github.com/anamarisamacedo/FEUP-DJCO-PP/blob/main/DJCO-PP-G09-How%20to%20Survive%20MIEIC-snapshot1.png | width=100)
 
-![E](https://github.com/anamarisamacedo/FEUP-DJCO-PP/blob/main/DJCO-PP-G09-How%20to%20Survive%20MIEIC-snapshot2.png)
+![E](https://github.com/anamarisamacedo/FEUP-DJCO-PP/blob/main/DJCO-PP-G09-How%20to%20Survive%20MIEIC-snapshot2.png | width=100)
 ### NPCs
 
 The game has three types of Non-player characteres: students, teachers, and zombies.
