@@ -12,6 +12,8 @@ How To Survive MIEIC is a single player Role-Playing Game (RPG) where the player
   <img src="https://github.com/anamarisamacedo/FEUP-DJCO-PP/blob/main/DJCO-PP-G09-How%20to%20Survive%20MIEIC-snapshot2.png"  width="500" />
 </p>
 
+[Watch the video!](https://youtu.be/CWdw3w8hqX4)
+
 
 ### NPCs
 
